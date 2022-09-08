@@ -1,9 +1,13 @@
 import type { NextPage } from 'next'
+import { Hero, Grid, Card, Spinner } from '../components'
 
 const Home: NextPage = () => {
   return (
-    <main>
-      <h1>Hello</h1>
+    <main className='relative h-screen overflow-y-scroll'>
+      <Hero />
+      <Grid />
+      <Card />
+      <Spinner />
     </main>
   )
 }
