@@ -12,7 +12,8 @@ const Thumbnail = ({ imgUrl }: Props) => (
     layout='fill'
     objectFit='cover'
     src={imgUrl}
-    alt='thumb'
+    alt='thumbnail'
+    priority={true}
   />
 );
 

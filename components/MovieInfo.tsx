@@ -65,9 +65,9 @@ const MovieInfo = ({
       </div>
     </div>
     <Image
-      priority
+      priority={true}
       placeholder='blur'
-      blurDataURL='/placeholder.jpg'
+      blurDataURL='/images/placeholder.jpg'
       objectFit='cover'
       objectPosition='center'
       layout='fill'

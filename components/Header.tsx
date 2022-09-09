@@ -20,7 +20,7 @@ const Header = ({ setQuery }: Props) => (
           </div>
         </div>
       </Link>
-      {/* <Search /> */}
+      {/* if no query, don't show the search bar */}
       {setQuery ? (
         <div className="relative flex items-center">
           <Search setQuery={setQuery} />

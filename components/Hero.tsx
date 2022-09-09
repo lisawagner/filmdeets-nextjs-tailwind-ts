@@ -14,7 +14,7 @@ const Hero = ({ imgUrl, title, text }: Props) => (
         <p className='text-lg md:text-md'>{text}</p>
       </div>
     </div>
-    <Image priority objectFit='cover' objectPosition='center' layout='fill' src={imgUrl} alt='hero-image' />
+    <Image priority={true} objectFit='cover' objectPosition='center' layout='fill' src={imgUrl} alt='hero-image' />
   </div>
 );
 
