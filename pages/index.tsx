@@ -49,7 +49,7 @@ const Home: NextPage = () => {
                   <div className='cursor-pointer hover:opacity-80 duration-300'>
                     <Card
                       imgUrl={movie.poster_path
-                        ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : '/images/no_image.jpg'}
+                        ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : '/images/baby-yoda-md.png'}
                       title={movie.original_title}
                     />
                     {/* {movie.original_title} */}

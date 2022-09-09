@@ -110,7 +110,7 @@ Distributed under the XYZ license. See ``LICENSE`` for more information.
 
 * Project folder on server:
 * Confluence link:
-* Asana board:
+* [Baby Yoda](https://freepngimg.com/png/99068-cute-star-wars-photos-baby-yoda/download) from freepngimg.com
 * [Popcorn icon by Icons8](https://icons8.com/icons/set/popcorn)
 
 ## :books: Learning Resources
