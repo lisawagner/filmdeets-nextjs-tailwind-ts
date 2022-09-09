@@ -19,7 +19,7 @@ const Home: NextPage = () => {
     if (scrollHeight - scrollTop === clientHeight) fetchNextPage();
   };
 
-  if (error) return <div>Oh noooooooo something went wrong!</div>;
+  if (error) return <div>Oh no something went wrong with the database!</div>;
 
   return (
     <main
