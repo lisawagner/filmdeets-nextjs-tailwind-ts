@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 // Components
-// import SearchInput from '../SearchInput/SearchInput';
+import Search from './Search'
 
 type Props = {
   setQuery?: React.Dispatch<React.SetStateAction<string>>;
@@ -20,11 +20,13 @@ const Header = ({ setQuery }: Props) => (
           </div>
         </div>
       </Link>
-      {/* {setQuery ? (
+      {/* <Search /> */}
+      {setQuery ? (
         <div className="relative flex items-center">
-          <SearchInput setQuery={setQuery} />
+          <Search setQuery={setQuery} />
         </div>
-      ) : null} */}
+      ) : null}
+
     </div>
   </div>
 );
