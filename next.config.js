@@ -4,7 +4,7 @@ const nextConfig = {
   swcMinify: true,
   // enable image optimization for api hosted image sources
   images: {
-    domains: ["image.tmdb.org"]
+    domains: ['image.tmdb.org']
   }
 }
 
