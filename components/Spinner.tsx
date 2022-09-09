@@ -1,6 +1,11 @@
 const Spinner = () => (
   <div className='flex items-center justify-center m-4'>
-    <svg className='w-12 h-12 animate-spin' viewBox='0 0 1 44' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <svg
+      className='w-12 h-12 animate-spin'
+      viewBox='0 0 1 44'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+    >
       <path
         fillRule='evenodd'
         clipRule='evenodd'

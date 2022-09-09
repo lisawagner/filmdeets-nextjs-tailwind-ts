@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Link from 'next/link'
 import type { NextPage } from 'next'
 import { useFetchMovies } from '../api/fetchHooks'
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from '../config'
@@ -11,6 +12,7 @@ const Home: NextPage = () => {
 
   console.log(data);
 
+  // infinite scroll handler
   const handleScroll = (e: React.UIEvent<HTMLElement>) => {
     const { scrollTop, clientHeight, scrollHeight } = e.currentTarget;
 
@@ -20,7 +22,10 @@ const Home: NextPage = () => {
   if (error) return <div>Oh noooooooo something went wrong!</div>;
 
   return (
-    <main className='relative h-screen overflow-y-scroll'>
+    <main
+      className='relative h-screen overflow-y-scroll'
+      onScroll={handleScroll}
+    >
       <Header setQuery={setQuery}/>
       {!query && data && data.pages ? (
         <Hero
@@ -52,8 +57,7 @@ const Home: NextPage = () => {
             )
           : null}
       </Grid>
-      {/* <Card /> */}
-      <Spinner />
+      {isLoading || isFetching ? <Spinner /> : null}
     </main>
   )
 }
