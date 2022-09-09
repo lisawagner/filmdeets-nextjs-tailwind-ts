@@ -4,10 +4,10 @@ type Props = {
   imgUrl: string;
 };
 
-const Thumb = ({ imgUrl }: Props) => (
+const Thumbnail = ({ imgUrl }: Props) => (
   <Image
     placeholder='blur'
-    blurDataURL='/placeholder.jpg'
+    blurDataURL='/images/placeholder.jpg'
     className='rounded-lg'
     layout='fill'
     objectFit='cover'
@@ -16,4 +16,4 @@ const Thumb = ({ imgUrl }: Props) => (
   />
 );
 
-export default Thumb;
+export default Thumbnail;
