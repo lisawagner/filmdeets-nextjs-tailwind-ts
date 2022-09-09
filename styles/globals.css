@@ -18,4 +18,8 @@
   .text-shadow-none {
     text-shadow: none;
   }
+
+  .oval-shadow {
+    border-radius: 50%;
+  }
 }
