@@ -27,6 +27,7 @@ const Home: NextPage = () => {
       onScroll={handleScroll}
     >
       <Header setQuery={setQuery}/>
+
       {!query && data && data.pages ? (
         <Hero
           imgUrl={data?.pages[0].results[0]?.backdrop_path
