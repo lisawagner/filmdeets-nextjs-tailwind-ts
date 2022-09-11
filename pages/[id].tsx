@@ -11,7 +11,8 @@ import { basicFetch } from '../api/fetchFunctions';
 import { Header, Grid, Card, Breadcrumb, MovieInfo } from '../components';
 // Types
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import type { Movie, Credits, Crew, Cast } from '../api/types';
+// import type { Movie, Credits, Crew, Cast } from '../api/types';
+import { Movie, Credits, Crew, Cast } from '../types/Movie'
 
 type Props = {
   movie: Movie;
