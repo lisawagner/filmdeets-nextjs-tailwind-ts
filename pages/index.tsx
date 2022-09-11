@@ -3,6 +3,7 @@ import Link from 'next/link'
 import type { NextPage } from 'next'
 import { useFetchMovies } from '../api/fetchHooks'
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from '../config'
+// components
 import { Header, Hero, Grid, Card, Spinner } from '../components'
 
 const Home: NextPage = () => {
@@ -11,20 +12,21 @@ const Home: NextPage = () => {
   const { data, fetchNextPage, isLoading, isFetching, error } = useFetchMovies(query);
 
   console.log(data);
+  
 
   // infinite scroll handler
-  const handleScroll = (e: React.UIEvent<HTMLElement>) => {
-    const { scrollTop, clientHeight, scrollHeight } = e.currentTarget;
+  // const handleScroll = (e: React.UIEvent<HTMLElement>) => {
+  //   const { scrollTop, clientHeight, scrollHeight } = e.currentTarget;
 
-    if (scrollHeight - scrollTop === clientHeight) fetchNextPage();
-  };
+  //   if (scrollHeight - scrollTop === clientHeight) fetchNextPage();
+  // };
 
-  if (error) return <div>Oh no something went wrong with the database!</div>;
+  // if (error) return <div>Oh no something went wrong with the database!</div>;
 
   return (
     <main
-      className='relative h-screen overflow-y-scroll'
-      onScroll={handleScroll}
+      className='relative h-screen'
+      // onScroll={handleScroll}
     >
       <Header setQuery={setQuery}/>
 
@@ -53,14 +55,13 @@ const Home: NextPage = () => {
                         ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : '/images/baby-yoda-md.png'}
                       title={movie.original_title}
                     />
-                    {/* {movie.original_title} */}
                   </div>
                 </Link>
               ))
             )
           : null}
       </Grid>
-      {isLoading || isFetching ? <Spinner /> : null}
+      {/* {isLoading || isFetching ? <Spinner /> : null} */}
     </main>
   )
 }
