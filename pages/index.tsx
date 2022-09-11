@@ -31,12 +31,13 @@ const Home: NextPage = () => {
       <Header setQuery={setQuery}/>
 
       {!query && data && data.pages ? (
+        // consider hardcode assets for better film imgs for hero
         <Hero
-          imgUrl={data?.pages[0].results[0]?.backdrop_path
-          ? IMAGE_BASE_URL + BACKDROP_SIZE + data.pages[0].results[0].backdrop_path
+          imgUrl={data?.pages[0].results[1]?.backdrop_path
+          ? IMAGE_BASE_URL + BACKDROP_SIZE + data.pages[0].results[1].backdrop_path
           : "/images/no_image.jpg"}
-          title={data?.pages[0].results[0].title}
-          text={data?.pages[0].results[0].overview}
+          title={data?.pages[0].results[1].title}
+          text={data?.pages[0].results[1].overview}
         />
       ) : null}
 

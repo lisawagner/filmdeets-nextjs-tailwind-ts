@@ -34,7 +34,7 @@ const Header = ({ setQuery }: Props) => {
 
   return (
 
-    <div className={`sticky flex top-0 z-40 w-full h-24 duration-1000  ${hasScrolled ? 'bg-zinc-900' : 'bg-transparent'}`}>
+    <div className={`sticky flex top-0 z-40 w-full h-24 duration-1000  ${hasScrolled ? 'bg-zinc-900' : 'bg-transparent gradient-transparency'}`}>
       <div className='flex justify-between w-full h-full max-w-7xl m-auto px-4'>
         <Link href='/'>
           <div className='flex items-center cursor-pointer'>
