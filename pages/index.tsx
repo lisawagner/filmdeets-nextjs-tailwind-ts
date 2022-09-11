@@ -12,16 +12,6 @@ const Home: NextPage = () => {
   const { data, fetchNextPage, isLoading, isFetching, error } = useFetchMovies(query);
 
   console.log(data);
-  
-
-  // infinite scroll handler
-  // const handleScroll = (e: React.UIEvent<HTMLElement>) => {
-  //   const { scrollTop, clientHeight, scrollHeight } = e.currentTarget;
-
-  //   if (scrollHeight - scrollTop === clientHeight) fetchNextPage();
-  // };
-
-  // if (error) return <div>Oh no something went wrong with the database!</div>;
 
   return (
     <main
