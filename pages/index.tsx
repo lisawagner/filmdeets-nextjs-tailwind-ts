@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import type { NextPage, GetStaticProps } from 'next'
 import { useFetchMovies, staticMovie } from '../api/fetchHooks'
@@ -6,7 +6,7 @@ import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, movieUrl } from '../config'
 // components
 import { Header, Hero, Grid, Card, Spinner } from '../components'
 import { Featured, PopularMovie, Genre, MovieDetails } from '../types/Movie'
-import { featureData} from './api/feature'
+// import { featureData} from './api/feature'
 
 type HomeProps = {
   featuredMovie: Featured
@@ -20,7 +20,6 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, popularMovies, topRatedMovie
   // @tanstack/react-query to cache movies via useFetchMovies()
   const { data, fetchNextPage, isLoading, isFetching, error } = useFetchMovies(query);
 
-
   console.log(data);
 
   // const feature = movieUrl('299536')
@@ -28,7 +27,15 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, popularMovies, topRatedMovie
 
   // const yesss = featureData('299536')
   // console.log('YES! ', yesss);
+
+  // const { heroFeat } = fetch(`/api/feature`)
+  // console.log("HERO", heroFeat);
   
+  
+  // useEffect(() => {
+  //   const yes = fetch(`/api/feature`)
+  //   console.log('YES: ', yes);
+  // }, [])
 
   return (
     <main

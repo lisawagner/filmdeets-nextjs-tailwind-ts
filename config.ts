@@ -3,12 +3,14 @@
 
 const API_URL: string = 'https://api.themoviedb.org/3/';
 const API_KEY: string | undefined = process.env.API_KEY;
+const NP_API_KEY: string | undefined = process.env.NEXT_PUBLIC_API_KEY
 
 const SEARCH_BASE_URL: string = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=`;
 const POPULAR_BASE_URL: string = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US`;
 
 // For single movie
 const movieUrl = (id?: string) => `${API_URL}movie/${id}?api_key=${API_KEY}`;
+// const movieUrl = (id?: string) => `${API_URL}movie/${id}?api_key=${NP_API_KEY}`;
 const creditsUrl = (id?: string) => `${API_URL}movie/${id}/credits?api_key=${API_KEY}`;
 
 const IMAGE_BASE_URL: string = 'http://image.tmdb.org/t/p/';
