@@ -39,8 +39,9 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, popularMovies, topRatedMovie
         />
       ) : null}
 
+      {/* TODO: separate search results and popular movies to style separately */}
       <Grid
-        className='p-4 max-w-7xl m-auto'
+        className='px-4 pb-8 pt-24 max-w-7xl m-auto'
         title={query ? `Search Results: ${data?.pages[0].total_results}` : 'Popular Movies' }
       >
         {/* nested array loop */}
