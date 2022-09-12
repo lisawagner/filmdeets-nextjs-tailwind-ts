@@ -7,9 +7,9 @@ type Props = {
 };
 
 const Hero = ({ imgUrl, title, text }: Props) => (
-  <div className='static w-full h-128'>
+  <div className='static'>
 
-    <div className='relative flex flex-col-reverse h-full max-w-7xl m-auto pb-12 text-center md:text-left z-50 bg-black'>
+    <div className='relative flex flex-col-reverse h-full max-w-7xl m-auto pb-12 text-center md:text-left z-50'>
 
       <div className='text-white max-w-2xl px-4 py-4 rounded-md text-shadow-md z-40'>
         <h2 className='text-2xl md:text-4xl font-bold pb-6'>{title}</h2>

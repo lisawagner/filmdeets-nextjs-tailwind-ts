@@ -4,6 +4,7 @@ import { fetchMovies } from './fetchFunctions';
 // Types
 // import { Movies } from './types';
 import { Movies } from '../types/Movie';
+import { movieUrl } from '../config';
 
 export const useFetchMovies = (search: string) => {
   return useInfiniteQuery(['movies', search], ({ pageParam = 1 }) => fetchMovies(search, pageParam), {
@@ -19,3 +20,7 @@ export const useFetchMovies = (search: string) => {
     
   });
 };
+
+export const staticMovie = (id: string) => {
+  return movieUrl(id)
+}

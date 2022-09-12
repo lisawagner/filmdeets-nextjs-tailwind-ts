@@ -1,17 +1,34 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import type { NextPage } from 'next'
-import { useFetchMovies } from '../api/fetchHooks'
-import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from '../config'
+import type { NextPage, GetStaticProps } from 'next'
+import { useFetchMovies, staticMovie } from '../api/fetchHooks'
+import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, movieUrl } from '../config'
 // components
 import { Header, Hero, Grid, Card, Spinner } from '../components'
+import { Featured, PopularMovie, Genre, MovieDetails } from '../types/Movie'
+import { featureData} from './api/feature'
 
-const Home: NextPage = () => {
+type HomeProps = {
+  featuredMovie: Featured
+  popularMovies: PopularMovie[]
+  topRatedMovies: PopularMovie[]
+  genres: Genre[]
+}
+
+const Home: NextPage<HomeProps> = ({ featuredMovie, popularMovies, topRatedMovies, genres }) => {
   const [query, setQuery] = useState('')
   // @tanstack/react-query to cache movies via useFetchMovies()
   const { data, fetchNextPage, isLoading, isFetching, error } = useFetchMovies(query);
 
+
   console.log(data);
+
+  // const feature = movieUrl('299536')
+  // console.log("FEATURE:", feature);
+
+  // const yesss = featureData('299536')
+  // console.log('YES! ', yesss);
+  
 
   return (
     <main
@@ -19,17 +36,22 @@ const Home: NextPage = () => {
       // onScroll={handleScroll}
     >
       <Header setQuery={setQuery}/>
-
+      {/* if this isn't a search, show the hero, else don't show hero */}
       {!query && data && data.pages ? (
-        // consider hardcode assets for better film imgs for hero
         <Hero
-          imgUrl={data?.pages[0].results[1]?.backdrop_path
-          ? IMAGE_BASE_URL + BACKDROP_SIZE + data.pages[0].results[1].backdrop_path
+          imgUrl={data?.pages[0].results[2]?.backdrop_path
+          ? IMAGE_BASE_URL + BACKDROP_SIZE + data.pages[0].results[2].backdrop_path
           : "/images/no_image.jpg"}
-          title={data?.pages[0].results[1].title}
-          text={data?.pages[0].results[1].overview}
-        />
+          title={data?.pages[0].results[2].title}
+          text={data?.pages[0].results[2].overview}
+      />
       ) : null}
+      {/* id = 616037 */}
+      {/* {!query && data && data.pages ? (
+        <Hero
+         imgURL={data.pages}
+        />
+      ) : null} */}
 
       <Grid
         className='p-4 max-w-7xl m-auto'
@@ -56,5 +78,26 @@ const Home: NextPage = () => {
     </main>
   )
 }
+
+
+// export const getStaticProps: GetStaticProps = async () => {
+  // const featuredMovieResponse = await api.get<MovieDetails>('/movie/299536')
+//   const featuredMovieResponse = await movieUrl('/movie/299536')
+
+//   const featuredMovie = {
+//     id: featuredMovieResponse.id,
+//     backdropPath: featuredMovieResponse.data.backdrop_path,
+//     title:
+//       featuredMovieResponse.data.title ||
+//       featuredMovieResponse.data.original_title,
+//     genres: featuredMovieResponse.data.genres,
+//     overview: featuredMovieResponse.data.overview,
+//     tagline: featuredMovieResponse.data.tagline || 'No tagline',
+//   }
+
+//   return {
+//     props: { featuredMovie }
+//   }
+// }
 
 export default Home
