@@ -6,7 +6,10 @@ type Props = {
   text: string
 };
 
+// TODO: Fix poster height/width and position
+
 const Hero = ({ imgUrl, title, text }: Props) => (
+
   <div className='static'>
 
     <div className='relative flex flex-col-reverse h-full max-w-7xl m-auto pb-12 text-center md:text-left z-50'>
@@ -27,9 +30,8 @@ const Hero = ({ imgUrl, title, text }: Props) => (
       alt='hero-image'
       className='z-0'
     />
-
-
   </div>
 );
+
 
 export default Hero;

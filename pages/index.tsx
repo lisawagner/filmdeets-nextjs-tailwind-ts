@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import type { NextPage, GetStaticProps } from 'next'
-import { useFetchMovies, staticMovie } from '../api/fetchHooks'
+import { useFetchMovies } from '../api/fetchHooks'
+import { basicFetch } from '../api/fetchFunctions'
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, movieUrl } from '../config'
 // components
 import { Header, Hero, Grid, Card, Spinner } from '../components'
-import { Featured, PopularMovie, Genre, MovieDetails } from '../types/Movie'
-// import { featureData} from './api/feature'
+import { Featured, PopularMovie, Genre, Movie } from '../types/Movie'
 
 type HomeProps = {
   featuredMovie: Featured
@@ -20,45 +20,24 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, popularMovies, topRatedMovie
   // @tanstack/react-query to cache movies via useFetchMovies()
   const { data, fetchNextPage, isLoading, isFetching, error } = useFetchMovies(query);
 
-  console.log(data);
-
-  // const feature = movieUrl('299536')
-  // console.log("FEATURE:", feature);
-
-  // const yesss = featureData('299536')
-  // console.log('YES! ', yesss);
-
-  // const { heroFeat } = fetch(`/api/feature`)
-  // console.log("HERO", heroFeat);
+  // console.log(data);
+  // console.log("fMOVIE: ", featuredMovie);
   
-  
-  // useEffect(() => {
-  //   const yes = fetch(`/api/feature`)
-  //   console.log('YES: ', yes);
-  // }, [])
-
   return (
     <main
       className='relative h-screen'
       // onScroll={handleScroll}
     >
       <Header setQuery={setQuery}/>
-      {/* if this isn't a search, show the hero, else don't show hero */}
       {!query && data && data.pages ? (
         <Hero
-          imgUrl={data?.pages[0].results[2]?.backdrop_path
-          ? IMAGE_BASE_URL + BACKDROP_SIZE + data.pages[0].results[2].backdrop_path
-          : "/images/no_image.jpg"}
-          title={data?.pages[0].results[2].title}
-          text={data?.pages[0].results[2].overview}
-      />
-      ) : null}
-      {/* id = 616037 */}
-      {/* {!query && data && data.pages ? (
-        <Hero
-         imgURL={data.pages}
+          imgUrl={featuredMovie.backdropPath
+            ? IMAGE_BASE_URL + BACKDROP_SIZE + featuredMovie.backdropPath
+            : "/images/baby-yoda-md.png"}
+          title={featuredMovie.title}
+          text={featuredMovie.overview}
         />
-      ) : null} */}
+      ) : null}
 
       <Grid
         className='p-4 max-w-7xl m-auto'
@@ -86,25 +65,32 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, popularMovies, topRatedMovie
   )
 }
 
-
-// export const getStaticProps: GetStaticProps = async () => {
-  // const featuredMovieResponse = await api.get<MovieDetails>('/movie/299536')
-//   const featuredMovieResponse = await movieUrl('/movie/299536')
-
-//   const featuredMovie = {
-//     id: featuredMovieResponse.id,
-//     backdropPath: featuredMovieResponse.data.backdrop_path,
-//     title:
-//       featuredMovieResponse.data.title ||
-//       featuredMovieResponse.data.original_title,
-//     genres: featuredMovieResponse.data.genres,
-//     overview: featuredMovieResponse.data.overview,
-//     tagline: featuredMovieResponse.data.tagline || 'No tagline',
-//   }
-
-//   return {
-//     props: { featuredMovie }
-//   }
-// }
-
 export default Home
+
+export const getStaticProps: GetStaticProps = async () => {
+  // TODO:  Create array of featuredMovies to generate at random
+  //        453395, 299537, 181808, 
+
+  // Featured Movie
+  const movieEndpoint: string = movieUrl('299537');
+  const movieResp = await basicFetch<Movie>(movieEndpoint);
+
+  const featuredMovie = {
+    id: movieResp.id,
+    // backdropPath: movieResp.backdrop_path,
+    backdropPath: movieResp.poster_path,
+    title: movieResp.title,
+    overview: movieResp.overview,
+  }
+
+  // TODO: Popular Movies
+  // TODO: Top Rated Movies
+  // TODO: Movies by Genre List
+
+  return {
+    props: {
+      featuredMovie,
+    },
+    revalidate: 60 * 60 * 24 // Re-build page every 24 hours
+  };
+};
