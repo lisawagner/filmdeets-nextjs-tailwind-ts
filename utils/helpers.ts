@@ -13,3 +13,11 @@ export const convertMoney = (money: number): string => {
   });
   return formatter.format(money);
 };
+// Truncate text data
+export const truncateString = (text: string, characterLength: number) => {
+  if (text?.length >  characterLength) {
+    return text.slice(0, characterLength) + '...'
+  } else {
+    return text
+  }
+}

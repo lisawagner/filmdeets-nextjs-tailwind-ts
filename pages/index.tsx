@@ -72,13 +72,13 @@ export const getStaticProps: GetStaticProps = async () => {
   //        453395, 299537, 181808, 
 
   // Featured Movie
-  const movieEndpoint: string = movieUrl('299537');
+  const movieEndpoint: string = movieUrl('453395');
   const movieResp = await basicFetch<Movie>(movieEndpoint);
 
   const featuredMovie = {
     id: movieResp.id,
-    // backdropPath: movieResp.backdrop_path,
-    backdropPath: movieResp.poster_path,
+    backdropPath: movieResp.backdrop_path,
+    // backdropPath: movieResp.poster_path,
     title: movieResp.title,
     overview: movieResp.overview,
   }

@@ -32,9 +32,9 @@ const Search = ({ setQuery }: Props) => {
         value={text}
         onChange={handleInput}
       />
-      <div className='absolute right-4 top-8'>
+      {/* <div className='absolute right-4 top-8'>
         <Image width='30' height='32' src='/images/tmdb-logo.svg' alt='tmdb-logo' />
-      </div>
+      </div> */}
     </>
   );
 };
