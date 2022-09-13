@@ -26,6 +26,7 @@
   .gradient-transparency {
     background-image: linear-gradient(180deg, rgba(0,0,0,.7) 10%, transparent);
   }
+
   .gradient-overlay {
     background: rgb(255, 255, 255);
     background: linear-gradient(
@@ -35,5 +36,7 @@
       rgba(16, 16, 18, 1) 100%
     );
   }
+
 }
+
 

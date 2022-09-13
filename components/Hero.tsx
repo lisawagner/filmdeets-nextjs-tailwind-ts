@@ -1,6 +1,8 @@
 import Image from 'next/image';
 // Helpers
 import { truncateString } from '../utils/helpers';
+// Custom styles
+import styles from '../styles/Hero.module.css'
 
 type Props = {
   imgUrl: string;
@@ -16,25 +18,29 @@ const Hero = ({ imgUrl, title, text }: Props) => {
 
   // <div className='static'>
   <div className='w-full h-[800px] text-white'>
+    <div className={styles.stars}></div>
+    <div className={styles.stars2}></div>
+    <div className={styles.stars3}></div>
     <div className='w-full h-full'>
-      <div className='absolute w-full h-[800px] bg-gradient-to-r from-black'></div>
-      {/* <Image
+      {/* <div className='absolute w-full h-full gradient-overlay'></div> */}
+      <div className='absolute w-full h-full bg-gradient-to-r from-black via-transparent to-transparent'></div>
+      <Image
         priority={true}
         objectFit='cover'
         objectPosition='center'
         layout='fill'
         src={imgUrl}
         alt={title}
-        className='w-full h-full object-cover'
-      /> */}
-      <img
+        className='w-full h-full object-cover -z-10'
+      />
+      {/* <img
           className='w-full h-full object-cover object-center'
           src={imgUrl}
           alt={title}
-        />
+        /> */}
       <div className='absolute w-full top-[53%] p-4 md:p-8'>
 
-        <h1 className='text-3xl md:text-4xl md:max-w-[50%] lg:text-5xl font-bold'>{title}</h1>
+        <h1 className='text-3xl md:text-4xl md:max-w-[50%] lg:text-5xl font-bold  text-shadow-md'>{title}</h1>
 
         <div className='my-4'>
           <button className='border bg-gray-300 text-black border-gray-300 py-2 px-5'>
@@ -47,7 +53,7 @@ const Hero = ({ imgUrl, title, text }: Props) => {
         <p className='text-gray-400 text-sm'>
           Released: addReleaseDate
         </p>
-        <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200'>
+        <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200 text-shadow-lg'>
           {truncateString(text, 150)}
         </p>
       </div>
