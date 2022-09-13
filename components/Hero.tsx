@@ -23,7 +23,10 @@ const Hero = ({ imgUrl, title, text }: Props) => {
     <div className={styles.stars3}></div>
     <div className='w-full h-full'>
       {/* <div className='absolute w-full h-full gradient-overlay'></div> */}
-      <div className='absolute w-full h-full bg-gradient-to-r from-black via-transparent to-transparent'></div>
+
+{/*  */}
+
+      <div className='absolute overflow-hidden inset-0 m-0 p-0 w-full h-full bg-gradient-to-r from-black via-transparent to-transparent'></div>
       <Image
         priority={true}
         objectFit='cover'
@@ -33,14 +36,9 @@ const Hero = ({ imgUrl, title, text }: Props) => {
         alt={title}
         className='w-full h-full object-cover -z-10'
       />
-      {/* <img
-          className='w-full h-full object-cover object-center'
-          src={imgUrl}
-          alt={title}
-        /> */}
       <div className='absolute w-full top-[53%] p-4 md:p-8'>
 
-        <h1 className='text-3xl md:text-4xl md:max-w-[50%] lg:text-5xl font-bold  text-shadow-md'>{title}</h1>
+        <h1 className='text-3xl md:text-4xl md:max-w-[50%] lg:text-5xl font-bold text-shadow-md'>{title}</h1>
 
         <div className='my-4'>
           <button className='border bg-gray-300 text-black border-gray-300 py-2 px-5'>

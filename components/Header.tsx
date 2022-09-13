@@ -22,6 +22,8 @@ const Header = ({ setQuery }: Props) => {
 
   console.log(hasScrolled);
   
+  // blue + white "good tron colors"
+  // red/orange/yellow "bad tron/sith" colors
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -35,7 +37,7 @@ const Header = ({ setQuery }: Props) => {
   return (
     <div className={`flex items-center justify-between p-4 z-[100] w-full fixed duration-1000 ${hasScrolled ? 'bg-zinc-900' : 'bg-transparent gradient-transparency'}`}>
       <Link href='/'>
-        <h1 className='text-red-600 text-4xl font-bold cursor-pointer'>MovieDB</h1>
+        <h1 className='text-red-600 text-4xl cursor-pointer'>filmClu 2.0</h1>
       </Link>
       <div>
       {/* if no query, don't show the search bar */}

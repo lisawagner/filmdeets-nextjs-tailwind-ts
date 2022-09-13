@@ -26,7 +26,7 @@ const Search = ({ setQuery }: Props) => {
   return (
     <>
       <input
-        className='h-10 pr-14 md:w-96 rounded-full p-4 text-md bg-zinc-700 text-white focus:outline-none focus:border focus:border-solid focus:border-cyan-200'
+        className='h-10 pr-14 md:w-96 rounded-md p-4 text-md border border-cyan-400 bg-transparent text-cyan-400 focus:outline-none focus:border-2 focus:border-solid focus:border-cyan-300'
         type='text'
         placeholder='Search Movie'
         value={text}
