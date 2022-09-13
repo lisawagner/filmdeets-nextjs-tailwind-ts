@@ -35,9 +35,9 @@ const Header = ({ setQuery }: Props) => {
   }, [scroll])
 
   return (
-    <div className={`flex items-center justify-between p-4 z-[100] w-full fixed duration-1000 ${hasScrolled ? 'bg-zinc-900' : 'bg-transparent gradient-transparency'}`}>
+    <div className={`flex flex-col md:flex-row gap-2 items-center justify-between p-4 z-[100] w-full fixed duration-1000 ${hasScrolled ? 'bg-zinc-900' : 'bg-transparent gradient-transparency'}`}>
       <Link href='/'>
-        <h1 className='text-red-600 text-4xl cursor-pointer'>filmClu 2.0</h1>
+        <h1 className='text-red-600 text-2xl md:text-3xl cursor-pointer'>filmClu 2.0</h1>
       </Link>
       <div>
       {/* if no query, don't show the search bar */}
