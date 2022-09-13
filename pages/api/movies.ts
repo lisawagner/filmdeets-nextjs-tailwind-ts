@@ -1,5 +1,5 @@
 // API Urls
-import { SEARCH_BASE_URL, POPULAR_BASE_URL, movieUrl } from '../../config';
+import { SEARCH_BASE_URL, POPULAR_BASE_URL } from '../../config';
 // Basic fetch function
 import { basicFetch } from '../../api/fetchFunctions';
 // Types
