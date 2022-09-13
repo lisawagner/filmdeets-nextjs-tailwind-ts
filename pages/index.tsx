@@ -48,7 +48,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, popularMovies, topRatedMovie
         {data && data.pages
           ? data.pages.map(page =>
               page.results.map(movie => (
-                <Link key={movie.id} href={`/${movie.id}`}>
+                <Link key={movie.id} href={`/movies/${movie.id}`}>
                   <div className='cursor-pointer hover:opacity-80 duration-300'>
                     <Card
                       imgUrl={movie.poster_path
