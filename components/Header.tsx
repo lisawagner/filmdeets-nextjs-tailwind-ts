@@ -20,7 +20,7 @@ const Header = ({ setQuery }: Props) => {
     }
   }
 
-  console.log(hasScrolled);
+  // console.log(hasScrolled);
   
   // blue + white "good tron colors"
   // red/orange/yellow "bad tron/sith" colors
