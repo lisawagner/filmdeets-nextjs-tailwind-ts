@@ -23,6 +23,7 @@ export type Movie = {
   popularity: number;
   poster_path: string;
 
+  first_air_date: string
   release_date: string
   revenue: number
   runtime: number
@@ -53,8 +54,6 @@ export type Credits = {
   cast: Cast[];
   crew: Crew[];
 };
-
-
 
 export type GenreResponse = {
   genres: Genre[]
@@ -90,6 +89,7 @@ export type Featured = {
   overview: string
   tagline: string
   title: string
+  releaseDate: string
 }
 
 export type PopularMovie = {

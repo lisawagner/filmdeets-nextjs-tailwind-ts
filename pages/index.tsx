@@ -36,6 +36,9 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, popularMovies, topRatedMovie
             : "/images/baby-yoda-md.png"}
           title={featuredMovie.title}
           text={featuredMovie.overview}
+          tagline={featuredMovie.tagline}
+          releaseDate={featuredMovie.releaseDate}
+          id={featuredMovie.id}
         />
       ) : null}
 
@@ -82,6 +85,8 @@ export const getStaticProps: GetStaticProps = async () => {
     // backdropPath: movieResp.poster_path,
     title: movieResp.title,
     overview: movieResp.overview,
+    tagline: movieResp.tagline,
+    releaseDate: movieResp.release_date,
   }
 
   // TODO: Popular Movies
