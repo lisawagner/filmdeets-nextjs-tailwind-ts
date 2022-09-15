@@ -39,6 +39,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, popularMovies, topRatedMovie
           tagline={featuredMovie.tagline}
           releaseDate={featuredMovie.releaseDate}
           id={featuredMovie.id}
+          rating={featuredMovie.rating}
         />
       ) : null}
 
@@ -87,6 +88,7 @@ export const getStaticProps: GetStaticProps = async () => {
     overview: movieResp.overview,
     tagline: movieResp.tagline,
     releaseDate: movieResp.release_date,
+    rating: movieResp.vote_average
   }
 
   // TODO: Popular Movies

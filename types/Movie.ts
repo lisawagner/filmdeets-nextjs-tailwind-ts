@@ -85,11 +85,11 @@ export type SpokenLanguage = {
 export type Featured = {
   id: number
   backdropPath: string
-  genres: Genre[]
   overview: string
   tagline: string
   title: string
   releaseDate: string
+  rating: number
 }
 
 export type PopularMovie = {
