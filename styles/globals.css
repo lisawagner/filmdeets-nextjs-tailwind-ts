@@ -42,6 +42,13 @@
     animation: blink 0.7s infinite alternate;
   }
 
+  .neon-shadow-soft {
+    box-shadow: 0 0 1px #fff, 0 0 8px #0ba9ca, 0 0 12px #0ba9ca,
+    0 0 16px #0ba9ca;
+    animation: blink 0.7s infinite alternate;
+  }
+
+
   /* Special FX */
   .oval-shadow {
     border-radius: 50%;
