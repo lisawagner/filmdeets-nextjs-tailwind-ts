@@ -5,7 +5,7 @@ type Props = {
 };
 
 const Grid = ({ title, children, className }: Props) => (
-  <div className={`px-4 pb-8 pt-24 max-w-7xl m-auto ${className}`}>
+  <div className={`relative bg-brand-900 px-5 md:px-14 pb-8 pt-8 ${className}`}>
     <h2 className='text-xl font-bold pb-4 text-cyan-400'>{title}</h2>
     <div className='grid grid-cols-auto-fill gap-6'>{children}</div>
   </div>
