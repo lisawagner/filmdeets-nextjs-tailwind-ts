@@ -32,6 +32,7 @@ const IMAGE_BASE_URL: string = 'http://image.tmdb.org/t/p/';
 const BACKDROP_SIZE: string = 'w1280';
 // w92, w154, w185, w342, w500, w780, original
 const POSTER_SIZE: string = 'w780';
+const THUMB_SIZE: string = 'w342'
 
 export {
   SEARCH_BASE_URL,
@@ -48,5 +49,6 @@ export {
   COMEDY_BASE_URL,
   FANTASY_BASE_URL,
   SCIFI_BASE_URL,
-  THRILLER_BASE_URL
+  THRILLER_BASE_URL,
+  THUMB_SIZE
 };

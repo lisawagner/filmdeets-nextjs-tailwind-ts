@@ -18,14 +18,11 @@ const Hero = ({ imgUrl, title, text }: Props) => {
 
   // <div className='static'>
   <div className='w-full h-[800px] text-white'>
-    <div className={styles.stars}></div>
-    <div className={styles.stars2}></div>
-    <div className={styles.stars3}></div>
+    <div className={`w-full h-[800px] ${styles.stars}`}></div>
+    <div className={`w-full h-[800px] ${styles.stars2}`}></div>
+    <div className={`w-full h-[800px] ${styles.stars3}`}></div>
     <div className='w-full h-full'>
       {/* <div className='absolute w-full h-full gradient-overlay'></div> */}
-
-{/*  */}
-
       <div className='absolute overflow-hidden inset-0 m-0 p-0 w-full h-full bg-gradient-to-r from-black via-transparent to-transparent'></div>
       <Image
         priority={true}

@@ -1,6 +1,7 @@
   /* Stars Animation based on: https://codepen.io/Suburbanno/pen/OXeMvw */
 
  .stars {
+    z-index: -480;
     width: 2px;
     height: 1px;
     background: transparent;
@@ -15,6 +16,7 @@
  .stars:after {
     content: " ";
     position: absolute;
+    z-index: -480;
     top: 2000px;
     width: 1px;
     height: 1px;
@@ -23,6 +25,7 @@
   }
   
   .stars2 {
+    z-index: -480;
     width: 3px;
     height: 4px;
     filter: blur(calc(3px / 2.5));
@@ -36,6 +39,7 @@
 
   .stars2:after {
     content: " ";
+    z-index: -480;
     position: absolute;
     top: 2000px;
     width: 2px;
@@ -45,6 +49,7 @@
   }
   
   .stars3 {
+    z-index: -480;
     width: 4px;
     height: 5px;
     filter: blur(1px);
@@ -57,6 +62,7 @@
 
   .stars3:after {
     content: " ";
+    z-index: -480;
     position: absolute;
     top: 2000px;
     width: 3px;

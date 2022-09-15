@@ -8,7 +8,7 @@ const Thumbnail = ({ imgUrl }: Props) => (
   <Image
     placeholder='blur'
     blurDataURL='/images/placeholder.jpg'
-    className='rounded-lg'
+    className='rounded-md'
     layout='fill'
     objectFit='cover'
     src={imgUrl}

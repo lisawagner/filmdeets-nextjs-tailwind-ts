@@ -3,7 +3,7 @@ import Link from 'next/link'
 import type { NextPage, GetStaticProps } from 'next'
 import { useFetchMovies } from '../api/fetchHooks'
 import { basicFetch } from '../api/fetchFunctions'
-import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, movieUrl } from '../config'
+import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, THUMB_SIZE, movieUrl } from '../config'
 // components
 import { Header, Hero, Grid, Card, Spinner } from '../components'
 import { Featured, PopularMovie, Genre, Movie } from '../types/Movie'
@@ -24,7 +24,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, popularMovies, topRatedMovie
   // console.log("fMOVIE: ", featuredMovie);
   
   return (
-    <main
+    <div
       className='relative h-screen'
       // onScroll={handleScroll}
     >
@@ -41,7 +41,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, popularMovies, topRatedMovie
 
       {/* TODO: separate search results and popular movies to style separately */}
       <Grid
-        className='px-4 pb-8 pt-24 max-w-7xl m-auto'
+        // className='px-4 pb-8 pt-24 max-w-7xl m-auto bg-yellow-300 z-50'
         title={query ? `Search Results: ${data?.pages[0].total_results}` : 'Popular Movies' }
       >
         {/* nested array loop */}
@@ -52,7 +52,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, popularMovies, topRatedMovie
                   <div className='cursor-pointer hover:opacity-80 duration-300'>
                     <Card
                       imgUrl={movie.poster_path
-                        ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : '/images/baby-yoda-md.png'}
+                        ? IMAGE_BASE_URL + THUMB_SIZE + movie.poster_path : '/images/baby-yoda-md.png'}
                       title={movie.original_title}
                     />
                   </div>
@@ -62,7 +62,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, popularMovies, topRatedMovie
           : null}
       </Grid>
       {/* {isLoading || isFetching ? <Spinner /> : null} */}
-    </main>
+    </div>
   )
 }
 
