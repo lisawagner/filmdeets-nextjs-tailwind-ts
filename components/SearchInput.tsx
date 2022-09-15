@@ -74,24 +74,13 @@ const SearchInput = ({ setQuery }: Props) => {
         />
       </form>
 
-      {isFocused ? 
-        <>
-          <button
-            onClick={handleInputReset}
-            className={`flex absolute inset-y-0 right-0 items-center pr-3 text-cyan-400`}
-          >
-            x
-          </button>
-        </>
-       : (hasInput ? 
-        <>
-          <button
-            onClick={handleInputReset}
-            className={`flex absolute inset-y-0 right-0 items-center pr-3 text-cyan-400`}
-          >
-            x
-          </button>
-        </> : null) } 
+      {isFocused
+      ? <SearchReset onClick={handleInputReset} />
+      : (hasInput
+          ? <SearchReset onClick={handleInputReset} />
+          : null
+        )
+      } 
 
     </div>
   );

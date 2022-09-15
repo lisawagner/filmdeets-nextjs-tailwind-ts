@@ -1,20 +1,17 @@
 
 type ResetProps = {
   onClick: React.MouseEventHandler<HTMLButtonElement>
-  inputVal: string
-  setInputVal: () => void
+
 }
 
-const SearchReset = ({ onClick, inputVal, setInputVal }: ResetProps) => {
+const SearchReset = ({ onClick }: ResetProps) => {
 
   return (
     <>
-    <button
-    onClick={() => setInputVal()}
-    className={`flex absolute inset-y-0 right-0 items-center pr-3 text-cyan-400`}
-  >
-    x
-  </button>
+      <button
+      onClick={onClick}
+      className={`flex absolute inset-y-0 right-0 items-center pr-3 text-cyan-400`}
+    >X</button>
   </>
   )
 }
