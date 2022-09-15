@@ -1,5 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
+import { useState } from 'react';
 import { RiSearchLine } from 'react-icons/ri'
 import { useRouter } from "next/router";
 
@@ -9,7 +8,7 @@ type Props = {
 
 const TIME = 3000; // ms
 
-const Search = ({ setQuery }: Props) => {
+const SearchInput = ({ setQuery }: Props) => {
   const navigate = useRouter();
   const [inputVal, setInputVal] = useState("")
   const [isFocused, setIsFocused] = useState(false)
@@ -99,6 +98,6 @@ const Search = ({ setQuery }: Props) => {
   );
 };
 
-export default Search;
+export default SearchInput;
 
 // ${isFocused ? `visible` : `invisible`}

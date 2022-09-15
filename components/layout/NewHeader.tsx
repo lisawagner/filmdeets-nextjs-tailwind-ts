@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useScrollYPosition } from '../../utils/useScrollPosition';
 // Components
-import Search from '../Search'
+import SearchInput from '../SearchInput'
 
 type Props = {
   setQuery?: React.Dispatch<React.SetStateAction<string>>;
@@ -30,7 +30,7 @@ const NewHeader = ({ setQuery }: Props) => {
       {/* if no query, don't show the search bar */}
       {setQuery ? (
         <div className="relative flex items-center">
-          <Search setQuery={setQuery} />
+          <SearchInput setQuery={setQuery} />
         </div>
       ) : null}
 
