@@ -9,8 +9,10 @@ export type Movies = {
 export type Movie = {
   adult: boolean // new
   backdrop_path: string;
+  belongs_to_collection: any
   budget: number;
 
+  genres: Genre[]
   genre_ids: number[] // new
   id: number;
 
@@ -21,13 +23,14 @@ export type Movie = {
   popularity: number;
   poster_path: string;
 
-  runtime: number;
-  revenue: number;
-  release_date: string;
+  release_date: string
+  revenue: number
+  runtime: number
 
+  tagline: string
   title: string;
-  video: boolean // new
 
+  video: boolean // new
   vote_average: number;
   vote_count: number;
 };
@@ -51,41 +54,7 @@ export type Credits = {
   crew: Crew[];
 };
 
-// Movie Details - consider moving to it's own ts file
-export type MovieDetails = {
-  adult: boolean
-  backdrop_path: string
-  belongs_to_collection: any
-  budget: number
-  genres: Genre[]
 
-  homepage: string
-  id: number
-  imdb_id: string
-
-  original_language: string
-  original_title: string
-  overview: string
-
-  popularity: number
-  poster_path: string
-  production_companies: ProductionCompany[]
-  production_countries: ProductionCountry[]
-
-  release_date: string
-  revenue: number
-  runtime: number
-
-  spoken_languages: SpokenLanguage[]
-  status: string
-
-  tagline: string
-  title: string
-
-  video: boolean
-  vote_average: number
-  vote_count: number
-}
 
 export type GenreResponse = {
   genres: Genre[]
@@ -134,3 +103,39 @@ export type MovieRelativeToGenre = {
   name: string
   data: Movie[]
 }
+
+// Movie Details - consider moving to it's own ts file (is this needed?)
+// export type MovieDetails = {
+//   adult: boolean
+//   backdrop_path: string
+//   belongs_to_collection: any
+//   budget: number
+//   genres: Genre[]
+
+//   homepage: string
+//   id: number
+//   imdb_id: string
+
+//   original_language: string
+//   original_title: string
+//   overview: string
+
+//   popularity: number
+//   poster_path: string
+//   production_companies: ProductionCompany[]
+//   production_countries: ProductionCountry[]
+
+//   release_date: string
+//   revenue: number
+//   runtime: number
+
+//   spoken_languages: SpokenLanguage[]
+//   status: string
+
+//   tagline: string
+//   title: string
+
+//   video: boolean
+//   vote_average: number
+//   vote_count: number
+// }

@@ -22,6 +22,7 @@ const THRILLER_BASE_URL: string = `${API_URL}/discover/movie?api_key=${API_KEY}&
 // const ROMANCE_BASE_URL: string = `${API_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=10749`
 // const DOCUMENTARY_BASE_URL: string = `${API_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=99`
 
+const SIMILAR_BASE_URL: string = `${API_URL}/movie/453395/similar?api_key=${API_KEY}&language=en-US&page=1`
 // For single movie
 const movieUrl = (id?: string) => `${API_URL}movie/${id}?api_key=${API_KEY}`;
 const creditsUrl = (id?: string) => `${API_URL}movie/${id}/credits?api_key=${API_KEY}`;
@@ -39,16 +40,17 @@ export {
   POPULAR_BASE_URL,
   API_URL,
   API_KEY,
-  IMAGE_BASE_URL,
-  BACKDROP_SIZE,
-  POSTER_SIZE,
-  movieUrl,
-  creditsUrl,
   ADVENTURE_BASE_URL,
   ACTION_BASE_URL,
   COMEDY_BASE_URL,
   FANTASY_BASE_URL,
   SCIFI_BASE_URL,
   THRILLER_BASE_URL,
+  SIMILAR_BASE_URL,
+  IMAGE_BASE_URL,
+  BACKDROP_SIZE,
+  POSTER_SIZE,
+  movieUrl,
+  creditsUrl,
   THUMB_SIZE
 };
