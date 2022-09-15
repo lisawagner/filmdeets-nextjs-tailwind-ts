@@ -1,7 +1,5 @@
-
 type ResetProps = {
   onClick: React.MouseEventHandler<HTMLButtonElement>
-
 }
 
 const SearchReset = ({ onClick }: ResetProps) => {
