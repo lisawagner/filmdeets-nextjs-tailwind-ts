@@ -10,8 +10,6 @@ type Props = {
   text: string
 };
 
-// TODO: Fix poster height/width and position
-
 const Hero = ({ imgUrl, title, text }: Props) => {
   
   return (
@@ -39,10 +37,10 @@ const Hero = ({ imgUrl, title, text }: Props) => {
 
           <div className='my-4'>
             <button className='border bg-cyan-400 text-black border-cyan-300 py-2 px-5'>
-              Favorite
+              Detials
             </button>
             <button className='border text-cyan-400 border-cyan-300 py-2 px-5 ml-4'>
-              Details
+              See Similar
             </button>
           </div>
           <p className='text-gray-400 text-sm'>Released: addReleaseDate</p>
