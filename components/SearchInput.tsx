@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { RiSearchLine } from 'react-icons/ri'
 import { useRouter } from "next/router";
+import SearchReset from './SearchReset'
 
 type Props = {
   setQuery: React.Dispatch<React.SetStateAction<string>>;
@@ -33,7 +34,7 @@ const SearchInput = ({ setQuery }: Props) => {
     } 
   };
   
-  const handleInputReset = () => {
+  const handleInputReset = (e: React.MouseEvent<HTMLButtonElement>) => {
 
     setInputVal('')
     navigate.reload()
@@ -75,23 +76,21 @@ const SearchInput = ({ setQuery }: Props) => {
 
       {isFocused ? 
         <>
-        <button
-          onClick={handleInputReset}
-          // onFocus={() => setIsFocused(true)}
-          className={`flex absolute inset-y-0 right-0 items-center pr-3 text-cyan-400`}
-        >
-          x
-        </button>
+          <button
+            onClick={handleInputReset}
+            className={`flex absolute inset-y-0 right-0 items-center pr-3 text-cyan-400`}
+          >
+            x
+          </button>
         </>
        : (hasInput ? 
         <>
           <button
-          onClick={handleInputReset}
-          // onFocus={() => setIsFocused(true)}
-          className={`flex absolute inset-y-0 right-0 items-center pr-3 text-cyan-400`}
-        >
-          x
-        </button>
+            onClick={handleInputReset}
+            className={`flex absolute inset-y-0 right-0 items-center pr-3 text-cyan-400`}
+          >
+            x
+          </button>
         </> : null) } 
 
     </div>
@@ -99,5 +98,3 @@ const SearchInput = ({ setQuery }: Props) => {
 };
 
 export default SearchInput;
-
-// ${isFocused ? `visible` : `invisible`}
