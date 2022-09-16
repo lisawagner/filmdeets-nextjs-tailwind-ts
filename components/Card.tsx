@@ -23,7 +23,7 @@ const Card = ({ imgUrl, title, subtitle }: Props) => {
   <div
     onMouseEnter={onMouseEnter}
     onMouseLeave={onMouseLeave}
-    className='relative h-80 p-2 z-40 rounded border border-cyan-400 hover:neon-shadow hover:opacity-80 duration-300 hover:scale-105'
+    className='relative h-80 p-2 z-40 rounded border border-slate-700 hover:neon-shadow hover:opacity-80 duration-300 hover:scale-105'
   >
     <div className='relative h-full'>
       <Thumbnail imgUrl={imgUrl} /> 
