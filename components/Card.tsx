@@ -9,6 +9,7 @@ type Props = {
 };
 
 // consider conditional to only show titles on Cast, not on the movie itself.
+// or separate out the logic more - separate cast and movies
 
 // TODO:  Decide on card styles - overlay? slide in details?
 //        move title below image?
