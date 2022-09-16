@@ -47,7 +47,7 @@ const Hero = ({ imgUrl, title, text, tagline, releaseDate, id, rating }: Props) 
             </div>
             <Link href={`/movies/${id}`}>
               <button
-                className='border rounded text-cyan-400 border-cyan-300 py-2 px-5 hover:text-cyan-300 hover:neon-shadow'
+                className='border rounded text-cyan-400 border-cyan-300 py-2 px-5 hover:text-cyan-300 hover:neon-shadow duration-200'
               >
                 See Details
               </button>

@@ -53,7 +53,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, popularMovies, topRatedMovie
           ? data.pages.map(page =>
               page.results.map(movie => (
                 <Link key={movie.id} href={`/movies/${movie.id}`}>
-                  <div className='cursor-pointer hover:opacity-80 duration-300'>
+                  <div className='cursor-pointer '>
                     <Card
                       imgUrl={movie.poster_path
                         ? IMAGE_BASE_URL + THUMB_SIZE + movie.poster_path : '/images/baby-yoda-md.png'}
