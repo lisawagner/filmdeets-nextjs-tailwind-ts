@@ -128,8 +128,15 @@ Use of Index Files
 
 ## :memo: Notes
 
-### 1. Nanoid
-Nanoid is now part of React Toolkit, so you do not have to add a separate package unless your project requires a different universal identifyer.
+### 1. How to Remove Query Params in Nextjs
+While building out the Search function I found an issue where the search worked everywhere except for the search results page.
+
+Steps to solve this issue:
+   - use `next/router` to remove query params in the URL
+   - `const router = useRouter()`
+   - `router.replace('/movies/search', undefined, {} shallow: tru })`
+
+Solution source: [Remove Query Params](https://stackoverflow.com/questions/65606974/next-js-how-to-remove-query-params)
 
 
 <!-- Markdown link & img dfn's -->
