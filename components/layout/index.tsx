@@ -1,15 +1,16 @@
 
-import NewHeader from "./NewHeader"
+import Header from './Header'
 
-interface Props {
+type Props = {
   children?: React.ReactNode
   // any props that come into the component
 }
 
 const Layout = ({ children, ...props }: Props) => {
+
   return (
     <>
-      <NewHeader setQuery={setQuery} />
+      <Header />
       {children}
     </>
   )

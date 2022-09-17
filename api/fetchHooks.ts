@@ -6,6 +6,7 @@ import { Movies } from '../types/Movie';
 // import { movieUrl } from '../config';
 
 export const useFetchMovies = (search: string) => {
+  // fetches first movie page initially, then more as pageParam increments
   return useInfiniteQuery(['movies', search], ({ pageParam = 1 }) => fetchMovies(search, pageParam), {
     getNextPageParam: (lastPage: Movies) => {
       if (lastPage.page < lastPage.total_pages) {
