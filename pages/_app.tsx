@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query'
+// components
+import Layout from '../components/Layout'
 // next imports
 import type { AppProps } from 'next/app'
 // styles
@@ -14,7 +16,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       {/* <QueryClientProvider client={client}> */}
       <QueryClientProvider client={queryClient}>
         {/* <Hydrate state={pageProps.dehydratedState}> */}
+        <Layout>
           <Component {...pageProps} />
+        </Layout>
         {/* </Hydrate> */}
       </QueryClientProvider>
     </>

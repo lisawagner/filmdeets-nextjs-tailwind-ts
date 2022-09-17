@@ -5,7 +5,7 @@ import { useFetchMovies } from '../api/fetchHooks'
 import { basicFetch } from '../api/fetchFunctions'
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, THUMB_SIZE, movieUrl } from '../config'
 // components
-import { Header, Hero, Grid, Card, Spinner } from '../components'
+import { Hero, Grid, Card, Spinner } from '../components'
 import { Featured, PopularMovie, Genre, Movie } from '../types/Movie'
 
 type HomeProps = {
@@ -19,17 +19,13 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, popularMovies, topRatedMovie
   const [query, setQuery] = useState('')
   // @tanstack/react-query to cache movies via useFetchMovies()
   const { data, fetchNextPage, isLoading, isFetching, error } = useFetchMovies(query);
-
-  // console.log(data);
-  // console.log("fMOVIE: ", featuredMovie);
   
   return (
     <div
       className='relative h-screen'
       // onScroll={handleScroll}
     >
-      <Header setQuery={setQuery}/>
-      {!query && data && data.pages ? (
+      {data && data.pages ? (
         <Hero
           imgUrl={featuredMovie.backdropPath
             ? IMAGE_BASE_URL + BACKDROP_SIZE + featuredMovie.backdropPath
@@ -43,10 +39,9 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, popularMovies, topRatedMovie
         />
       ) : null}
 
-      {/* TODO: separate search results and popular movies to style separately */}
       <Grid
         // className='px-4 pb-8 pt-24 max-w-7xl m-auto bg-yellow-300 z-50'
-        title={query ? `Search Results: ${data?.pages[0].total_results}` : 'Popular Movies' }
+        title={'Popular Movies'}
       >
         {/* nested array loop */}
         {data && data.pages
@@ -74,10 +69,10 @@ export default Home
 
 export const getStaticProps: GetStaticProps = async () => {
   // TODO:  Create array of featuredMovies to generate at random
-  //        453395, 299537, 181808, 
+  //        453395, 299537, 181808, 181812, 122, 78
 
   // Featured Movie
-  const movieEndpoint: string = movieUrl('453395');
+  const movieEndpoint: string = movieUrl('78');
   const movieResp = await basicFetch<Movie>(movieEndpoint);
 
   const featuredMovie = {
