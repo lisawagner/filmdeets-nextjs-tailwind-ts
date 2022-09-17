@@ -10,7 +10,7 @@ import {
 } from '../../config';
 import { basicFetch } from '../../api/fetchFunctions';
 
-import { Header, Grid, Card, Breadcrumb, MovieInfo } from '../../components';
+import { Grid, Card, Breadcrumb, MovieInfo } from '../../components';
 
 import { Movie, Credits, Crew, Cast } from '../../types/Movie'
 
@@ -25,7 +25,6 @@ const Movie: NextPage<Props> = ({ movie, cast, directors }) => {
   
   return (
     <main>
-      {/* <Header /> */}
       <Breadcrumb title={movie.original_title} />
       <MovieInfo
         thumbUrl={movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : '/images/baby-yoda-md.png'}
