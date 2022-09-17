@@ -69,10 +69,10 @@ export default Home
 
 export const getStaticProps: GetStaticProps = async () => {
   // TODO:  Create array of featuredMovies to generate at random
-  //        453395, 299537, 181808, 181812, 122, 78
+  //        453395, 299537, 181808, 181812, 122, 78, 264660
 
   // Featured Movie
-  const movieEndpoint: string = movieUrl('78');
+  const movieEndpoint: string = movieUrl('453395');
   const movieResp = await basicFetch<Movie>(movieEndpoint);
 
   const featuredMovie = {
