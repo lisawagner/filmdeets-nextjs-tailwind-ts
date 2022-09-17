@@ -18,7 +18,7 @@ const Search = () => {
     if (router.isReady) {
       // do something
       setQuery(id)
-      console.log(router.query);
+      // console.log(router.query);
     }
     
   }, [router.isReady])
