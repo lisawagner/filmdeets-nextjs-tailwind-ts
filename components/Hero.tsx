@@ -35,6 +35,8 @@ const Hero = ({ imgUrl, title, text, tagline, releaseDate, id, rating }: Props) 
           src={imgUrl}
           alt={title}
           className='w-full h-full object-cover -z-10'
+          placeholder='blur'
+          blurDataURL='/images/placeholder.png'
         />
 
         <div className='absolute w-full top-[53%] p-4 md:p-8'>

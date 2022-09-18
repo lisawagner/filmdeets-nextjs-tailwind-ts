@@ -5,7 +5,7 @@ import { calcTime, convertMoney } from '../utils/helpers';
 import Thumbnail from './Thumbnail';
 import Pill from './Pill';
 // Types
-import { Crew } from '../api/types'
+import { Crew } from '../types/Movie'
 
 type Props = {
   thumbUrl: string;
@@ -67,7 +67,7 @@ const MovieInfo = ({
     <Image
       priority={true}
       placeholder='blur'
-      blurDataURL='/images/placeholder.jpg'
+      blurDataURL='/images/placeholder.png'
       objectFit='cover'
       objectPosition='center'
       layout='fill'
