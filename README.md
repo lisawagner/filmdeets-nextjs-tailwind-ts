@@ -131,13 +131,6 @@ Use of Index Files
 ### 1. How to Remove Query Params in Nextjs
 While building out the Search function I found an issue where the search worked everywhere except for the search results page.
 
-Steps to solve this issue:
-   - use `next/router` to remove query params in the URL
-   - `const router = useRouter()`
-   - `router.replace('/movies/search', undefined, {} shallow: tru })`
-
-Solution source: [Remove Query Params](https://stackoverflow.com/questions/65606974/next-js-how-to-remove-query-params)
-
 
 <!-- Markdown link & img dfn's -->
 [github-img]: https://img.shields.io/github/repo-size/lisawagner/rtk-tailwind-todo?logo=github&style=flat-square

@@ -27,7 +27,20 @@ const Hero = ({ imgUrl, title, text, tagline, releaseDate, id, rating }: Props) 
       <div className='w-full h-full'>
         <div className='absolute w-full h-full bg-gradient-to-t from-[#010404] via-transparent to-transparent'></div>
         <div className='absolute overflow-hidden inset-0 m-0 p-0 w-full h-full bg-gradient-to-r from-[#010404] via-transparent to-transparent'></div>
-        <Image
+        <div className='absolute w-full h-full'>
+          <Image
+            priority={true}
+            objectFit='cover'
+            objectPosition='center'
+            layout='fill'
+            src={imgUrl}
+            alt={title}
+            className='w-full h-full object-cover -z-10'
+            placeholder='blur'
+            blurDataURL='/images/placeholder.png'
+          />
+        </div>
+        {/* <Image
           priority={true}
           objectFit='cover'
           objectPosition='center'
@@ -37,7 +50,7 @@ const Hero = ({ imgUrl, title, text, tagline, releaseDate, id, rating }: Props) 
           className='w-full h-full object-cover -z-10'
           placeholder='blur'
           blurDataURL='/images/placeholder.png'
-        />
+        /> */}
 
         <div className='absolute w-full top-[53%] p-4 md:p-8'>
           <h1 className='md:text-2xl md:max-w-[70%] lg:text-3xl italic text-shadow-md'>"{tagline}"</h1>
