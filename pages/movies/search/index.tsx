@@ -5,6 +5,7 @@ import { IMAGE_BASE_URL, THUMB_SIZE } from '../../../config'
 import { Grid, Card } from '../../../components'
 import { useEffect, useState } from 'react';
 
+
 const Search = () => {
   const [query, setQuery] = useState<any | null>(null)
   // @tanstack/react-query to cache movies via useFetchMovies()
@@ -16,13 +17,10 @@ const Search = () => {
   useEffect(() => {
     // may need this for initial render?
     if (router.isReady) {
-      // do something
       setQuery(id)
-      // console.log(router.query);
     }
-    
-  }, [router.isReady])
-  
+  }, [router.isReady, id])
+
   return (
     <div className='pt-16 text-white'>
       <Grid title={`Search Results: ${data?.pages[0].total_results}`}>

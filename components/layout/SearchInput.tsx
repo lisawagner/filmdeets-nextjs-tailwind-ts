@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { RiSearchLine } from 'react-icons/ri'
 import { useRouter } from "next/router";
 // components & hooks
@@ -10,22 +10,11 @@ const SearchInput = () => {
   const [inputVal, setInputVal] = useState("")
   const [isFocused, setIsFocused] = useState(false)
   const [hasInput, setHasInput] = useState(false)
-  
-  const [route, setRoute] = useState<string | null>(null)
-
-  const [newQueryParams, setNewQueryParams] = useState({})
-  const [initialParams, setInitialParams] = useState({ name: "" })
-
-  const { pathname } = useRouter()
-  
-  // console.log("URLPARAMS: ", navigate.query.name)
-
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputVal(e.target.value)
 
     const value = e.currentTarget.value
-    setRoute(value)
 
     if (value.length !== 0) {
       setHasInput(true)
@@ -34,45 +23,21 @@ const SearchInput = () => {
     }
   }
 
-
-  // TODO: Fix - Search page doesn't allow a new search? input val check?
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-     
-    // navigate.push({
-    //   pathname: '/movies/search/',
-    //   query: { name: `${route}` }
-    // })
-  
+
     navigate.push({
       pathname: '/movies/search/',
       query: { name: `${inputVal}` }
     })
 
     setInputVal('')
-    // navigate.replace('/movies/search', undefined, { shallow: true })
-  
-    // if (inputVal.trim()) {
-    //   setNewQuery(inputVal.trim())
-    //   // route to search results page
-    //   navigate.push({
-    //     pathname: '/movies/search/',
-    //     query: { name: `${inputVal}` }
-    //   })
-    // }
-    
   };
 
   const handleInputReset = (e: React.MouseEvent<HTMLButtonElement>) => {
     setInputVal('')
     navigate.push('/')
   }
-
-  // useEffect(() => {
-  //   console.log("useEffect happened", route);
-  //   // navigate.push('/')
-    
-  // }, [route])
 
   return (
     <div className='relative'>
