@@ -3,7 +3,7 @@ import Link from 'next/link'
 import type { NextPage, GetStaticProps } from 'next'
 import { useFetchMovies } from '../api/fetchHooks'
 import { basicFetch } from '../api/fetchFunctions'
-import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, THUMB_SIZE, movieUrl } from '../config'
+import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, THUMB_SIZE, movieUrl, POPULAR_BASE_URL } from '../config'
 // components
 import { Hero, Grid, Card, Spinner } from '../components'
 import { Featured, PopularMovie, Genre, Movie } from '../types/Movie'
@@ -87,6 +87,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 
   // TODO: Popular Movies
+  // const getPopularMovies: string = movieUrl(id)
   // TODO: Top Rated Movies
   // TODO: Movies by Genre List
 
