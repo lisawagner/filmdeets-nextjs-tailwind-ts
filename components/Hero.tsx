@@ -40,18 +40,6 @@ const Hero = ({ imgUrl, title, text, tagline, releaseDate, id, rating }: Props) 
             blurDataURL='/images/placeholder.png'
           />
         </div>
-        {/* <Image
-          priority={true}
-          objectFit='cover'
-          objectPosition='center'
-          layout='fill'
-          src={imgUrl}
-          alt={title}
-          className='w-full h-full object-cover -z-10'
-          placeholder='blur'
-          blurDataURL='/images/placeholder.png'
-        /> */}
-
         <div className='absolute w-full top-[53%] p-4 md:p-8'>
           <h1 className='md:text-2xl md:max-w-[70%] lg:text-3xl italic text-shadow-md'>"{tagline}"</h1>
           <h2 className='text-cyan-400 text-2xl md:text-3xl md:max-w-[50%] lg:text-4xl font-bold text-shadow-md'>{title}</h2>
