@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 // components
 import Layout from '../components/Layout'
 // next imports
@@ -13,13 +13,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient())
   return (
     <>
-      {/* <QueryClientProvider client={client}> */}
       <QueryClientProvider client={queryClient}>
-        {/* <Hydrate state={pageProps.dehydratedState}> */}
         <Layout>
           <Component {...pageProps} />
         </Layout>
-        {/* </Hydrate> */}
       </QueryClientProvider>
     </>
   )
