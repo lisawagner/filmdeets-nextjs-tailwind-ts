@@ -46,7 +46,7 @@ const Hero = ({ imgUrl, title, text, tagline, releaseDate, id, rating }: Props) 
           <p className='text-gray-400 mt-2 text-sm'>Released | {releaseDate}</p>
           <div className='my-4 flex items-center gap-4'>
             <div className='flex items-center gap-2 border font-bold rounded bg-cyan-400 text-black border-cyan-300 py-2 px-5'>
-              <RiStarFill />{rating}
+              <RiStarFill />{rating.toFixed(2)}
             </div>
             <Link href={`/movies/${id}`}>
               <button
