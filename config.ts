@@ -10,7 +10,7 @@ const POPULAR_BASE_URL: string = `${API_URL}movie/popular?api_key=${API_KEY}&lan
 
 // const DISCOVER_BASE_URL: string = `${API_URL}trending/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=`
 
-const DISCOVER_BASE_URL: string = `${API_URL}trending/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false`
+const DISCOVER_BASE_URL: string = `${API_URL}discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false`
 
 // https://api.themoviedb.org/3/genre/movie/list?api_key=<<api_key>>&language=en-US
 const GENRE_BASE_URL: string =`${API_URL}genre/movie/list?api_key=${API_KEY}&language=en-US`
