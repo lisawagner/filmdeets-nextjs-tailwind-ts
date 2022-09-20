@@ -34,7 +34,8 @@ const SIMILAR_BASE_URL: string = `${API_URL}movie/453395/similar?api_key=${API_K
 // For single movie
 const movieUrl = (id?: string) => `${API_URL}movie/${id}?api_key=${API_KEY}`;
 const creditsUrl = (id?: string) => `${API_URL}movie/${id}/credits?api_key=${API_KEY}`;
-const genreUrl = (id?: string) => `${API_URL}discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=${id}`
+const genreUrl = (id?: string) => `${API_URL}discover/movie?api_key=${API_KEY}&language=en-US&sort_by=vote_count.desc&include_adult=false&include_video=false&with_genres=${id}`
+// const genreUrl = (id?: string) => `${API_URL}discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=${id}`
 
 // Images
 const IMAGE_BASE_URL: string = 'http://image.tmdb.org/t/p/';
