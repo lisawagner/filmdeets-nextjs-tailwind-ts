@@ -1,4 +1,3 @@
-// import { Movies } from './types';
 import { Movies } from "../types/Movie";
 
 export const basicFetch = async <returnType>(endpoint: string): Promise<returnType> => {
@@ -12,6 +11,12 @@ export const basicFetch = async <returnType>(endpoint: string): Promise<returnTy
 };
 
 // Fetch functions
-export const fetchMovies = async (search = '', page = 1): Promise<Movies> => {
-  return await basicFetch<Movies>(`/api/movies?search=${search}&page=${page}`);
+// export const fetchMovies = async (search = '', page = 1): Promise<Movies> => {
+//   // return await basicFetch<Movies>(`/api/movies?search=${search}&page=${page}`);
+//   return await basicFetch<Movies>(`/api/search?search=${search}&page=${page}`);
+// };
+
+export const searchMovies = async (search = '', page = 1): Promise<Movies> => {
+  // return await basicFetch<Movies>(`/api/movies?search=${search}&page=${page}`);
+  return await basicFetch<Movies>(`/api/search?search=${search}&page=${page}`);
 };
