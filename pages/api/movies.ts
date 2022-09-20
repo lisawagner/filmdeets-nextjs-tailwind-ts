@@ -11,10 +11,7 @@ export default async function handler(
 ) {
   const { page, genre } = req.query
 
-
-  // const endpoint = `${DISCOVER_BASE_URL}&page=${page}&with_genres=${genre}`
   const endpoint = `${DISCOVER_BASE_URL}&page=${page}&with_genres=${genre}`
-
   const movieRes = await basicFetch<Movies>(endpoint)
 
 

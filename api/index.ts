@@ -1,4 +1,4 @@
-import { useFetchMovies, useFetchMoviesByGenre } from './fetchHooks'
+import { useFetchMovies } from './fetchHooks'
 import { basicFetch } from './fetchFunctions'
 
-export { useFetchMovies, useFetchMoviesByGenre, basicFetch }
+export { useFetchMovies, basicFetch }

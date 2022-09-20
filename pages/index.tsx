@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import type { NextPage, GetStaticProps } from 'next'
-import { useFetchMovies, basicFetch,  } from '../api'
+import { useFetchMovies, basicFetch  } from '../api'
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, THUMB_SIZE, movieUrl, genreUrl, POPULAR_BASE_URL, GENRE_BASE_URL } from '../config'
 // components
 import { Hero, Grid, Card, Spinner } from '../components'
@@ -19,7 +19,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
   // @tanstack/react-query to cache movies via useFetchMovies()
   const { data, fetchNextPage, isLoading, isFetching, error } = useFetchMovies(query);
 
-  // console.log("Action Genre: ", actionGenre);
+  // console.log("Data: ", data);
   
   return (
     <div
