@@ -5,7 +5,7 @@ import Spinner from "./Spinner";
 import Breadcrumb from "./Breadcrumb";
 import MovieInfo from "./MovieInfo";
 import RowSlider from "./RowSlider";
-import HorizontalSlider from "./HorizontalSlider/HorizontalSlider";
-import ScrollCard from "./ScrollCard/ScrollCard";
+import { Carousel } from "./Carousel";
+import Gallery from "./Gallery";
 
-export { Card, Grid, Hero, Spinner, Breadcrumb, MovieInfo, RowSlider, HorizontalSlider, ScrollCard }
+export { Card, Grid, Hero, Spinner, Breadcrumb, MovieInfo, RowSlider, Carousel, Gallery }

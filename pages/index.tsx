@@ -4,7 +4,7 @@ import type { NextPage, GetStaticProps } from 'next'
 import { useFetchMovies, basicFetch  } from '../api'
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, THUMB_SIZE, movieUrl, genreUrl, POPULAR_BASE_URL, GENRE_BASE_URL } from '../config'
 // components
-import { Hero, Grid, Card, Spinner, RowSlider, HorizontalSlider, ScrollCard } from '../components'
+import { Hero, Grid, Card, Spinner, Carousel, Gallery } from '../components'
 import { Featured, PopularMovie, Genre, Movie, MovieRelativeToGenre, GenreResponse, Movies } from '../types/Movie'
 
 type HomeProps = {
@@ -42,6 +42,8 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
         />
       ) : null}
 
+      {/* <Gallery /> */}
+
       <Grid
         // className='px-4 pb-8 pt-24 max-w-7xl m-auto bg-yellow-300 z-50'
         title={'Popular Movies'}
@@ -64,42 +66,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
           : null}
       </Grid>
       {/* {isLoading || isFetching ? <Spinner /> : null} */}
-
-
-      {/* <HorizontalSlider title='Action'>
-      {actionGenre.map((actionMovie) => {
-          return (
-            <Link key={actionMovie.id} href={`/movies/${actionMovie.id}`}>
-              <div className='cursor-pointer'>
-                <Card
-                  imgUrl={actionMovie.posterPath
-                    ? IMAGE_BASE_URL + THUMB_SIZE + actionMovie.posterPath : '/images/baby-yoda-md.png'}
-                  title={actionMovie.title}
-                />
-              </div>
-            </Link>
-          )
-        })}
-      </HorizontalSlider> */}
-
-    {/* <HorizontalSlider title='Action'>
-      {actionGenre.map((actionMovie) => {
-          return (
-            <Link key={actionMovie.id} href={`/movies/${actionMovie.id}`}>
-              <div className='cursor-pointer'>
-                <ScrollCard
-                  key={actionMovie.id}
-                  backdropPath={actionMovie.posterPath
-                    ? IMAGE_BASE_URL + THUMB_SIZE + actionMovie.posterPath : '/images/baby-yoda-md.png'}
-                  name={actionMovie.title}
-                  popularity={actionMovie.rating}
-                  // path={`/movies/${actionMovie.id}`}
-                />
-              </div>
-            </Link>
-          )
-        })}
-      </HorizontalSlider> */}
+      {/* <Carousel /> */}
 
       <Grid title={'Action Movies'}>
         {actionGenre.map((actionMovie) => {
@@ -167,7 +134,6 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   )
   
-
   return {
     props: {
       featuredMovie,

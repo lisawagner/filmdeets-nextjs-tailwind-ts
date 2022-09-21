@@ -9,14 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@glidejs/glide": "^3.5.2",
     "@tanstack/react-query": "^4.2.3",
+    "embla-carousel-react": "^7.0.3",
     "next": "12.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.4.0",
-    "swiper": "^8.4.2"
+    "react-icons": "^4.4.0"
   },
   "devDependencies": {
+    "@types/glidejs__glide": "^3.4.3",
     "@types/node": "18.7.16",
     "@types/react": "18.0.18",
     "@types/react-dom": "18.0.6",
