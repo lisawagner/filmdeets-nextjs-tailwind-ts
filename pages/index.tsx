@@ -4,7 +4,7 @@ import type { NextPage, GetStaticProps } from 'next'
 import { useFetchMovies, basicFetch  } from '../api'
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, THUMB_SIZE, movieUrl, genreUrl, POPULAR_BASE_URL, GENRE_BASE_URL } from '../config'
 // components
-import { Hero, Grid, Card, Spinner } from '../components'
+import { Hero, Grid, Card, Spinner, RowSlider, HorizontalSlider, ScrollCard } from '../components'
 import { Featured, PopularMovie, Genre, Movie, MovieRelativeToGenre, GenreResponse, Movies } from '../types/Movie'
 
 type HomeProps = {
@@ -20,6 +20,8 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
   const { data, fetchNextPage, isLoading, isFetching, error } = useFetchMovies(query);
 
   // console.log("Data: ", data);
+  // console.log("Action Movies: ", actionGenre);
+  
   
   return (
     <div
@@ -62,6 +64,42 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
           : null}
       </Grid>
       {/* {isLoading || isFetching ? <Spinner /> : null} */}
+
+
+      {/* <HorizontalSlider title='Action'>
+      {actionGenre.map((actionMovie) => {
+          return (
+            <Link key={actionMovie.id} href={`/movies/${actionMovie.id}`}>
+              <div className='cursor-pointer'>
+                <Card
+                  imgUrl={actionMovie.posterPath
+                    ? IMAGE_BASE_URL + THUMB_SIZE + actionMovie.posterPath : '/images/baby-yoda-md.png'}
+                  title={actionMovie.title}
+                />
+              </div>
+            </Link>
+          )
+        })}
+      </HorizontalSlider> */}
+
+    {/* <HorizontalSlider title='Action'>
+      {actionGenre.map((actionMovie) => {
+          return (
+            <Link key={actionMovie.id} href={`/movies/${actionMovie.id}`}>
+              <div className='cursor-pointer'>
+                <ScrollCard
+                  key={actionMovie.id}
+                  backdropPath={actionMovie.posterPath
+                    ? IMAGE_BASE_URL + THUMB_SIZE + actionMovie.posterPath : '/images/baby-yoda-md.png'}
+                  name={actionMovie.title}
+                  popularity={actionMovie.rating}
+                  // path={`/movies/${actionMovie.id}`}
+                />
+              </div>
+            </Link>
+          )
+        })}
+      </HorizontalSlider> */}
 
       <Grid title={'Action Movies'}>
         {actionGenre.map((actionMovie) => {

@@ -26,6 +26,10 @@
     text-shadow: none;
   }
 
+  .scroll-row-transition {
+    transition: scroll 0.2s ease 0s;
+  }
+
   /* Neon Text Shadows */
   .text-neon-blue {
     color: hsl(187.7 97.6% 48.4%);
