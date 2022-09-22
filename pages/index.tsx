@@ -4,7 +4,7 @@ import type { NextPage, GetStaticProps } from 'next'
 import { useFetchMovies, basicFetch  } from '../api'
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, THUMB_SIZE, movieUrl, genreUrl, POPULAR_BASE_URL, GENRE_BASE_URL } from '../config'
 // components
-import { Hero, Grid, Card, Spinner, Carousel, Gallery } from '../components'
+import { Hero, Grid, Card, Spinner, Carousel, Gallery, BigSlider } from '../components'
 import { Featured, PopularMovie, Genre, Movie, MovieRelativeToGenre, GenreResponse, Movies } from '../types/Movie'
 
 type HomeProps = {
@@ -13,6 +13,9 @@ type HomeProps = {
   actionGenre: PopularMovie[]
   genres: Genre[]
 }
+
+const SLIDE_COUNT = 3;
+const slides = Array.from(Array(SLIDE_COUNT).keys());
 
 const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
   const [query, setQuery] = useState('')
@@ -43,6 +46,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
       ) : null}
 
       {/* <Gallery /> */}
+      <BigSlider slides={slides} />
 
       <Grid
         // className='px-4 pb-8 pt-24 max-w-7xl m-auto bg-yellow-300 z-50'

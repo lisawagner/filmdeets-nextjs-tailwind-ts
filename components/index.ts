@@ -7,5 +7,6 @@ import MovieInfo from "./MovieInfo";
 import RowSlider from "./RowSlider";
 import { Carousel } from "./Carousel";
 import Gallery from "./Gallery";
+import { BigSlider } from "./BigSlider";
 
-export { Card, Grid, Hero, Spinner, Breadcrumb, MovieInfo, RowSlider, Carousel, Gallery }
+export { Card, Grid, Hero, Spinner, Breadcrumb, MovieInfo, RowSlider, Carousel, Gallery, BigSlider }
