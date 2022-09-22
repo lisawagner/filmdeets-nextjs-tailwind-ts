@@ -4,8 +4,9 @@ import type { NextPage, GetStaticProps } from 'next'
 import { useFetchMovies, basicFetch  } from '../api'
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, THUMB_SIZE, movieUrl, genreUrl, POPULAR_BASE_URL, GENRE_BASE_URL } from '../config'
 // components
-import { Hero, Grid, Card, Spinner, Carousel, Gallery, BigSlider } from '../components'
+import { Hero, Grid, Card, Spinner, Carousel, Gallery, BigSlider, WildSlider } from '../components'
 import { Featured, PopularMovie, Genre, Movie, MovieRelativeToGenre, GenreResponse, Movies } from '../types/Movie'
+import { Character } from '../types/Character'
 
 type HomeProps = {
   featuredMovie: Featured
@@ -14,16 +15,23 @@ type HomeProps = {
   genres: Genre[]
 }
 
-const SLIDE_COUNT = 3;
-const slides = Array.from(Array(SLIDE_COUNT).keys());
+// const SLIDE_COUNT = 3;
+// const slides = Array.from(Array(SLIDE_COUNT).keys());
+
+const SliderProps = {
+  zoomFactor: 20, // How much the image should zoom on hover in percent
+  slideMargin: 10, // Margin on each side of slides
+  maxVisibleSlides: 5,
+  pageTransition: 500 // Transition when flipping pages
+};
 
 const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
   const [query, setQuery] = useState('')
   // @tanstack/react-query to cache movies via useFetchMovies()
   const { data, fetchNextPage, isLoading, isFetching, error } = useFetchMovies(query);
 
-  // console.log("Data: ", data);
-  // console.log("Action Movies: ", actionGenre);
+  const [slideData, setSlideData] = useState<Character[]>([]);
+  
   
   
   return (
@@ -46,7 +54,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
       ) : null}
 
       {/* <Gallery /> */}
-      <BigSlider slides={slides} />
+      {/* <BigSlider slides={slides} /> */}
 
       <Grid
         // className='px-4 pb-8 pt-24 max-w-7xl m-auto bg-yellow-300 z-50'

@@ -29,6 +29,10 @@
   .scroll-row-transition {
     transition: scroll 0.2s ease 0s;
   }
+  /* Slider Buttons */
+  .slider-btn-padding {
+    padding: 4.28571% 0px;
+  }
 
   /* Neon Text Shadows */
   .text-neon-blue {
