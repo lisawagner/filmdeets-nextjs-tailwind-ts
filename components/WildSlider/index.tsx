@@ -9,13 +9,15 @@ type SliderProps = {
   slideMargin: number;
   maxVisibleSlides: number;
   pageTransition: number;
+  
 };
 
 const numberOfSlides = (maxVisibleSlides: number, windowWidth: number) => {
   if (windowWidth > 1200) return maxVisibleSlides;
   if (windowWidth > 992) return 4;
   if (windowWidth > 768) return 3;
-  return 2;
+  if (windowWidth > 375) return 2;
+  return 1;
 };
 
 const WildSlider = ({
@@ -87,7 +89,11 @@ const WildSlider = ({
   };
 
   return (
-    <StyledSliderWrapper zoomFactor={zoomFactor} visibleSlides={visibleSlides}>
+    <StyledSliderWrapper
+      zoomFactor={zoomFactor}
+      visibleSlides={visibleSlides}
+    >
+    
     <StyledSlider
       visibleSlides={visibleSlides}
       transformValue={transformValue}
@@ -109,21 +115,23 @@ const WildSlider = ({
         >
           {child}
         </SliderCard>
+        
       ))}
     </StyledSlider>
+
 {/* MOVE BUTTONS TO THEIR OWN COMPONENT */}
     {currentPage > 0 && (
-      <div className='absolute w-14 h-full top-0 right-0 rounded-md slider-btn-padding'>
-        <button className='w-full h-full text-white text-5xl font-bold cursor-pointer outline-none select-none transition-all duration-75 ease-in bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border border-gray-200 rounded-md left-0 top-0' onClick={() => handleSlideMove(false)}>
-          <RiArrowRightSLine />
+      <div className='absolute w-14 h-full top-0 left-0 rounded-md slider-btn-padding'>
+        <button className='w-full h-full text-white text-5xl font-bold cursor-pointer outline-none select-none transition-all duration-75 ease-in bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border border-gray-200 rounded-md right-0 top-0' onClick={() => handleSlideMove(false)}>
+          <RiArrowLeftSLine />
         </button>
       </div>
     )}
 
     {currentPage !== totalPages && (
       <div className='absolute w-14 h-full top-0 right-0 rounded-md slider-btn-padding'>
-        <button className='w-full h-full text-white text-5xl font-bold cursor-pointer outline-none select-none transition-all duration-75 ease-in bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border border-gray-200 rounded-md right-0 top-0' onClick={() => handleSlideMove(true)}>
-          <RiArrowLeftSLine />
+        <button className='w-full h-full text-white text-5xl font-bold cursor-pointer outline-none select-none transition-all duration-75 ease-in bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border border-gray-200 rounded-md left-0 top-0' onClick={() => handleSlideMove(true)}>
+          <RiArrowRightSLine />
         </button>
       </div>
     )}

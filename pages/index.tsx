@@ -1,10 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import type { NextPage, GetStaticProps } from 'next'
 import { useFetchMovies, basicFetch  } from '../api'
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, THUMB_SIZE, movieUrl, genreUrl, POPULAR_BASE_URL, GENRE_BASE_URL } from '../config'
 // components
-import { Hero, Grid, Card, Spinner, Carousel, Gallery, BigSlider, WildSlider } from '../components'
+import { Hero, Grid, Card, Spinner, WildSlider } from '../components'
 import { Featured, PopularMovie, Genre, Movie, MovieRelativeToGenre, GenreResponse, Movies } from '../types/Movie'
 import { Character } from '../types/Character'
 
@@ -19,10 +19,10 @@ type HomeProps = {
 // const slides = Array.from(Array(SLIDE_COUNT).keys());
 
 const SliderProps = {
-  zoomFactor: 20, // How much the image should zoom on hover in percent
-  slideMargin: 10, // Margin on each side of slides
+  zoomFactor: 8, // How much the image should zoom on hover in percent
+  slideMargin: 0.5, // <--remove?>
   maxVisibleSlides: 5,
-  pageTransition: 500 // Transition when flipping pages
+  pageTransition: 1500 // Transition when flipping pages
 };
 
 const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
@@ -30,10 +30,26 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
   // @tanstack/react-query to cache movies via useFetchMovies()
   const { data, fetchNextPage, isLoading, isFetching, error } = useFetchMovies(query);
 
+  const [genreSlideData, setGenreSlideData] = useState<PopularMovie[]>([])
+
   const [slideData, setSlideData] = useState<Character[]>([]);
+  const [activeCharacter, setActiveCharacter] = useState<Character>(
+    {} as Character
+  );
   
-  
-  
+  useEffect(() => {
+    const getData = async () => {
+      const data = await (
+        await fetch('https://finalspaceapi.com/api/v0/character/')
+      ).json();
+      setSlideData(data);
+    };
+
+    getData();
+  }, []);
+
+  if (slideData.length < 1) return <div>Loading ...</div>
+
   return (
     <div
       className='relative h-screen'
@@ -53,8 +69,31 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
         />
       ) : null}
 
-      {/* <Gallery /> */}
-      {/* <BigSlider slides={slides} /> */}
+      {/* <WildSlider {...SliderProps}>
+        {slideData.map((character) => (
+          <Link href={`/movies/264660`}>
+          <div key={character.id}>
+            <img src={character.img_url} alt='character' />
+          </div>
+          </Link>
+        ))}
+      </WildSlider> */}
+
+      <WildSlider {...SliderProps}>
+      {actionGenre.map((actionMovie) => {
+        return (
+          <Link key={actionMovie.id} href={`/movies/${actionMovie.id}`}>
+          <div key={actionMovie.id} className="bg-white">
+            <img
+              src={actionMovie.posterPath
+                ? IMAGE_BASE_URL + THUMB_SIZE + actionMovie.posterPath : '/images/baby-yoda-md.png'}
+              alt='character'
+              draggable={false}/>
+          </div>
+          </Link>
+        )}
+      )}
+      </WildSlider>
 
       <Grid
         // className='px-4 pb-8 pt-24 max-w-7xl m-auto bg-yellow-300 z-50'

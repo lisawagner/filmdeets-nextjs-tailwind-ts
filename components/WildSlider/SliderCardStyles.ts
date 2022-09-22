@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const StyledSliderItem = styled.div<Props>`
-  margin: 0 ${(props) => props.slideMargin}px;
+  margin: 0 ${(props) => props.slideMargin}rem;
   transition: transform 500ms ease;
   border-radius: 20px;
   cursor: pointer;
@@ -36,23 +36,23 @@ export const StyledSliderItem = styled.div<Props>`
     transform: scale(${(props) => props.zoomFactor / 100 + 1}) !important;
   }
 
-  :hover ~ * {
+  /* :hover ~ * {
     transform: translateX(${(props) => props.zoomFactor / 2 + '%'}) !important;
-  }
+  } */
 
-  &.left {
+  /* &.left {
     transform-origin: left;
 
     :hover ~ * {
       transform: translateX(${(props) => props.zoomFactor + '%'}) !important;
     }
-  }
+  } */
 
-  &.right {
+  /* &.right {
     transform-origin: right;
 
     :hover ~ * {
       transform: translateX(0%) !important;
     }
-  }
+  } */
 `;
