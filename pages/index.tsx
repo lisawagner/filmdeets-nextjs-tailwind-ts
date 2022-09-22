@@ -4,7 +4,7 @@ import type { NextPage, GetStaticProps } from 'next'
 import { useFetchMovies, basicFetch  } from '../api'
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, THUMB_SIZE, movieUrl, genreUrl, POPULAR_BASE_URL, GENRE_BASE_URL } from '../config'
 // components
-import { Hero, Grid, Card, Spinner, WildSlider } from '../components'
+import { Hero, Grid, Card, Spinner, WildSlider, Carousel } from '../components'
 import { Featured, PopularMovie, Genre, Movie, MovieRelativeToGenre, GenreResponse, Movies } from '../types/Movie'
 import { Character } from '../types/Character'
 
@@ -78,6 +78,20 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
           </Link>
         ))}
       </WildSlider> */}
+
+      <Carousel show={4} infiniteLoop>
+      {actionGenre.map((actionMovie) => (
+        <Link key={actionMovie.id} href={`/movies/${actionMovie.id}`}>
+        <div key={actionMovie.id} className="bg-white">
+          <img
+            src={actionMovie.posterPath
+              ? IMAGE_BASE_URL + THUMB_SIZE + actionMovie.posterPath : '/images/baby-yoda-md.png'}
+            alt='character'
+            draggable={false}/>
+        </div>
+        </Link>
+      ))}
+      </Carousel>
 
       <WildSlider {...SliderProps}>
       {actionGenre.map((actionMovie) => {

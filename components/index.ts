@@ -6,5 +6,6 @@ import Breadcrumb from "./Breadcrumb";
 import MovieInfo from "./MovieInfo";
 import RowSlider from "./RowSlider";
 import WildSlider from "./WildSlider";
+import Carousel from './Carousel'
 
-export { Card, Grid, Hero, Spinner, Breadcrumb, MovieInfo, RowSlider, WildSlider }
+export { Card, Grid, Hero, Spinner, Breadcrumb, MovieInfo, RowSlider, WildSlider, Carousel }
