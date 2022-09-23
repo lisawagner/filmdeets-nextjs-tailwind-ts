@@ -27,7 +27,7 @@ const SliderProps = {
 
 const CarouselProps = {
   maxVisibleSlides: 7,
-  infiniteLoop: true,
+  infiniteLoop: false,
 }
 
 const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
