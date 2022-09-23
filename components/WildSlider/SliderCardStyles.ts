@@ -4,7 +4,7 @@ type Props = {
   zoomFactor: number;
   slideMargin: number;
   visibleSlides: number;
-  className: string;
+  // className: string;
 };
 
 export const StyledSliderItem = styled.div<Props>`

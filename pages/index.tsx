@@ -25,6 +25,11 @@ const SliderProps = {
   pageTransition: 1500 // Transition when flipping pages
 };
 
+const CarouselProps = {
+  maxVisibleSlides: 7,
+  infiniteLoop: true,
+}
+
 const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
   const [query, setQuery] = useState('')
   // @tanstack/react-query to cache movies via useFetchMovies()
@@ -32,29 +37,30 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
 
   const [genreSlideData, setGenreSlideData] = useState<PopularMovie[]>([])
 
-  const [slideData, setSlideData] = useState<Character[]>([]);
-  const [activeCharacter, setActiveCharacter] = useState<Character>(
-    {} as Character
-  );
+  // const [slideData, setSlideData] = useState<Character[]>([]);
+  // const [activeCharacter, setActiveCharacter] = useState<Character>(
+  //   {} as Character
+  // );
   
-  useEffect(() => {
-    const getData = async () => {
-      const data = await (
-        await fetch('https://finalspaceapi.com/api/v0/character/')
-      ).json();
-      setSlideData(data);
-    };
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const data = await (
+  //       await fetch('https://finalspaceapi.com/api/v0/character/')
+  //     ).json();
+  //     setSlideData(data);
+  //   };
 
-    getData();
-  }, []);
+  //   getData();
+  // }, []);
 
-  if (slideData.length < 1) return <div>Loading ...</div>
+  // if (slideData.length < 1) return <div>Loading ...</div>
 
   return (
     <div
       className='relative h-screen'
       // onScroll={handleScroll}
     >
+
       {data && data.pages ? (
         <Hero
           imgUrl={featuredMovie.backdropPath
@@ -69,45 +75,36 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
         />
       ) : null}
 
-      {/* <WildSlider {...SliderProps}>
-        {slideData.map((character) => (
-          <Link href={`/movies/264660`}>
-          <div key={character.id}>
-            <img src={character.img_url} alt='character' />
-          </div>
-          </Link>
-        ))}
-      </WildSlider> */}
-
-      <Carousel show={4} infiniteLoop>
+      <Carousel {...CarouselProps}>
       {actionGenre.map((actionMovie) => (
         <Link key={actionMovie.id} href={`/movies/${actionMovie.id}`}>
-        <div key={actionMovie.id} className="bg-white">
-          <img
-            src={actionMovie.posterPath
-              ? IMAGE_BASE_URL + THUMB_SIZE + actionMovie.posterPath : '/images/baby-yoda-md.png'}
-            alt='character'
-            draggable={false}/>
-        </div>
-        </Link>
-      ))}
-      </Carousel>
-
-      <WildSlider {...SliderProps}>
-      {actionGenre.map((actionMovie) => {
-        return (
-          <Link key={actionMovie.id} href={`/movies/${actionMovie.id}`}>
-          <div key={actionMovie.id} className="bg-white">
+          <div className="bg-white p-2 rounded">
+          {/* <div> */}
             <img
               src={actionMovie.posterPath
                 ? IMAGE_BASE_URL + THUMB_SIZE + actionMovie.posterPath : '/images/baby-yoda-md.png'}
               alt='character'
-              draggable={false}/>
+            />
+          </div>
+        </Link>
+      ))}
+      </Carousel>
+
+      {/* <WildSlider {...SliderProps}>
+      {actionGenre.map((actionMovie) => {
+        return (
+          <Link key={actionMovie.id} href={`/movies/${actionMovie.id}`}>
+          <div key={actionMovie.id}>
+            <img
+              src={actionMovie.posterPath
+                ? IMAGE_BASE_URL + THUMB_SIZE + actionMovie.posterPath : '/images/baby-yoda-md.png'}
+              alt='character'
+            />
           </div>
           </Link>
         )}
       )}
-      </WildSlider>
+      </WildSlider> */}
 
       <Grid
         // className='px-4 pb-8 pt-24 max-w-7xl m-auto bg-yellow-300 z-50'

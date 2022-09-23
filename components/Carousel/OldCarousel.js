@@ -94,7 +94,9 @@ const Carousel = (props) => {
 
   return (
     <div className="w-full flex flex-col">
+    {/* <div className="carousel-container"> */}
       <div className="flex w-full relative">
+      {/* <div className="carousel-wrapper"> */}
       {/* You can alwas change the content of the button to other things */}
         {(isRepeating || currentIndex > 0) &&
           <button onClick={prev} className="left-arrow">

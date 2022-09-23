@@ -83,10 +83,10 @@ const WildSlider = ({
     setTransformValue(`-${zoomFactor / 2}%`);
   };
 
-  const assignSlideClass = (index: number, visibleSlides: number) => {
-    const classes = ['right', 'left'];
-    return classes[index % visibleSlides] || '';
-  };
+  // const assignSlideClass = (index: number, visibleSlides: number) => {
+  //   const classes = ['right', 'left'];
+  //   return classes[index % visibleSlides] || '';
+  // };
 
   return (
     <StyledSliderWrapper
@@ -108,7 +108,7 @@ const WildSlider = ({
         slideMargin={slideMargin}
         visibleSlides={visibleSlides}
         zoomFactor={zoomFactor}
-        slideClass={assignSlideClass(i + 1, visibleSlides)}
+        // slideClass={assignSlideClass(i + 1, visibleSlides)}
         id={i + 1}
         callback={handleMouseOver}
         callbackOut={handleMouseOut}

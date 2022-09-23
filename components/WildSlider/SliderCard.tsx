@@ -2,7 +2,7 @@
 import { StyledSliderItem } from './SliderCardStyles'
 
 type CardProps = {
-  slideClass: string;
+  // slideClass: string;
   zoomFactor: number;
   id: number;
   callback: (id: number) => void;
@@ -11,13 +11,12 @@ type CardProps = {
   visibleSlides: number;
   children?: React.ReactNode
 }
-// children?: React.ReactNode
 
 const SliderCard = ({
   slideMargin,
   visibleSlides,
   zoomFactor,
-  slideClass,
+  // slideClass,
   id,
   callback,
   callbackOut,
@@ -29,7 +28,7 @@ const SliderCard = ({
       zoomFactor={zoomFactor}
       slideMargin={slideMargin}
       visibleSlides={visibleSlides}
-      className={slideClass}
+      // className={slideClass}
       onMouseOver={() => callback(id)}
       onMouseOut={callbackOut}
     >
