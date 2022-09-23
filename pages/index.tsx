@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import type { NextPage, GetStaticProps } from 'next'
 import { useFetchMovies, basicFetch  } from '../api'
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, THUMB_SIZE, movieUrl, genreUrl, POPULAR_BASE_URL, GENRE_BASE_URL } from '../config'
 // components
-import { Hero, Grid, Card, Spinner, WildSlider, Carousel } from '../components'
+import { Hero, Grid, Card, Carousel } from '../components'
 import { Featured, PopularMovie, Genre, Movie, MovieRelativeToGenre, GenreResponse, Movies } from '../types/Movie'
-import { Character } from '../types/Character'
 
 type HomeProps = {
   featuredMovie: Featured
@@ -14,9 +13,6 @@ type HomeProps = {
   actionGenre: PopularMovie[]
   genres: Genre[]
 }
-
-// const SLIDE_COUNT = 3;
-// const slides = Array.from(Array(SLIDE_COUNT).keys());
 
 const SliderProps = {
   zoomFactor: 8, // How much the image should zoom on hover in percent
@@ -36,24 +32,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
   const { data, fetchNextPage, isLoading, isFetching, error } = useFetchMovies(query);
 
   const [genreSlideData, setGenreSlideData] = useState<PopularMovie[]>([])
-
-  // const [slideData, setSlideData] = useState<Character[]>([]);
-  // const [activeCharacter, setActiveCharacter] = useState<Character>(
-  //   {} as Character
-  // );
   
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     const data = await (
-  //       await fetch('https://finalspaceapi.com/api/v0/character/')
-  //     ).json();
-  //     setSlideData(data);
-  //   };
-
-  //   getData();
-  // }, []);
-
-  // if (slideData.length < 1) return <div>Loading ...</div>
 
   return (
     <div
@@ -79,7 +58,6 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
       {actionGenre.map((actionMovie) => (
         <Link key={actionMovie.id} href={`/movies/${actionMovie.id}`}>
           <div className="bg-white p-2 rounded">
-          {/* <div> */}
             <img
               src={actionMovie.posterPath
                 ? IMAGE_BASE_URL + THUMB_SIZE + actionMovie.posterPath : '/images/baby-yoda-md.png'}
