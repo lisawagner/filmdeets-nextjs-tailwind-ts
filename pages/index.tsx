@@ -33,6 +33,11 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
 
   const [genreSlideData, setGenreSlideData] = useState<PopularMovie[]>([])
   
+  // const handleTouchEvent = (e: TouchEvent<HTMLButtonElement>) => {
+  //   e.preventDefault();
+  //   // Do something
+  // };
+  // onTouchStart={handleTouchEvent}
 
   return (
     <div
@@ -54,18 +59,23 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
         />
       ) : null}
 
-      <Carousel {...CarouselProps}>
-      {actionGenre.map((actionMovie) => (
-        <Link key={actionMovie.id} href={`/movies/${actionMovie.id}`}>
-          <div className="bg-white p-2 rounded">
-            <img
-              src={actionMovie.posterPath
-                ? IMAGE_BASE_URL + THUMB_SIZE + actionMovie.posterPath : '/images/baby-yoda-md.png'}
-              alt='character'
-            />
-          </div>
-        </Link>
-      ))}
+
+        <Carousel {...CarouselProps} title='Action Movies'> 
+        {actionGenre.map((actionMovie) => (
+          <>
+            <Link key={actionMovie.id} href={`/movies/${actionMovie.id}`}>
+              {/*  cursor-pointer duration-200 hover:scale-110 */}
+              <div className="flex items-center justify-center">
+                <img
+                  src={actionMovie.posterPath
+                    ? IMAGE_BASE_URL + THUMB_SIZE + actionMovie.posterPath : '/images/baby-yoda-md.png'}
+                  alt='character'
+                  className='rounded-md bg-brand-900 cursor-pointer duration-200 hover:scale-110'
+                />
+              </div>
+            </Link>
+          </>
+        ))}
       </Carousel>
 
       {/* <WildSlider {...SliderProps}>

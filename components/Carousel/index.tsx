@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
+import CarouselButton from './CarouselButton'
 
 type CarouselProps = {
   children?: any;
   maxVisibleSlides: number,
   infiniteLoop: boolean,
+  title: string,
 }
 // type predicates
 function isTouchEvent(e: React.TouchEvent | React.MouseEvent):e is React.TouchEvent
@@ -18,13 +20,13 @@ const numberOfSlides = (maxVisibleSlides: number, windowWidth: number) => {
   if (windowWidth > 1100) return 5;
   if (windowWidth > 767) return 4;
   if (windowWidth > 568) return 3;
-  if (windowWidth > 538) return 2;
+  if (windowWidth > 438) return 2;
   return 1;
 };
 
 
 // TODO: Hide left button, or fix infiniteLoop scroll 
-const Carousel = ({children, maxVisibleSlides, infiniteLoop}: CarouselProps) => {
+const Carousel = ({children, maxVisibleSlides, infiniteLoop, title}: CarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(infiniteLoop ? maxVisibleSlides : 0)
   const [length, setLength] = useState(children.length)
   
@@ -35,6 +37,7 @@ const Carousel = ({children, maxVisibleSlides, infiniteLoop}: CarouselProps) => 
 
   const [width, setWidth] = useState(0);
   const visibleSlides = numberOfSlides(maxVisibleSlides, width);
+  const [isPrev] = useState(true)
 
   // Set the length to match current children from props
   useEffect(() => {
@@ -150,14 +153,17 @@ const Carousel = ({children, maxVisibleSlides, infiniteLoop}: CarouselProps) => 
     return output
   }
 
+  //  hover:neon-shadow hover:opacity-80 duration-300 hover:scale-105
+
   return (
     <div className="w-full flex flex-col">
+      <h2 className=" text-xl text-cyan-300 font-bold bg-brand-900 w-full h-full py-8 px-4 md:px-8 flex items-center z-10">
+        {title}
+      </h2>
       <div className="w-full flex relative">
       {/* You can alwas change the content of the button to other things */}
         {(isRepeating || currentIndex > 0) &&
-          <button onClick={prev} className="left-arrow">
-            &lt;
-          </button>
+          <CarouselButton onClick={prev} className="left-arrow" isPrev={isPrev}/>
         }
           <div
             className="w-full h-full overflow-hidden bg-brand-900 py-4"
@@ -165,7 +171,6 @@ const Carousel = ({children, maxVisibleSlides, infiniteLoop}: CarouselProps) => 
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
           >
-
             <div
               className={`carousel-content show-${visibleSlides}`}
               style={{
@@ -182,9 +187,10 @@ const Carousel = ({children, maxVisibleSlides, infiniteLoop}: CarouselProps) => 
           </div>
             {/* You can alwas change the content of the button to other things */}
             {(isRepeating || currentIndex < (length - visibleSlides)) &&
-              <button onClick={next} className="right-arrow">
-                &gt;
-              </button>
+              <CarouselButton onClick={next} className="left-arrow" isPrev={!isPrev}/>
+              // <button onClick={next} className="right-arrow">
+              //   &gt;
+              // </button>
             }
       </div>
     </div>
