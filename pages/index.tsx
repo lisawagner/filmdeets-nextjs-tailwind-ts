@@ -3,7 +3,6 @@ import Link from 'next/link'
 import type { NextPage, GetStaticProps } from 'next'
 import { useFetchMovies, basicFetch  } from '../api'
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, THUMB_SIZE, movieUrl, genreUrl, POPULAR_BASE_URL, GENRE_BASE_URL } from '../config'
-import useLongPress from '../utils/useLongPress'
 // components
 import { Hero, Grid, Card, Carousel } from '../components'
 import { Featured, PopularMovie, Genre, Movie, MovieRelativeToGenre, GenreResponse, Movies } from '../types/Movie'
@@ -39,9 +38,6 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
   // @tanstack/react-query to cache movies via useFetchMovies()
   const { data, fetchNextPage, isLoading, isFetching, error } = useFetchMovies(query);
 
-  const onLongPress = useLongPress();
-  const buttons = ['button one', 'button two', 'button three'];
-  
   const [touchPosition, setTouchPosition] = useState<number | null>(null)
 
   // Save touch start position to state touchPosition
@@ -56,26 +52,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
     }
   }
 
-
   // const [genreSlideData, setGenreSlideData] = useState<PopularMovie[]>([])
-  
-  // const handleTouchEvent = (e: TouchEvent<HTMLButtonElement>) => {
-  //   e.preventDefault();
-  //   // Do something
-  // };
-  // onTouchStart={handleTouchEvent}
-
-  // document.addEventListener("touchstart", () => {}, true);
-
-//   element:hover,
-//   element:active {
-//   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-//   -webkit-user-select: none;
-//   -webkit-touch-callout: none;
-// }
-// -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-
-// document.querySelector("#__next > div.relative.h-screen.lock-screen > div.w-full.flex.flex-col > div > div > div > div:nth-child(4) > img")
 
   return (
     <div
@@ -97,19 +74,6 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
         />
       ) : null}
 
-
-      <div className='relative text-white p-8 flex gap-4 w-full '>
-        {buttons.map(text => (
-          <button
-            className='px-8 py-4 border-spacing-1 text-cyan-400 hover:text-cyan-300 border-2 border-cyan-400 bg-brand-900 hover:neon-shadow-soft'
-            onClick={() => console.log('click still working for ' + text)}
-            {...onLongPress(() => console.log('long press worked for ' + text))}
-          >
-            {text}
-          </button>
-        ))}
-      </div>
-
         <Carousel {...CarouselProps} title='Action Movies'> 
         {actionGenre.map((actionMovie) => (
           <Link key={actionMovie.id} href={`/movies/${actionMovie.id}`}>
@@ -121,6 +85,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
                 alt='character'
                 className='rounded-md bg-brand-900 cursor-pointer duration-200 hover:scale-110'
                 onTouchStart={handleTouchStart}
+                
               />
             </div>
           </Link>
