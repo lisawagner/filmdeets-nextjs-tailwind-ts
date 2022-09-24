@@ -1,13 +1,15 @@
 import { createPortal } from 'react-dom'
+import Link from 'next/link'
+import { PopularMovie } from '../../types/Movie'
 
 type TModalProps = {
   children?: React.ReactNode,
   isVisible?: boolean,
   onClose: () => void,
-  title: string
+  movie: PopularMovie
 }
 
-const Modal = ({isVisible, onClose, title, children }: TModalProps) => {
+const Modal = ({isVisible, onClose, movie, children }: TModalProps) => {
   return createPortal(
     <div className='relative z-40' aria-labelledby="modal-title" role="dialog" aria-modal="true">
       {/* Overlay */}
@@ -21,12 +23,14 @@ const Modal = ({isVisible, onClose, title, children }: TModalProps) => {
             <div className='relative w-full p-2 rounded bg-white'>
 
               <header className='relative border-b-2 border-cyan-400'>
-                <h2 className='text-center'>{title}</h2>
+                <h2 className='text-center'>{movie.title}</h2>
                 <button className='absolute top-0 right-0 bg-transparent'>X</button>
               </header>
               <main className='border-b-1 py-2 px-0'>{children}</main>
               <footer>
+              <Link href={`/movies/${movie.id}`}>
                 <button className='p-2 rounded bg-cyan-400 hover:bg-cyan-200'>Details</button>
+                </Link>
               </footer>
 
             </div>

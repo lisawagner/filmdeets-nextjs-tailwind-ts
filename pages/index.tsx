@@ -90,7 +90,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
         ))}
       </Carousel>
       {isVisible && (
-        <Modal isVisible={isVisible} onClose={() => setIsVisible(!isVisible)} title="Dynamic Title">
+        <Modal isVisible={isVisible} onClose={() => setIsVisible(!isVisible)} movie={activeMovie}>
           <button className='text-white' onClick={() => setIsVisible(!isVisible)}>X</button>
           <div>{activeMovie.title}</div>
         </Modal>
