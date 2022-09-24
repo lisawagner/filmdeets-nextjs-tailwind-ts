@@ -3,8 +3,9 @@ import Link from 'next/link'
 import type { NextPage, GetStaticProps } from 'next'
 import { useFetchMovies, basicFetch  } from '../api'
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, THUMB_SIZE, movieUrl, genreUrl, POPULAR_BASE_URL, GENRE_BASE_URL } from '../config'
+import { useModal } from '../utils'
 // components
-import { Hero, Grid, Card, Carousel } from '../components'
+import { Hero, Grid, Card, Carousel, Modal } from '../components'
 import { Featured, PopularMovie, Genre, Movie, MovieRelativeToGenre, GenreResponse, Movies } from '../types/Movie'
 
 type HomeProps = {
@@ -21,13 +22,6 @@ function isTouchEvent(e: React.TouchEvent | React.MouseEvent):e is React.TouchEv
 function isMouseEvent(e: React.TouchEvent | React.MouseEvent): e is React.MouseEvent
   { return e && 'screenX' in e; }
 
-// const SliderProps = {
-//   zoomFactor: 8, // How much the image should zoom on hover in percent
-//   slideMargin: 0.5, // <--remove?>
-//   maxVisibleSlides: 5,
-//   pageTransition: 1500 // Transition when flipping pages
-// };
-
 const CarouselProps = {
   maxVisibleSlides: 7,
   infiniteLoop: false,
@@ -38,6 +32,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
   // @tanstack/react-query to cache movies via useFetchMovies()
   const { data, fetchNextPage, isLoading, isFetching, error } = useFetchMovies(query);
 
+  const { handleToggle, isVisible, setIsVisible, activeMovie } = useModal()
   const [touchPosition, setTouchPosition] = useState<number | null>(null)
 
   // Save touch start position to state touchPosition
@@ -51,8 +46,6 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
       console.log(e.screenX);     
     }
   }
-
-  // const [genreSlideData, setGenreSlideData] = useState<PopularMovie[]>([])
 
   return (
     <div
@@ -74,39 +67,35 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
         />
       ) : null}
 
+{/* <Link key={actionMovie.id} href={`/movies/${actionMovie.id}`}></Link> */}
+        {/* TODO: ADD see all button -> links user to all action movies page*/}
         <Carousel {...CarouselProps} title='Action Movies'> 
         {actionGenre.map((actionMovie) => (
-          <Link key={actionMovie.id} href={`/movies/${actionMovie.id}`}>
-            {/*  cursor-pointer duration-200 hover:scale-110 */}
-            <div className="flex items-center justify-center">
-              <img
-                src={actionMovie.posterPath
-                  ? IMAGE_BASE_URL + THUMB_SIZE + actionMovie.posterPath : '/images/baby-yoda-md.png'}
-                alt='character'
-                className='rounded-md bg-brand-900 cursor-pointer duration-200 hover:scale-110'
-                onTouchStart={handleTouchStart}
-                
-              />
-            </div>
-          </Link>
-        ))}
-      </Carousel>
-
-      {/* <WildSlider {...SliderProps}>
-      {actionGenre.map((actionMovie) => {
-        return (
-          <Link key={actionMovie.id} href={`/movies/${actionMovie.id}`}>
-          <div key={actionMovie.id}>
+    
+          <div
+            key={actionMovie.id}
+            className="flex items-center justify-center"
+            onClick={() => handleToggle(actionMovie)}
+            // onClick={toggleModal}
+          >
             <img
               src={actionMovie.posterPath
                 ? IMAGE_BASE_URL + THUMB_SIZE + actionMovie.posterPath : '/images/baby-yoda-md.png'}
               alt='character'
+              className='rounded-md bg-brand-900 cursor-pointer'
+              // className='rounded-md bg-brand-900 cursor-pointer duration-200 hover:scale-110'
+              onTouchStart={handleTouchStart}
             />
           </div>
-          </Link>
-        )}
+        ))}
+      </Carousel>
+      {isVisible && (
+        <Modal isVisible={isVisible} onClose={() => setIsVisible(!isVisible)} title="Dynamic Title">
+          <button className='text-white' onClick={() => setIsVisible(!isVisible)}>X</button>
+          <div>{activeMovie.title}</div>
+        </Modal>
       )}
-      </WildSlider> */}
+      
 
       <Grid
         // className='px-4 pb-8 pt-24 max-w-7xl m-auto bg-yellow-300 z-50'
