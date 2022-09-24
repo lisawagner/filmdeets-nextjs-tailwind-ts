@@ -128,8 +128,10 @@ Use of Index Files
 
 ## :memo: Notes
 
-### 1. How to Remove Query Params in Nextjs
-While building out the Search function I found an issue where the search worked everywhere except for the search results page.
+### 1. OnTouch Events
+This is the first project where I have used onTouch events for mobile webapps. If you're new too, here are some notes that may assist you on your journey.
+
+Useful resources: [React Long Press Event](https://stackoverflow.com/questions/48048957/react-long-press-event)
 
 
 <!-- Markdown link & img dfn's -->

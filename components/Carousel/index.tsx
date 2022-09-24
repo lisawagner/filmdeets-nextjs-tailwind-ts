@@ -91,6 +91,7 @@ const Carousel = ({children, maxVisibleSlides, infiniteLoop, title}: CarouselPro
     }
   }
 
+  // Save touch start position to state touchPosition
   const handleTouchStart = (e: React.TouchEvent | React.MouseEvent) => {
     if(isTouchEvent(e)) {
       // console.log(e.touches[0].clientX);
@@ -105,21 +106,20 @@ const Carousel = ({children, maxVisibleSlides, infiniteLoop, title}: CarouselPro
   const handleTouchMove = (e: React.TouchEvent) => {
     const touchDown = touchPosition
 
+    // if this is the initial touch position, don't do anything yet
     if(touchDown === null) {
         return
     }
 
+    // set the current touch position, then find the difference
     const currentTouch = e.touches[0].clientX
     const diff = touchDown - currentTouch
 
-    if (diff > 5) {
-        next()
-    }
+    // if user is swiping, goto next/prev depending on the difference
+    if (diff > 5) next()
+    if (diff < -5) prev()
 
-    if (diff < -5) {
-        prev()
-    }
-
+    // reset touch position
     setTouchPosition(null)
   }
 
@@ -138,8 +138,8 @@ const Carousel = ({children, maxVisibleSlides, infiniteLoop, title}: CarouselPro
   // reset index each direction
   const renderExtraPrev = () => {
     let output = []
-    for (let index = 0; index < visibleSlides; index++) {
-        output.push(children[length - 1 - index])
+    for (let i = 0; i< visibleSlides; i++) {
+        output.push(children[length - 1 - i])
     }
     output.reverse()
     return output
@@ -147,8 +147,8 @@ const Carousel = ({children, maxVisibleSlides, infiniteLoop, title}: CarouselPro
 
   const renderExtraNext = () => {
     let output = []
-    for (let index = 0; index < visibleSlides; index++) {
-        output.push(children[index])
+    for (let i = 0; i < visibleSlides; i++) {
+        output.push(children[i])
     }
     return output
   }
@@ -179,9 +179,9 @@ const Carousel = ({children, maxVisibleSlides, infiniteLoop, title}: CarouselPro
               }}
               onTransitionEnd={() => handleTransitionEnd()}
             >
-              {(length > visibleSlides && isRepeating) && renderExtraPrev() }
+              { (length > visibleSlides && isRepeating) && renderExtraPrev() }
                 {children}
-              {(length > visibleSlides && isRepeating) && renderExtraNext() }
+              { (length > visibleSlides && isRepeating) && renderExtraNext() }
             </div>
 
           </div>
