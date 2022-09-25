@@ -5,7 +5,7 @@ import { useFetchMovies, basicFetch  } from '../api'
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, THUMB_SIZE, movieUrl, genreUrl, POPULAR_BASE_URL, GENRE_BASE_URL } from '../config'
 import { useModal } from '../utils'
 // components
-import { Hero, Grid, Card, Carousel, Modal } from '../components'
+import { Hero, Grid, Card, Carousel, Modal, CarouselCard } from '../components'
 import { Featured, PopularMovie, Genre, Movie, MovieRelativeToGenre, GenreResponse, Movies } from '../types/Movie'
 
 type HomeProps = {
@@ -14,13 +14,6 @@ type HomeProps = {
   actionGenre: PopularMovie[]
   genres: Genre[]
 }
-
-// type predicates
-function isTouchEvent(e: React.TouchEvent | React.MouseEvent):e is React.TouchEvent
-  { return e && 'touches' in e; }
-
-function isMouseEvent(e: React.TouchEvent | React.MouseEvent): e is React.MouseEvent
-  { return e && 'screenX' in e; }
 
 const CarouselProps = {
   maxVisibleSlides: 7,
@@ -34,24 +27,9 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
 
   const { handleToggle, isVisible, setIsVisible, activeMovie } = useModal()
   const [touchPosition, setTouchPosition] = useState<number | null>(null)
-
-  // Save touch start position to state touchPosition
-  const handleTouchStart = (e: React.TouchEvent | React.MouseEvent) => {
-    if(isTouchEvent(e)) {
-      console.log("GROW: ", e.touches[0].clientX);
-      // const touchDown = e.touches[0].clientX
-      // setTouchPosition(touchDown)
-    }
-    if(isMouseEvent(e)) {
-      console.log(e.screenX);     
-    }
-  }
-
+  
   return (
-    <div
-      className='relative h-screen lock-screen'
-      // onScroll={handleScroll}
-    >
+    <div className='relative h-screen lock-screen'>
 
       {data && data.pages ? (
         <Hero
@@ -70,38 +48,18 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
         {/* TODO: ADD see all button -> links user to all action movies page*/}
         <Carousel {...CarouselProps} title='Action Movies'> 
         {actionGenre.map((actionMovie) => (
-    
-          <div
-            key={actionMovie.id}
-            className="flex items-center justify-center"
-            onClick={() => handleToggle(actionMovie)}
-          >
-            <img
-              src={actionMovie.posterPath
-                ? IMAGE_BASE_URL + THUMB_SIZE + actionMovie.posterPath : '/images/baby-yoda-md.png'}
-              alt='character'
-              className='rounded-md bg-brand-900 cursor-pointer'
-              // className='rounded-md bg-brand-900 cursor-pointer duration-200 hover:scale-110'
-              onTouchStart={handleTouchStart}
-            />
-          </div>
+          <CarouselCard key={actionMovie.id} movie={actionMovie} onClick={() => handleToggle(actionMovie)}/>
         ))}
-      </Carousel>
-      {isVisible && (
-        <Modal
-          isVisible={isVisible}
-          onClose={() => setIsVisible(!isVisible)}
-          movie={activeMovie}
-        />
-        // <Modal isVisible={isVisible} onClose={() => setIsVisible(!isVisible)} movie={activeMovie}>
-        //   <button className='text-white' onClick={() => setIsVisible(!isVisible)}>X</button>
-        //   <div>{activeMovie.title}</div>
-        // </Modal>
-      )}
+        </Carousel>
+        {isVisible && (
+          <Modal
+            isVisible={isVisible}
+            onClose={() => setIsVisible(!isVisible)}
+            movie={activeMovie}
+          />
+        )}
       
-
       <Grid
-        // className='px-4 pb-8 pt-24 max-w-7xl m-auto bg-yellow-300 z-50'
         title={'Popular Movies'}
       >
         {/* nested array loop */}
@@ -121,8 +79,6 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
             )
           : null}
       </Grid>
-      {/* {isLoading || isFetching ? <Spinner /> : null} */}
-      {/* <Carousel /> */}
 
       <Grid title={'Action Movies'}>
         {actionGenre.map((actionMovie) => {

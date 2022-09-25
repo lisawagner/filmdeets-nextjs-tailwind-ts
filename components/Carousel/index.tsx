@@ -67,7 +67,6 @@ const Carousel = ({children, maxVisibleSlides, infiniteLoop, title}: CarouselPro
   }, [currentIndex, isRepeating, visibleSlides, length])
 
   const next = () => {
-    
     if (visibleSlides > 3) {
       if (isRepeating || currentIndex < (length - visibleSlides)) {
         setCurrentIndex(prevState => prevState + 3)
@@ -153,10 +152,10 @@ const Carousel = ({children, maxVisibleSlides, infiniteLoop, title}: CarouselPro
     return output
   }
 
-  //  hover:neon-shadow hover:opacity-80 duration-300 hover:scale-105
-
   return (
-    <div className="w-full flex flex-col">
+    <div
+      className="w-full flex flex-col"
+    >
       <h2 className=" text-xl text-cyan-300 font-bold bg-brand-900 w-full h-full py-8 px-4 md:px-8 flex items-center z-10">
         {title}
       </h2>
@@ -167,7 +166,7 @@ const Carousel = ({children, maxVisibleSlides, infiniteLoop, title}: CarouselPro
         }
           <div
             className="w-full h-full overflow-hidden bg-brand-900 py-4"
-            // className="carousel-content-wrapper"
+            // className="w-full h-full overflow-hidden bg-brand-900 py-4"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
           >
@@ -188,9 +187,6 @@ const Carousel = ({children, maxVisibleSlides, infiniteLoop, title}: CarouselPro
             {/* You can alwas change the content of the button to other things */}
             {(isRepeating || currentIndex < (length - visibleSlides)) &&
               <CarouselButton onClick={next} className="left-arrow" isPrev={!isPrev}/>
-              // <button onClick={next} className="right-arrow">
-              //   &gt;
-              // </button>
             }
       </div>
     </div>

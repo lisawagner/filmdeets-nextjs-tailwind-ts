@@ -108,7 +108,7 @@ Distributed under the XYZ license. See ``LICENSE`` for more information.
 
 ## Additional Documentation and Acknowledgments
 
-* Project folder on server:
+* [React Portals](https://reactjs.org/docs/portals.html) - for Modal
 * Confluence link:
 * [Baby Yoda](https://freepngimg.com/png/99068-cute-star-wars-photos-baby-yoda/download) from freepngimg.com
 * [Popcorn icon by Icons8](https://icons8.com/icons/set/popcorn)

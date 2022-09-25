@@ -14,6 +14,7 @@ type TModalProps = {
 }
 
 const Modal = ({isVisible, onClose, movie, children }: TModalProps) => {
+  
   return createPortal(
     <div onClick={onClose} className='absolute z-40' aria-labelledby="modal-title" role="dialog" aria-modal="true">
       {/* Overlay */}
@@ -24,6 +25,19 @@ const Modal = ({isVisible, onClose, movie, children }: TModalProps) => {
             
             <div className="relative rounded-lg bg-brand-900">
               <div className='absolute modal-overlay'></div>
+
+              {/* <Image
+                placeholder='blur'
+                blurDataURL='/images/placeholder.png'
+                width={342}
+                height={192}
+                src={movie.backdropPath
+                  ? IMAGE_BASE_URL + THUMB_SIZE + movie.backdropPath : '/images/baby-yoda-md.png'}
+                alt='movie'
+                priority={true}
+                className='rounded-t-lg cursor-pointer w-full pb-6'
+              /> */}
+
               <div className=''>
                 <img
                   src={movie.backdropPath
@@ -32,12 +46,13 @@ const Modal = ({isVisible, onClose, movie, children }: TModalProps) => {
                   className='rounded-t-lg cursor-pointer w-full pb-6'
                 />
               </div>
+
               <div className='p-4 justify-start text-left'>
                 <div className='relative text-cyan-300 text-lg'>{movie.title}</div>
                 <p className='text-gray-400 mt-1 text-xs'>Released | {movie.releaseDate}</p>
                 
                 <div className='my-2 flex items-center gap-3'>
-                  <div className='text-sm flex items-center gap-1 border font-bold rounded bg-cyan-500 text-black border-cyan-400 py-1 px-2'><RiStarFill />{movie.rating.toFixed(2)}</div>
+                  <div className='text-sm flex items-center gap-1 border font-bold rounded bg-cyan-500 text-black border-cyan-400 py-1 px-2'><RiStarFill />{movie.rating.toFixed(1)}</div>
                   <Link href={`/movies/${movie.id}`}>
                     <button className='text-sm border rounded text-cyan-400 border-cyan-300 py-1 px-2 hover:text-cyan-300 hover:neon-shadow duration-200'>Details</button>
                   </Link>
