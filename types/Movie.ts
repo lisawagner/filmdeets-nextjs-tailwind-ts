@@ -95,8 +95,12 @@ export type Featured = {
 export type PopularMovie = {
   id: number
   posterPath: string
+  backdropPath: string
   title: string
+  releaseDate: string
   rating: number
+  synopsis: string
+  genres: Genre[]
 }
 
 export type MovieRelativeToGenre = {

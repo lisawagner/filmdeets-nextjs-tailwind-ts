@@ -1,6 +1,10 @@
 import { createPortal } from 'react-dom'
 import Link from 'next/link'
+import Image from 'next/image'
+import { RiStarFill } from 'react-icons/ri'
+import { IMAGE_BASE_URL, THUMB_SIZE } from '../../config'
 import { PopularMovie } from '../../types/Movie'
+import { truncateString } from '../../utils/helpers'
 
 type TModalProps = {
   children?: React.ReactNode,
@@ -11,32 +15,43 @@ type TModalProps = {
 
 const Modal = ({isVisible, onClose, movie, children }: TModalProps) => {
   return createPortal(
-    <div className='relative z-40' aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div onClick={onClose} className='absolute z-40' aria-labelledby="modal-title" role="dialog" aria-modal="true">
       {/* Overlay */}
       <div className='fixed inset-0 z-40 bg-brand-900 bg-opacity-70 transition-opacity'></div>
 
-      {/* Inset Content Wrapper */}
-      <div className='fixed inset-0 z-40 overflow-y-auto'>
-        <div className='flex h-screen justify-center text-center items-center' onClick={onClose}>
-          {/* Modal Panel Content */}
-          <div className="rounded-lg glass-container w-full mx-2 sm:w-1/2">
-            <div className='relative w-full p-2 rounded bg-white'>
+        <div className='fixed inset-0 z-40 overflow-y-auto'>
+          <div className='flex h-screen max-w-sm mx-auto px-4 justify-center text-center items-center'>
+            
+            <div className="relative rounded-lg bg-brand-900">
+              <div className='absolute modal-overlay'></div>
+              <div className=''>
+                <img
+                  src={movie.backdropPath
+                    ? IMAGE_BASE_URL + THUMB_SIZE + movie.backdropPath : '/images/baby-yoda-md.png'}
+                  alt='movie'
+                  className='rounded-t-lg cursor-pointer w-full pb-6'
+                />
+              </div>
+              <div className='p-4 justify-start text-left'>
+                <div className='relative text-cyan-300 text-lg'>{movie.title}</div>
+                <p className='text-gray-400 mt-1 text-xs'>Released | {movie.releaseDate}</p>
+                
+                <div className='my-2 flex items-center gap-3'>
+                  <div className='text-sm flex items-center gap-1 border font-bold rounded bg-cyan-500 text-black border-cyan-400 py-1 px-2'><RiStarFill />{movie.rating.toFixed(2)}</div>
+                  <Link href={`/movies/${movie.id}`}>
+                    <button className='text-sm border rounded text-cyan-400 border-cyan-300 py-1 px-2 hover:text-cyan-300 hover:neon-shadow duration-200'>Details</button>
+                  </Link>
+                </div>
+                <p className=' text-gray-300 text-sm italic pb-6'>
+                  {truncateString(movie.synopsis, 90)}
+                </p>
+              </div>
 
-              <header className='relative border-b-2 border-cyan-400'>
-                <h2 className='text-center'>{movie.title}</h2>
-                <button className='absolute top-0 right-0 bg-transparent'>X</button>
-              </header>
-              <main className='border-b-1 py-2 px-0'>{children}</main>
-              <footer>
-              <Link href={`/movies/${movie.id}`}>
-                <button className='p-2 rounded bg-cyan-400 hover:bg-cyan-200'>Details</button>
-                </Link>
-              </footer>
-
-            </div>
+              
+            </div> 
           </div>
         </div>
-      </div>
+      
     </div>, document.body
  
   )

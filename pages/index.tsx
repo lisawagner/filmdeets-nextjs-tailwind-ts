@@ -67,7 +67,6 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
         />
       ) : null}
 
-{/* <Link key={actionMovie.id} href={`/movies/${actionMovie.id}`}></Link> */}
         {/* TODO: ADD see all button -> links user to all action movies page*/}
         <Carousel {...CarouselProps} title='Action Movies'> 
         {actionGenre.map((actionMovie) => (
@@ -76,7 +75,6 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
             key={actionMovie.id}
             className="flex items-center justify-center"
             onClick={() => handleToggle(actionMovie)}
-            // onClick={toggleModal}
           >
             <img
               src={actionMovie.posterPath
@@ -90,10 +88,15 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
         ))}
       </Carousel>
       {isVisible && (
-        <Modal isVisible={isVisible} onClose={() => setIsVisible(!isVisible)} movie={activeMovie}>
-          <button className='text-white' onClick={() => setIsVisible(!isVisible)}>X</button>
-          <div>{activeMovie.title}</div>
-        </Modal>
+        <Modal
+          isVisible={isVisible}
+          onClose={() => setIsVisible(!isVisible)}
+          movie={activeMovie}
+        />
+        // <Modal isVisible={isVisible} onClose={() => setIsVisible(!isVisible)} movie={activeMovie}>
+        //   <button className='text-white' onClick={() => setIsVisible(!isVisible)}>X</button>
+        //   <div>{activeMovie.title}</div>
+        // </Modal>
       )}
       
 
@@ -181,8 +184,11 @@ export const getStaticProps: GetStaticProps = async () => {
       return {
         id: actionMovie.id,
         posterPath: actionMovie.poster_path,
+        backdropPath: actionMovie.backdrop_path,
         title: actionMovie.title || actionMovie.original_title,
-        rating: actionMovie.vote_average
+        releaseDate: actionMovie.release_date,
+        rating: actionMovie.vote_average,
+        synopsis: actionMovie.overview,
       }
     }
   )
