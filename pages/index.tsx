@@ -20,6 +20,8 @@ const CarouselProps = {
   infiniteLoop: false,
 }
 
+
+
 const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
   const [query, setQuery] = useState('')
   // @tanstack/react-query to cache movies via useFetchMovies()
@@ -28,10 +30,11 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
   const { handleToggle, isVisible, setIsVisible, activeMovie } = useModal()
   const [touchPosition, setTouchPosition] = useState<number | null>(null)
   
+  console.log('Home: ', isVisible);
   return (
     <div className='relative h-screen lock-screen'>
 
-      {data && data.pages ? (
+      {data && data.pages ? (     
         <Hero
           imgUrl={featuredMovie.backdropPath
             ? IMAGE_BASE_URL + BACKDROP_SIZE + featuredMovie.backdropPath
@@ -62,7 +65,6 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
       <Grid
         title={'Popular Movies'}
       >
-        {/* nested array loop */}
         {data && data.pages
           ? data.pages.map(page =>
               page.results.map(movie => (

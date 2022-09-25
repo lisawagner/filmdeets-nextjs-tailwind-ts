@@ -47,20 +47,24 @@
   .neon-shadow {
     box-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 10px #0ba9ca, 0 0 16px #0ba9ca,
     0 0 18px #0ba9ca;
-    /* animation: blink 0.7s infinite alternate; */
   }
 
   .neon-shadow-soft {
     box-shadow: 0 0 1px #fff, 0 0 8px #0ba9ca, 0 0 12px #0ba9ca,
     0 0 16px #0ba9ca;
-    /* animation: blink 0.7s infinite alternate; */
+  }
+
+  .neon-shadow-soft-darker {
+    box-shadow: 0 0 1px #0ba9ca, 0 0 8px #0097a7, 0 0 12px #0097a7,
+    0 0 16px #0097a7;
   }
 
   .neon-shadow-soft-inset {
     box-shadow: inset 0 0 1px #fff, 0 0 8px #0ba9ca, inset 0 0 12px #0ba9ca, inset
     0 0 16px #0ba9ca;
   }
-
+  
+  
   /* Special FX */
   .oval-shadow {
     border-radius: 50%;

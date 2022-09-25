@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -14,15 +15,26 @@ type TModalProps = {
 }
 
 const Modal = ({isVisible, onClose, movie, children }: TModalProps) => {
+  const [reveal, setReveal] = useState(false)
+
+  useEffect(() => {
+    if (isVisible) {
+      setReveal(true)
+    } else {
+      setReveal(false)
+    }
+  }, [])
   
   return createPortal(
     <div onClick={onClose} className='absolute z-40' aria-labelledby="modal-title" role="dialog" aria-modal="true">
       {/* Overlay */}
-      <div className='fixed inset-0 z-40 bg-brand-900 bg-opacity-70 transition-opacity'></div>
+      <div className={`fixed inset-0 z-40 bg-brand-900 ${reveal ? 'opacity-70' : 'opacity-0'} transition-opacity duration-300 ease-in-out`}/>
+      {/* <div className={`fixed inset-0 z-40 bg-brand-900 bg-opacity-70 transition-opacity`}/> */}
 
-        <div className='fixed inset-0 z-40 overflow-y-auto'>
+        <div className={`fixed inset-0 z-40 overflow-y-auto ${reveal ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300 ease-in-out`}>
+        {/* <div className='fixed inset-0 z-40 overflow-y-auto'> */}
           <div className='flex h-screen max-w-sm mx-auto px-4 justify-center text-center items-center'>
-            
+
             <div className="relative rounded-lg bg-brand-900">
               <div className='absolute modal-overlay'></div>
 
