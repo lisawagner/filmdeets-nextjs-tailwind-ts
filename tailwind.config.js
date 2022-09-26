@@ -33,7 +33,7 @@ module.exports = {
       animation: {
         floating: 'floating 2s infinite',
         growing: 'growing 2s infinite',
-        fadeIn: 'fade 2s',
+        fadeIn: 'fade 4s',
       },
 
       colors: {
