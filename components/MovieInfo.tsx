@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { calcTime, convertMoney } from '../utils/helpers';
 // Components
 import Thumbnail from './Thumbnail';
-import Pill from './Pill';
+import Pill from './MovieDetails/Pill';
 // Types
 import { Crew } from '../types/Movie'
 

@@ -20,8 +20,6 @@ const CarouselProps = {
   infiniteLoop: false,
 }
 
-
-
 const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
   const [query, setQuery] = useState('')
   // @tanstack/react-query to cache movies via useFetchMovies()
@@ -30,7 +28,6 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
   const { handleToggle, isVisible, setIsVisible, activeMovie } = useModal()
   const [touchPosition, setTouchPosition] = useState<number | null>(null)
   
-  console.log('Home: ', isVisible);
   return (
     <div className='relative h-screen lock-screen'>
 

@@ -23,12 +23,17 @@ module.exports = {
           '0%': {transform: 'scale(0.7)'},
           '50%': {transform: 'scale(1)'},
           '100%': {transform: 'scale(0.7)'},
+        },
+        fade: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
         }
       },
 
       animation: {
         floating: 'floating 2s infinite',
         growing: 'growing 2s infinite',
+        fadeIn: 'fade 2s',
       },
 
       colors: {

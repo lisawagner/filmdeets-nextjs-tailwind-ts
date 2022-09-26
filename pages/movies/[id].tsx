@@ -10,7 +10,7 @@ import {
 } from '../../config';
 import { basicFetch } from '../../api/fetchFunctions';
 
-import { Grid, Card, Breadcrumb, MovieInfo } from '../../components';
+import { Grid, Card, Breadcrumb, MovieInfo, MovieDetails } from '../../components';
 
 import { Movie, Credits, Crew, Cast } from '../../types/Movie'
 
@@ -26,7 +26,24 @@ const Movie: NextPage<Props> = ({ movie, cast, directors }) => {
   return (
     <main>
       {/* <Breadcrumb title={movie.original_title} /> */}
-      <MovieInfo
+      <MovieDetails
+        thumbUrl={movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : '/images/baby-yoda-md.png'}
+        rating={movie.vote_average}
+        year={movie.release_date.split('-')[0]}
+        genres={movie.genres}
+
+        backgroundImgUrl={movie.backdrop_path ? IMAGE_BASE_URL + BACKDROP_SIZE + movie.backdrop_path  : movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : '/images/baby-yoda-md.png'}
+
+        title={movie.original_title}
+        tagline={movie.tagline}
+        summary={movie.overview}
+        directors={directors}
+        time={movie.runtime}
+        budget={movie.budget}
+        revenue={movie.revenue}
+      />
+
+      {/* <MovieInfo
         thumbUrl={movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : '/images/baby-yoda-md.png'}
         rating={movie.vote_average}
         year={movie.release_date.split('-')[0]}
@@ -39,7 +56,9 @@ const Movie: NextPage<Props> = ({ movie, cast, directors }) => {
         time={movie.runtime}
         budget={movie.budget}
         revenue={movie.revenue}
-      />
+      /> */}
+
+
       <Grid className='p-4 max-w-7xl m-auto' title='Actors'>
         {cast.map(actor => (
           <Card
