@@ -43,22 +43,6 @@ const Movie: NextPage<Props> = ({ movie, cast, directors }) => {
         revenue={movie.revenue}
       />
 
-      {/* <MovieInfo
-        thumbUrl={movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : '/images/baby-yoda-md.png'}
-        rating={movie.vote_average}
-        year={movie.release_date.split('-')[0]}
-
-        backgroundImgUrl={movie.backdrop_path ? IMAGE_BASE_URL + BACKDROP_SIZE + movie.backdrop_path  : movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : '/images/baby-yoda-md.png'}
-
-        title={movie.original_title}
-        summary={movie.overview}
-        directors={directors}
-        time={movie.runtime}
-        budget={movie.budget}
-        revenue={movie.revenue}
-      /> */}
-
-
       <Grid className='p-4 max-w-7xl m-auto' title='Actors'>
         {cast.map(actor => (
           <Card

@@ -38,7 +38,6 @@ const MovieDetails = ({
 
   return (
     <div className='relative w-full h-screen animate-fadeIn'>
-      {/* TODO: add missing image bg alt */}
       <Image
         priority={true}
         placeholder='blur'
@@ -54,9 +53,15 @@ const MovieDetails = ({
       <div className='absolute top-0 right-0 bottom-0 left-0 bg-gradient-to-t from-[#010404] via-transparent to-transparent'></div>
 
       <div className='absolute w-full top-[20%] p-4 md:p-8'>
-        {tagline && <span className='text-white md:text-2xl md:max-w-[70%] xl:text-3xl italic text-shadow-md'>"{tagline}"</span>}
-        {/* {tagline && <span className='text-white md:text-2xl md:max-w-[70%] xl:text-3xl italic text-shadow-md'>"{tagline}"</span>} */}
-        <h2 className='text-cyan-400 text-4xl md:text-5xl md:max-w-[70%] xl:text-6xl font-bold text-shadow-md uppercase tracking-wide my-3'>{title}</h2>
+
+        {tagline && <span className='text-white md:text-2xl md:max-w-[70%] xl:text-3xl italic text-shadow-md'>
+          "{tagline}"
+        </span>}
+        
+        <h2 className='text-cyan-400 text-4xl md:text-5xl md:max-w-[70%] xl:text-6xl font-bold text-shadow-md uppercase tracking-wide my-3'>
+          {title}
+        </h2>
+
         <div className='text-gray-300 mt-2 text-sm'>
           <span>{year} <span className='text-cyan-500 font-extrabold text-lg'>|</span>{' '}</span>
           <span>{`${calcTime(time)}`} <span className='text-cyan-500 font-extrabold text-lg'>|</span>{' '}</span>
@@ -71,6 +76,7 @@ const MovieDetails = ({
             )
           })}
         </div>
+
         <div className='text-cyan-400 text-3xl md:text-4xl xl:text-5xl font-bold text-shadow-md uppercase tracking-wide my-3'>
           {rating.toFixed(2)}
         </div>
@@ -78,6 +84,7 @@ const MovieDetails = ({
         <div className='w-full text-sm md:max-w-[70%] text-gray-200 text-shadow-md mt-6'>
           {summary}
         </div>
+
         <div>
           <h3 className='text-cyan-400 mt-6 text-xl font-bold'>Director{directors.length > 1 ? 's' : ''}</h3>
           <div>
@@ -85,20 +92,14 @@ const MovieDetails = ({
               <p className='text-gray-200' key={director.credit_id}>{director.name}</p>
             ))}
           </div>
+
         </div>
-        {/* TODO: fix pills, put in flexbox, use Props*/}
 
         <div className='mt-6 flex gap-2'>
           <Pill text={`Budget | ${convertMoney(budget)}`} />
           <Pill text={`Revenue | ${convertMoney(revenue)}`} />
         </div>
 
-        {/* <div className='mt-1'>
-          <h3 className='text-lg font-bold'>Movie data</h3>
-          <Pill className='ml-0' text={`Running time: ${calcTime(time)}`} />
-          <Pill text={`Budget: ${convertMoney(budget)}`} />
-          <Pill text={`Revenue: ${convertMoney(revenue)}`} />
-        </div> */}
       </div>
  
     </div>
