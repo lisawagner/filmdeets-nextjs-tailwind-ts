@@ -9,7 +9,9 @@ export const convertMoney = (money: number): string => {
   const formatter: Intl.NumberFormat = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-    minimumFractionDigits: 0
+    minimumFractionDigits: 0,
+    notation: 'compact',
+    compactDisplay: 'short'
   });
   return formatter.format(money);
 };
