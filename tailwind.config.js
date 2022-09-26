@@ -13,6 +13,10 @@ module.exports = {
         128: '40rem'
       },
 
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
+
       keyframes: {
         floating: {
           '0%': {transform: 'translateY(-15px)'},

@@ -64,7 +64,6 @@
     0 0 16px #0ba9ca;
   }
   
-  
   /* Special FX */
   .oval-shadow {
     border-radius: 50%;
@@ -91,23 +90,15 @@
   }
 
   /* Glassmorphism UI Elements */
-  .glass-container {
+  .glass-container-dark {
     background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
   }
-  /* .glass-container {
+  .glass-container-light {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
-  } */
-
-  /* Modal */
-  .modal-overlay {
-    width: 100%;
-    height: 50%;
-    z-index: 999;
-    background: linear-gradient(to bottom, transparent 0%, black 100%);
   }
 
   /* Workaround to disable unwanted scrolling on mobile and browsers simulating mobile screens */

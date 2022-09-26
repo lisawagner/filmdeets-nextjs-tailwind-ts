@@ -1,6 +1,6 @@
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-
 import {
   movieUrl,
   creditsUrl,
@@ -9,9 +9,7 @@ import {
   POSTER_SIZE
 } from '../../config';
 import { basicFetch } from '../../api/fetchFunctions';
-
-import { Grid, Card, Breadcrumb, MovieInfo, MovieDetails } from '../../components';
-
+import { MovieDetails, GridCard, GridContainer } from '../../components';
 import { Movie, Credits, Crew, Cast } from '../../types/Movie'
 
 type Props = {
@@ -22,7 +20,7 @@ type Props = {
 
 const Movie: NextPage<Props> = ({ movie, cast, directors }) => {
   const router = useRouter()
-  
+
   return (
     <main>
       {/* <Breadcrumb title={movie.original_title} /> */}
@@ -43,16 +41,17 @@ const Movie: NextPage<Props> = ({ movie, cast, directors }) => {
         revenue={movie.revenue}
       />
 
-      <Grid className='p-4 max-w-7xl m-auto' title='Actors'>
+      <GridContainer title='Cast'>
         {cast.map(actor => (
-          <Card
+          <GridCard
             key={actor.credit_id}
             imgUrl={actor.profile_path ? IMAGE_BASE_URL + POSTER_SIZE + actor.profile_path : '/images/baby-yoda-md.png'}
             title={actor.name}
             subtitle={actor.character}
-          />
+          /> 
         ))}
-      </Grid>
+      </GridContainer>
+
     </main>
   )
 };

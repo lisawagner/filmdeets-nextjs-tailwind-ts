@@ -19,7 +19,7 @@ const Card = ({ imgUrl, title, subtitle }: Props) => {
   const onMouseLeave = () => setIsHovering(false);
   
   return (
-  // <div className='relative h-80 p-2 rounded-md z-40 bg-gray-800 shadow-dark-1'>
+
   <div
     onMouseEnter={onMouseEnter}
     onMouseLeave={onMouseLeave}
@@ -34,6 +34,7 @@ const Card = ({ imgUrl, title, subtitle }: Props) => {
 
     </div>
   </div>
+
 )};
 
 export default Card;
