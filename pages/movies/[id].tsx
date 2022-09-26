@@ -25,7 +25,7 @@ const Movie: NextPage<Props> = ({ movie, cast, directors }) => {
   
   return (
     <main>
-      <Breadcrumb title={movie.original_title} />
+      {/* <Breadcrumb title={movie.original_title} /> */}
       <MovieInfo
         thumbUrl={movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : '/images/baby-yoda-md.png'}
         rating={movie.vote_average}

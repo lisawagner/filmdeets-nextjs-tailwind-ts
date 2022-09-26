@@ -32,8 +32,8 @@ const MovieInfo = ({
   budget,
   revenue
 }: Props) => (
-  <div className='relative w-full h-auto p-4'>
-    <div className='relative h-full min-h-128 flex flex-col md:flex-row max-w-7xl p-4 m-auto z-10 rounded-xl bg-zinc-800 bg-opacity-90'>
+  <div className='relative w-full h-auto px-4 py-20'>
+    <div className='relative h-full min-h-128 flex flex-col md:flex-row max-w-7xl p-4 m-auto z-10'>
       <div className='relative w-full h-96 md:h-auto md:w-1/3'>
         <Thumbnail imgUrl={thumbUrl} />
         <div className='absolute top-4 left-4 rounded-full bg-white w-10 h-10 flex justify-center items-center text-black text-sm font-bold'>
