@@ -4,7 +4,6 @@ import { calcTime, convertMoney } from '../../utils/helpers';
 // Components
 import Pill from './Pill';
 // Types
-import { Overlay } from './MovieDetailStyles';
 import { Crew, Genre } from '../../types/Movie'
 
 type TProps = {
@@ -39,6 +38,7 @@ const MovieDetails = ({
 
   return (
     <div className='relative w-full h-screen animate-fadeIn'>
+      {/* TODO: add missing image bg alt */}
       <Image
         priority={true}
         placeholder='blur'
@@ -47,8 +47,9 @@ const MovieDetails = ({
         objectPosition='center'
         layout='fill'
         src={backgroundImgUrl}
-        alt='thumb'
+        alt='movie poster background'
       />
+      <div className='absolute top-0 right-0 bottom-0 left-0 bg-brand-900 bg-opacity-40'></div>
       <div className='absolute top-0 right-0 bottom-0 left-0 bg-gradient-to-r from-[#010404] via-transparent to-transparent'></div>
       <div className='absolute top-0 right-0 bottom-0 left-0 bg-gradient-to-t from-[#010404] via-transparent to-transparent'></div>
 
@@ -56,8 +57,9 @@ const MovieDetails = ({
         {tagline && <span className='text-white md:text-2xl md:max-w-[70%] xl:text-3xl italic text-shadow-md'>"{tagline}"</span>}
         {/* {tagline && <span className='text-white md:text-2xl md:max-w-[70%] xl:text-3xl italic text-shadow-md'>"{tagline}"</span>} */}
         <h2 className='text-cyan-400 text-4xl md:text-5xl md:max-w-[70%] xl:text-6xl font-bold text-shadow-md uppercase tracking-wide my-3'>{title}</h2>
-        <div className='text-gray-400 mt-2 text-sm'>
+        <div className='text-gray-300 mt-2 text-sm'>
           <span>{year} <span className='text-cyan-500 font-extrabold text-lg'>|</span>{' '}</span>
+          <span>{`${calcTime(time)}`} <span className='text-cyan-500 font-extrabold text-lg'>|</span>{' '}</span>
           {genres?.map((genre, index) => {
             const isEndofArray = index === genres.length - 1
 
@@ -69,11 +71,11 @@ const MovieDetails = ({
             )
           })}
         </div>
-        <div className='text-cyan-400 text-4xl md:text-5xl xl:text-6xl font-bold text-shadow-md uppercase tracking-wide my-3'>
+        <div className='text-cyan-400 text-3xl md:text-4xl xl:text-5xl font-bold text-shadow-md uppercase tracking-wide my-3'>
           {rating.toFixed(2)}
         </div>
         
-        <div className='w-full text-sm md:max-w-[70%] text-gray-200 text-shadow-md mt-8'>
+        <div className='w-full text-sm md:max-w-[70%] text-gray-200 text-shadow-md mt-6'>
           {summary}
         </div>
         <div>
@@ -85,12 +87,18 @@ const MovieDetails = ({
           </div>
         </div>
         {/* TODO: fix pills, put in flexbox, use Props*/}
-        <div className='mt-1'>
-            <h3 className='text-lg font-bold'>Movie data</h3>
-            <Pill className='ml-0' text={`Running time: ${calcTime(time)}`} />
-            <Pill text={`Budget: ${convertMoney(budget)}`} />
-            <Pill text={`Revenue: ${convertMoney(revenue)}`} />
-          </div>
+
+        <div className='mt-6 flex gap-2'>
+          <Pill text={`Budget | ${convertMoney(budget)}`} />
+          <Pill text={`Revenue | ${convertMoney(revenue)}`} />
+        </div>
+
+        {/* <div className='mt-1'>
+          <h3 className='text-lg font-bold'>Movie data</h3>
+          <Pill className='ml-0' text={`Running time: ${calcTime(time)}`} />
+          <Pill text={`Budget: ${convertMoney(budget)}`} />
+          <Pill text={`Revenue: ${convertMoney(revenue)}`} />
+        </div> */}
       </div>
  
     </div>
