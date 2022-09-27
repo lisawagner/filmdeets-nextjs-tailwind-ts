@@ -32,27 +32,29 @@ export type Movie = {
   title: string;
 
   video: boolean // new
-  vote_average: number;
-  vote_count: number;
+  vote_average: number
+  vote_count: number
 };
 
 export type Cast = {
-  character: string;
-  credit_id: string;
-  name: string;
-  profile_path: string;
+  id: number
+  character: string
+  credit_id: string
+  name: string
+  profile_path: string
 };
 
 export type Crew = {
-  job: string;
-  name: string;
-  credit_id: number;
+  id: number
+  job: string
+  name: string
+  credit_id: number
 };
 
 export type Credits = {
-  id: number;
-  cast: Cast[];
-  crew: Crew[];
+  id: number
+  cast: Cast[]
+  crew: Crew[]
 };
 
 export type GenreResponse = {

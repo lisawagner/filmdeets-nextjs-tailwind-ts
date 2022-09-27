@@ -1,18 +1,22 @@
 import Image from 'next/image';
+import Link from 'next/link'
 
 type Props = {
+  actorId: number
   imgUrl: string;
   title: string;
   subtitle?: string;
 };
 
-const GridCard = ({ imgUrl, title, subtitle }: Props) => {
+const GridCard = ({ imgUrl, title, subtitle, actorId }: Props) => {
+  
   return (
     <div
+      onClick={() => console.log(actorId)}
       className='rounded p-2 bg-black border border-cyan-900 cursor-pointer'
     >
-      {/* <div className='absolute modal-overlay'></div> */}
-
+      <Link href={`/movies/actor/${actorId}`} passHref>
+        <a>
         <Image
           placeholder='blur'
           blurDataURL='/images/placeholder.png'
@@ -25,7 +29,8 @@ const GridCard = ({ imgUrl, title, subtitle }: Props) => {
           alt='thumbnail'
           priority={true}
         />
-
+        </a>
+      </Link>
       {/* <Image
         placeholder='blur'
         blurDataURL='/images/placeholder.png'

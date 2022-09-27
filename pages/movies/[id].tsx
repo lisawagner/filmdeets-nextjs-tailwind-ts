@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { useRouter } from 'next/router'
+import Link from 'next/link'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import {
   movieUrl,
@@ -19,7 +18,6 @@ type Props = {
 };
 
 const Movie: NextPage<Props> = ({ movie, cast, directors }) => {
-  const router = useRouter()
 
   return (
     <main>
@@ -43,12 +41,15 @@ const Movie: NextPage<Props> = ({ movie, cast, directors }) => {
 
       <GridContainer title='Cast'>
         {cast.map(actor => (
-          <GridCard
-            key={actor.credit_id}
-            imgUrl={actor.profile_path ? IMAGE_BASE_URL + POSTER_SIZE + actor.profile_path : '/images/baby-yoda-md.png'}
-            title={actor.name}
-            subtitle={actor.character}
-          /> 
+          // <Link key={actor.id} href={`/movies/actor/${actor.id}`} passHref>
+          //   <a>
+            <GridCard
+              key={actor.id}
+              actorId={actor.id}
+              imgUrl={actor.profile_path ? IMAGE_BASE_URL + POSTER_SIZE + actor.profile_path : '/images/baby-yoda-md.png'}
+              title={actor.name}
+              subtitle={actor.character}
+            />
         ))}
       </GridContainer>
 
