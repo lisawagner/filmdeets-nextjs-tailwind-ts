@@ -12,7 +12,7 @@ const CarouselCard = ({movie, onClick}: TCardProps) => {
   return (
     <div
       key={movie.id}
-      className="flex items-center justify-center"
+      className="flex items-center justify-center animate-fadeIn"
       onClick={onClick}
     >
       <Image

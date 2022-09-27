@@ -37,8 +37,16 @@ const Actor: NextPage<TProps> = ({ artist }) => {
 
       <div className='absolute w-full top-[70%] p-4 md:p-8'>
         {/* <h1 className='text-white font-bold text-7xl z-30'>{pid}</h1> */}
-        <h2 className='text-white font-bold text-7xl z-30'>{artist.name}</h2>
-        <p className=' text-gray-200 italic'>{artist.biography}</p>
+        <h2 className='text-white font-bold text-5xl sm:text-7xl mb-8'>{artist.name}</h2>
+        <p className='text-gray-200 text-base sm:text-lg italic whitespace-pre-line'>
+          {artist.biography && (
+            artist.biography
+          )}
+          {!artist.biography && (
+            `Biography currently unavailable for ${artist.name}`
+          )}
+        </p>
+        {/* <p className=' text-gray-200 italic'>{artist.biography}</p> */}
       </div>
 
 

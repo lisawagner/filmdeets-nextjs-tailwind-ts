@@ -59,7 +59,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
           />
         )}
       
-      <Grid
+      {/* <Grid
         title={'Popular Movies'}
       >
         {data && data.pages
@@ -77,9 +77,9 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
               ))
             )
           : null}
-      </Grid>
+      </Grid> */}
 
-      <Grid title={'Action Movies'}>
+      {/* <Grid title={'Action Movies'}>
         {actionGenre.map((actionMovie) => {
           return (
             <Link key={actionMovie.id} href={`/movies/${actionMovie.id}`}>
@@ -93,7 +93,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
             </Link>
           )
         })}
-      </Grid>
+      </Grid> */}
 
     </div>
   )
