@@ -2,20 +2,22 @@ import Image from 'next/image';
 import Link from 'next/link'
 
 type Props = {
-  actorId: number
+  itemId: number
   imgUrl: string;
   title: string;
   subtitle?: string;
+  routeUrl: string
 };
 
-const GridCard = ({ imgUrl, title, subtitle, actorId }: Props) => {
+const GridCard = ({ imgUrl, title, subtitle, itemId, routeUrl }: Props) => {
   
   return (
     <div
-      onClick={() => console.log(actorId)}
+      onClick={() => console.log(itemId)}
       className='rounded p-2 bg-black border border-cyan-900 cursor-pointer'
     >
-      <Link href={`/movies/actor/${actorId}`} passHref>
+      <Link href={`/movies${routeUrl}/${itemId}`} passHref>
+      {/* <Link href={`/movies/actor/${itemId}`} passHref> */}
         <a>
         <Image
           placeholder='blur'

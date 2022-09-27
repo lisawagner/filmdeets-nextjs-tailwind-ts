@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useEffect, useState } from "react"
 import CarouselButton from './CarouselButton'
 
@@ -6,6 +7,7 @@ type CarouselProps = {
   maxVisibleSlides: number,
   infiniteLoop: boolean,
   title: string,
+  href: string,
 }
 // type predicates
 function isTouchEvent(e: React.TouchEvent | React.MouseEvent):e is React.TouchEvent
@@ -24,9 +26,7 @@ const numberOfSlides = (maxVisibleSlides: number, windowWidth: number) => {
   return 1;
 };
 
-
-// TODO: Hide left button, or fix infiniteLoop scroll 
-const Carousel = ({children, maxVisibleSlides, infiniteLoop, title}: CarouselProps) => {
+const Carousel = ({children, maxVisibleSlides, infiniteLoop, title, href}: CarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(infiniteLoop ? maxVisibleSlides : 0)
   const [length, setLength] = useState(children.length)
   
@@ -154,19 +154,28 @@ const Carousel = ({children, maxVisibleSlides, infiniteLoop, title}: CarouselPro
 
   return (
     <div
-      className="w-full flex flex-col"
+      className="w-full flex flex-col "
     >
-      <h2 className=" text-xl text-cyan-300 font-bold bg-brand-900 w-full h-full py-8 px-4 md:px-8 flex items-center z-10">
+      <div className="bg-brand-900 w-full h-full z-10 py-8 px-4 md:px-8 flex items-center justify-between">
+        <h2 className=" text-xl text-cyan-300 font-bold">
+          {title}
+        </h2>
+        <Link href={href} passHref>
+          <a className="text-red-600">
+            See more
+          </a>
+        </Link>
+        
+      </div>
+      {/* <h2 className=" text-xl text-cyan-300 font-bold bg-brand-900 w-full h-full py-8 px-4 md:px-8 flex items-center z-10">
         {title}
-      </h2>
+      </h2> */}
       <div className="w-full flex relative">
-      {/* You can alwas change the content of the button to other things */}
         {(isRepeating || currentIndex > 0) &&
           <CarouselButton onClick={prev} className="left-arrow" isPrev={isPrev}/>
         }
           <div
             className="w-full h-full overflow-hidden bg-brand-900 py-4"
-            // className="w-full h-full overflow-hidden bg-brand-900 py-4"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
           >

@@ -45,10 +45,11 @@ const Movie: NextPage<Props> = ({ movie, cast, directors }) => {
           //   <a>
             <GridCard
               key={actor.id}
-              actorId={actor.id}
+              itemId={actor.id}
               imgUrl={actor.profile_path ? IMAGE_BASE_URL + POSTER_SIZE + actor.profile_path : '/images/baby-yoda-md.png'}
               title={actor.name}
               subtitle={actor.character}
+              routeUrl='/actor'
             />
         ))}
       </GridContainer>

@@ -14,6 +14,5 @@ export default async function handler(
   const endpoint = `${DISCOVER_BASE_URL}&page=${page}&with_genres=${genre}`
   const movieRes = await basicFetch<Movies>(endpoint)
 
-
   res.status(200).json(movieRes);
 }

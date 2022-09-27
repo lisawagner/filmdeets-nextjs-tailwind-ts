@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import type { NextPage, GetStaticProps } from 'next'
-import { useFetchMovies, basicFetch  } from '../api'
+import { useFetchMovies, basicFetch, useFetchGenres  } from '../api'
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, THUMB_SIZE, movieUrl, genreUrl, POPULAR_BASE_URL, GENRE_BASE_URL } from '../config'
 import { useModal } from '../utils'
 // components
@@ -46,7 +46,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
       ) : null}
 
         {/* TODO: ADD see all button -> links user to all action movies page*/}
-        <Carousel {...CarouselProps} title='Action Movies'> 
+        <Carousel {...CarouselProps} title='Action Movies' href="/movies/genre/28"> 
         {actionGenre.map((actionMovie) => (
           <CarouselCard key={actionMovie.id} movie={actionMovie} onClick={() => handleToggle(actionMovie)}/>
         ))}
