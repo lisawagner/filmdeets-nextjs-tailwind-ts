@@ -11,13 +11,13 @@ import { basicFetch } from '../../api/fetchFunctions';
 import { MovieDetails, GridCard, GridContainer } from '../../components';
 import { Movie, Credits, Crew, Cast } from '../../types/Movie'
 
-type Props = {
+type TProps = {
   movie: Movie;
   directors: Crew[];
   cast: Cast[];
 };
 
-const Movie: NextPage<Props> = ({ movie, cast, directors }) => {
+const Movie: NextPage<TProps> = ({ movie, cast, directors }) => {
 
   return (
     <main>
@@ -70,7 +70,6 @@ export const getStaticProps: GetStaticProps = async context => {
   const movie = await basicFetch<Movie>(movieEndpoint);
   const credits = await basicFetch<Credits>(creditsEndpoint);
 
-  // Get the directors only
   const directors = credits.crew.filter(member => member.job === 'Director');
 
   return {

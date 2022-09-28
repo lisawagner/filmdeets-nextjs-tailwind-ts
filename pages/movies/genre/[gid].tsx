@@ -5,13 +5,12 @@ import { useRouter } from 'next/router'
 import { GridCard, GridContainer } from '../../../components';
 import { IMAGE_BASE_URL, THUMB_SIZE, GENRE_BASE_URL } from '../../../config'
 import { GenreResponse, Genre } from '../../../types/Movie';
-import { arrayBuffer } from 'stream/consumers';
 
 type TProps = {
   genres: Genre[]
 }
 
-const MoviesByGenre = ({genres}: TProps) => {
+const MoviesByGenre: NextPage<TProps> = ({ genres }) => {
   const [query, setQuery] = useState<any | null>(null)
   // @tanstack/react-query to cache movies via useFetchMovies()
   const { data, fetchNextPage, isLoading, isFetching, error } = useFetchGenres(query);
@@ -21,13 +20,11 @@ const MoviesByGenre = ({genres}: TProps) => {
   const { gid } = router.query
 
   useEffect(() => {
-    // may need this for initial render?
+    // may need this for initial render
     if (router.isReady) {
       setQuery(gid)
     }
   }, [router.isReady, gid])
-
-  // console.log("Genre? ", genres);
 
   useEffect(() => {
     const isFound = genres.some(genre => {
@@ -35,8 +32,7 @@ const MoviesByGenre = ({genres}: TProps) => {
         return setTitle(genre.name)
       }
     })
-  }, [])
-  // console.log('Title: ', title);
+  }, [genres, gid])
   
   return (
     <div className='pt-10'>
@@ -67,7 +63,6 @@ export const getStaticProps: GetStaticProps = async (gid) => {
 
   const genreList = await basicFetch<GenreResponse>(GENRE_BASE_URL)
   const genres = genreList.genres // <- gets genre list
-  console.log("Genres: ", genres); 
 
   return {
     props: {
