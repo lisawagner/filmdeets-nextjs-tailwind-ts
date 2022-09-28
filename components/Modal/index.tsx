@@ -23,17 +23,16 @@ const Modal = ({isVisible, onClose, movie, children }: TModalProps) => {
     } else {
       setReveal(false)
     }
-  }, [])
+  }, [isVisible])
   
   return createPortal(
-    <div onClick={onClose} className='absolute z-40' aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div onClick={onClose} className='absolute' aria-labelledby="modal-title" role="dialog" aria-modal="true">
       {/* Overlay */}
-      <div className={`fixed inset-0 z-40 bg-brand-900 opacity-70 fadeIn`}/>
-        <div className={`fixed inset-0 z-40 overflow-y-auto fadeIn`}>
+      <div className={`fixed inset-0 bg-brand-900 opacity-70 fadeIn`}/>
+        <div className={`fixed inset-0 overflow-y-auto fadeIn`}>
           <div className='flex h-screen max-w-sm mx-auto px-4 justify-center text-center items-center'>
 
             <div className="relative rounded-lg bg-brand-900">
-              <div className='absolute modal-overlay'></div>
 
               {/* <Image
                 placeholder='blur'
@@ -47,14 +46,12 @@ const Modal = ({isVisible, onClose, movie, children }: TModalProps) => {
                 className='rounded-t-lg cursor-pointer w-full pb-6'
               /> */}
 
-              <div className=''>
-                <img
-                  src={movie.backdropPath
-                    ? IMAGE_BASE_URL + THUMB_SIZE + movie.backdropPath : '/images/baby-yoda-32.png'}
-                  alt='movie'
-                  className='rounded-t-lg cursor-pointer w-full pb-6'
-                />
-              </div>
+              <img
+                src={movie.backdropPath
+                  ? IMAGE_BASE_URL + THUMB_SIZE + movie.backdropPath : '/images/baby-yoda-32.png'}
+                alt='movie'
+                className='rounded-t-lg cursor-pointer w-full pb-6'
+              />
 
               <div className='p-4 justify-start text-left'>
                 <div className='relative text-cyan-300 text-lg'>{movie.title}</div>

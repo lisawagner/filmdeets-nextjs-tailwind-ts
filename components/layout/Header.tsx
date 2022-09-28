@@ -1,27 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useScrollYPosition } from '../../utils/useScrollPosition';
 // Components
 import SearchInput from './SearchInput'
 
-// type Props = {
-//   setQuery?: React.Dispatch<React.SetStateAction<string>>;
-// };
 
-// const Header = ({ setQuery }: Props) => {
 const Header = () => {
   const [hasScrolled, setHasScrolled] = useState(false)
 
-  const scroll = () => {
+  const scroll = useCallback(() => {
     if (window.scrollY > 200) {
       setHasScrolled(true)
     } else {
       setHasScrolled(false)
     }
-  }
-
-  // console.log(hasScrolled);
+  }, [])
   
   // blue + white "good tron colors"
   // red/orange/yellow "bad tron/sith" colors

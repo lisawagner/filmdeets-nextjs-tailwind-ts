@@ -155,7 +155,7 @@ const Carousel = ({children, maxVisibleSlides, infiniteLoop, title, href, hasLin
 
   return (
     <div className="w-full flex flex-col">
-      <div className="bg-brand-900 w-full h-full z-10 py-4 px-4 md:px-8 flex items-center justify-between">
+      <div className="bg-brand-900 w-full h-full py-4 px-4 md:px-8 flex items-center justify-between">
         <h2 className=" text-xl text-cyan-300 font-bold">
           {title}
         </h2>

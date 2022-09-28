@@ -55,7 +55,7 @@ const MovieDetails = ({
       <div className='absolute w-full top-[20%] p-4 md:p-8'>
 
         {tagline && <span className='text-white md:text-2xl md:max-w-[70%] xl:text-3xl italic text-shadow-md'>
-          "{tagline}"
+        &quot;{tagline}&quot;
         </span>}
         
         <h2 className='text-cyan-400 text-4xl md:text-5xl md:max-w-[70%] xl:text-6xl font-bold text-shadow-md uppercase tracking-wide my-3'>

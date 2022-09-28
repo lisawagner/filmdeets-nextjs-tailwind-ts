@@ -10,5 +10,6 @@ import MovieInfo from "./MovieInfo";
 import Carousel from "./Carousel";
 import CarouselCard from "./Carousel/CarouselCard";
 import Modal from "./Modal";
+import Layout from "./Layout";
 
-export { Card, Grid, Hero, GridCard, GridContainer, Spinner, Breadcrumb, MovieInfo, MovieDetails, Carousel, Modal, CarouselCard }
+export { Card, Grid, Hero, GridCard, GridContainer, Spinner, Breadcrumb, MovieInfo, MovieDetails, Carousel, Modal, CarouselCard, Layout }

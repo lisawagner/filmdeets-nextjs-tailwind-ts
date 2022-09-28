@@ -20,9 +20,9 @@ const Hero = ({ imgUrl, title, text, tagline, releaseDate, id, rating }: Props) 
   
   return (
     <div className='relative w-full min-h-screen text-white'>
-      <div className={`w-full h-screen ${styles.stars}`}></div>
+      {/* <div className={`w-full h-screen ${styles.stars}`}></div>
       <div className={`w-full h-screen ${styles.stars2}`}></div>
-      <div className={`w-full h-screen ${styles.stars3}`}></div>
+      <div className={`w-full h-screen ${styles.stars3}`}></div> */}
 
       <div className='w-full h-full'>
         <div className='absolute w-full h-full bg-gradient-to-t from-[#010404] via-transparent to-transparent'></div>
@@ -41,7 +41,7 @@ const Hero = ({ imgUrl, title, text, tagline, releaseDate, id, rating }: Props) 
           />
         </div>
         <div className='absolute w-full top-[53%] lg:top-[50%] p-4 md:p-8'>
-          <span className='md:text-2xl md:max-w-[70%] xl:text-3xl italic text-shadow-md'>"{tagline}"</span>
+          <span className='md:text-2xl md:max-w-[70%] xl:text-3xl italic text-shadow-md'>&quot;{tagline}&quot;</span>
           <h1 className='text-cyan-400 text-2xl md:text-3xl md:max-w-[50%] lg:text-4xl font-bold text-shadow-md'>{title}</h1>
           <p className='text-gray-400 mt-2 text-sm'>Released | {releaseDate}</p>
           <div className='my-4 flex items-center gap-4'>
