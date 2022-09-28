@@ -45,13 +45,25 @@ const Modal = ({isVisible, onClose, movie, children }: TModalProps) => {
                 priority={true}
                 className='rounded-t-lg cursor-pointer w-full pb-6'
               /> */}
-
-              <img
+              <picture>
+                <source
+                  srcSet={movie.backdropPath
+                    ? IMAGE_BASE_URL + THUMB_SIZE + movie.backdropPath : '/images/baby-yoda-32.png'}
+                  type="image/webp"
+                  />
+                <img
+                  src={movie.backdropPath
+                    ? IMAGE_BASE_URL + THUMB_SIZE + movie.backdropPath : '/images/baby-yoda-32.png'}
+                  alt='movie'
+                  className='rounded-t-lg cursor-pointer w-full pb-6'
+                />
+              </picture>
+              {/* <img
                 src={movie.backdropPath
                   ? IMAGE_BASE_URL + THUMB_SIZE + movie.backdropPath : '/images/baby-yoda-32.png'}
                 alt='movie'
                 className='rounded-t-lg cursor-pointer w-full pb-6'
-              />
+              /> */}
 
               <div className='p-4 justify-start text-left'>
                 <div className='relative text-cyan-300 text-lg'>{movie.title}</div>
