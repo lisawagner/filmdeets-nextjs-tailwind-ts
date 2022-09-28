@@ -27,20 +27,7 @@ const MoviesByGenre = ({genres}: TProps) => {
     }
   }, [router.isReady, gid])
 
-  console.log("Genre? ", genres);
-
-
-  // const isFound = genres.some(element => {
-  //   if(element.id.toString() === gid) {
-  //     return setTitle(element.name)
-  //   }
-  //   return false
-  // })
-  // if(isFound) {
-  //   console.log(('array contains object with id = 28'));
-    
-  // }
-  
+  // console.log("Genre? ", genres);
 
   useEffect(() => {
     const isFound = genres.some(genre => {
@@ -49,7 +36,7 @@ const MoviesByGenre = ({genres}: TProps) => {
       }
     })
   }, [])
-  console.log('Title: ', title);
+  // console.log('Title: ', title);
   
   return (
     <div className='pt-10'>
@@ -77,11 +64,10 @@ const MoviesByGenre = ({genres}: TProps) => {
 export default MoviesByGenre
 
 export const getStaticProps: GetStaticProps = async (gid) => {
-  // console.log(gid);
 
   const genreList = await basicFetch<GenreResponse>(GENRE_BASE_URL)
   const genres = genreList.genres // <- gets genre list
-  // console.log("Genres: ", genres); 
+  console.log("Genres: ", genres); 
 
   return {
     props: {

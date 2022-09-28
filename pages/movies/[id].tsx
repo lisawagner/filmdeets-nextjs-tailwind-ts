@@ -23,12 +23,12 @@ const Movie: NextPage<Props> = ({ movie, cast, directors }) => {
     <main>
       {/* <Breadcrumb title={movie.original_title} /> */}
       <MovieDetails
-        thumbUrl={movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : '/images/baby-yoda-md.png'}
+        thumbUrl={movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : '/images/baby-yoda-32.png'}
         rating={movie.vote_average}
         year={movie.release_date.split('-')[0]}
         genres={movie.genres}
 
-        backgroundImgUrl={movie.backdrop_path ? IMAGE_BASE_URL + BACKDROP_SIZE + movie.backdrop_path  : movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : '/images/baby-yoda-md.png'}
+        backgroundImgUrl={movie.backdrop_path ? IMAGE_BASE_URL + BACKDROP_SIZE + movie.backdrop_path  : movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : '/images/baby-yoda-32.png'}
 
         title={movie.original_title}
         tagline={movie.tagline}
@@ -46,7 +46,7 @@ const Movie: NextPage<Props> = ({ movie, cast, directors }) => {
             <GridCard
               key={actor.id}
               itemId={actor.id}
-              imgUrl={actor.profile_path ? IMAGE_BASE_URL + POSTER_SIZE + actor.profile_path : '/images/baby-yoda-md.png'}
+              imgUrl={actor.profile_path ? IMAGE_BASE_URL + POSTER_SIZE + actor.profile_path : '/images/baby-yoda-32.png'}
               title={actor.name}
               subtitle={actor.character}
               routeUrl='/actor'

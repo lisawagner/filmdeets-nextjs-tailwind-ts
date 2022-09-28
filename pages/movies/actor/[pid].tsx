@@ -1,10 +1,11 @@
+
 import Image from 'next/image';
 import { useRouter } from 'next/router'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { peopleUrl, knownForUrl, IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from '../../../config'
 import { basicFetch } from '../../../api';
 import { Artist, ArtistDetail } from '../../../types/Artist'
-import { Movie, Movies, PopularMovie } from '../../../types/Movie'
+import { PopularMovie } from '../../../types/Movie'
 import { CarouselCard, Carousel, Modal } from '../../../components';
 import { useModal } from '../../../utils'
 
@@ -58,7 +59,7 @@ const Actor: NextPage<TProps> = ({ artist, knownForMovies }) => {
           )}
         </p>
 
-        <Carousel {...CarouselProps} title='Known For' href="/">
+        <Carousel {...CarouselProps} title='Known For' href="#" hasLink={false}>
         {sortedMovies.slice(0,10).map((movie) => (
           <CarouselCard key={movie.id} movie={movie} onClick={() => handleToggle(movie)}/>
         ))}
