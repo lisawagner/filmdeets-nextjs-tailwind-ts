@@ -1,4 +1,3 @@
-
 import Image from 'next/image';
 import { useRouter } from 'next/router'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
@@ -36,8 +35,6 @@ const Actor: NextPage<TProps> = ({ artist, knownForMovies }) => {
         priority={true}
         placeholder='blur'
         blurDataURL='/images/placeholder.png'
-        // width={780}
-        // height={1170}
         objectFit='cover'
         objectPosition='center'
         layout='fill'

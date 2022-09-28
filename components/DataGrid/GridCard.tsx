@@ -13,8 +13,7 @@ const GridCard = ({ imgUrl, title, subtitle, itemId, routeUrl }: Props) => {
   
   return (
     <div
-      onClick={() => console.log(itemId)}
-      className='rounded p-2 bg-black border border-cyan-900 cursor-pointer'
+      className='rounded p-2 bg-black border border-cyan-900 cursor-pointer hover:neon-shadow hover:opacity-80 duration-300 hover:scale-105'
     >
       <Link href={`/movies${routeUrl}/${itemId}`} passHref>
         <a>
@@ -24,8 +23,6 @@ const GridCard = ({ imgUrl, title, subtitle, itemId, routeUrl }: Props) => {
           width={375}
           height={563}
           className='rounded opacity-70'
-          // layout='fill'
-          // objectFit='cover'
           src={imgUrl}
           alt='thumbnail'
           priority={true}

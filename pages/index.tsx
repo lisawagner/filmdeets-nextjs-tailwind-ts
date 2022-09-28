@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import Link from 'next/link'
 import type { NextPage, GetStaticProps } from 'next'
-import { useFetchMovies, basicFetch, useFetchGenres  } from '../api'
-import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE, THUMB_SIZE, movieUrl, genreUrl, POPULAR_BASE_URL, GENRE_BASE_URL } from '../config'
+import { useFetchMovies, basicFetch  } from '../api'
+import { IMAGE_BASE_URL, BACKDROP_SIZE, movieUrl, genreUrl, GENRE_BASE_URL } from '../config'
 import { useModal } from '../utils'
 // components
-import { Hero, Grid, Card, Carousel, Modal, CarouselCard } from '../components'
-import { Featured, PopularMovie, Genre, Movie, MovieRelativeToGenre, GenreResponse, Movies } from '../types/Movie'
+import { Hero, Carousel, Modal, CarouselCard } from '../components'
+import { Featured, PopularMovie, Genre, Movie, GenreResponse, Movies } from '../types/Movie'
 
 type HomeProps = {
   featuredMovie: Featured

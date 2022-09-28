@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router';
 import { useFetchMovies } from '../../../api/fetchHooks'
 import { IMAGE_BASE_URL, THUMB_SIZE } from '../../../config'
-import { Grid, Card } from '../../../components'
+import { GridCard, GridContainer } from '../../../components'
 import { useEffect, useState } from 'react';
 
 
@@ -15,7 +15,7 @@ const Search = () => {
   const id = router.query.name
 
   useEffect(() => {
-    // may need this for initial render?
+    // may need this for initial render
     if (router.isReady) {
       setQuery(id)
     }
@@ -23,23 +23,23 @@ const Search = () => {
 
   return (
     <div className='pt-16 text-white'>
-      <Grid title={`Search Results: ${data?.pages[0].total_results}`}>
+      <GridContainer title={`Search Results: ${data?.pages[0].total_results}`}>
         {data && data.pages
             ? data.pages.map(page =>
                 page.results.map(movie => (
-                  <Link key={movie.id} href={`/movies/${movie.id}`}>
-                    <div className='cursor-pointer '>
-                      <Card
-                        imgUrl={movie.poster_path
-                          ? IMAGE_BASE_URL + THUMB_SIZE + movie.poster_path : '/images/baby-yoda-md.png'}
-                        title={movie.original_title}
-                      />
-                    </div>
-                  </Link>
+                  <GridCard
+                    key={movie.id}
+                    itemId={movie.id}
+                    imgUrl={movie.poster_path
+                      ? IMAGE_BASE_URL + THUMB_SIZE + movie.poster_path : '/images/baby-yoda-md.png'}
+                    title={movie.original_title}
+                    subtitle={movie.tagline}
+                    routeUrl={''}
+                  />
                 ))
               )
             : null}
-      </Grid>
+      </GridContainer>
     </div>
     
   )
