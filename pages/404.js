@@ -10,7 +10,7 @@ const NotFound = () => {
     setTimeout(() => {
       router.push('/')
     }, 10000)
-  }, [])
+  }, [router])
 
   return (
     <div className='container mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center py-4 md:pt-20 xl:py-40'>
