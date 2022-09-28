@@ -97,8 +97,8 @@ export const getStaticProps: GetStaticProps = async context => {
         posterPath: knownForFilm.poster_path,
         backdropPath: knownForFilm.backdrop_path,
         title: knownForFilm.title || knownForFilm.original_title,
-        releaseDate: knownForFilm.release_date,
-        rating: knownForFilm.vote_average,
+        releaseDate: knownForFilm.release_date || null,
+        rating: knownForFilm.vote_average || null,
         synopsis: knownForFilm.overview,
       }
     }
