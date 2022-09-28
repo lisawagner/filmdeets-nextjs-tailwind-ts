@@ -133,6 +133,12 @@ This is the first project where I have used onTouch events for mobile webapps. I
 
 Useful resources: [React Long Press Event](https://stackoverflow.com/questions/48048957/react-long-press-event)
 
+### 1. SerializableError: Error serializing
+Found the isSerializable error a few times with this Nextjs project. A quick solution that worked for this use case was to add " || null" to return items in getStaticProps. Specifically for date format or number format objects.
+
+For further reading on the subject see:
+   - [getServerSideProps cannot be serialized as JSON. Please only return JSON serializable data types](https://github.com/vercel/next.js/issues/11993)
+   - [Error: How to serialize data from getStaticProps : Next.js](https://stackoverflow.com/questions/66106776/error-how-to-serialize-data-from-getstaticprops-next-js)
 
 <!-- Markdown link & img dfn's -->
 [github-img]: https://img.shields.io/github/repo-size/lisawagner/rtk-tailwind-todo?logo=github&style=flat-square
