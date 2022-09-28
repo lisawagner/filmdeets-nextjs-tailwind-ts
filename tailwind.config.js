@@ -38,6 +38,7 @@ module.exports = {
         floating: 'floating 2s infinite',
         growing: 'growing 2s infinite',
         fadeIn: 'fade 4s',
+        fadeOut: 'fade 4s reverse',
       },
 
       colors: {

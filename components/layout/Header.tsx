@@ -41,7 +41,7 @@ const Header = () => {
       <Link href='/'>
         <h1 className='text-red-600 text-2xl md:text-3xl cursor-pointer'>filmClu 2.0</h1>
       </Link>
-      <div className={`invisible md:visible ${hasScrolled }`}>
+      <div className={`invisible md:visible ${hasScrolled ? 'opacity-0' : '' } duration-1000`}>
         <Image width='100' height='20' src='/images/tmdb.svg' alt='tmdb logo' />
       </div>
 
