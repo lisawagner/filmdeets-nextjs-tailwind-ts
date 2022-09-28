@@ -8,6 +8,7 @@ type CarouselProps = {
   infiniteLoop: boolean,
   title: string,
   href: string,
+  hasLink: boolean
 }
 // type predicates
 function isTouchEvent(e: React.TouchEvent | React.MouseEvent):e is React.TouchEvent
@@ -26,7 +27,7 @@ const numberOfSlides = (maxVisibleSlides: number, windowWidth: number) => {
   return 1;
 };
 
-const Carousel = ({children, maxVisibleSlides, infiniteLoop, title, href}: CarouselProps) => {
+const Carousel = ({children, maxVisibleSlides, infiniteLoop, title, href, hasLink }: CarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(infiniteLoop ? maxVisibleSlides : 0)
   const [length, setLength] = useState(children.length)
   
@@ -160,11 +161,15 @@ const Carousel = ({children, maxVisibleSlides, infiniteLoop, title, href}: Carou
         <h2 className=" text-xl text-cyan-300 font-bold">
           {title}
         </h2>
-        <Link href={href} passHref>
+        {hasLink
+          ? <Link href={href} passHref><a className="text-red-600">See more</a></Link>
+          : ''
+        }
+        {/* <Link href={href} passHref>
           <a className="text-red-600">
             See more
           </a>
-        </Link>
+        </Link> */}
         
       </div>
       {/* <h2 className=" text-xl text-cyan-300 font-bold bg-brand-900 w-full h-full py-8 px-4 md:px-8 flex items-center z-10">

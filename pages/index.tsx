@@ -11,7 +11,10 @@ import { Featured, PopularMovie, Genre, Movie, MovieRelativeToGenre, GenreRespon
 type HomeProps = {
   featuredMovie: Featured
   // popularMovies: PopularMovie[]
+  scifiGenre: PopularMovie[]
   actionGenre: PopularMovie[]
+  thrillerGenre: PopularMovie[]
+  comedyGenre: PopularMovie[]
   genres: Genre[]
 }
 
@@ -20,7 +23,7 @@ const CarouselProps = {
   infiniteLoop: false,
 }
 
-const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
+const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, scifiGenre, thrillerGenre, comedyGenre, genres }) => {
   const [query, setQuery] = useState('')
   // @tanstack/react-query to cache movies via useFetchMovies()
   const { data, fetchNextPage, isLoading, isFetching, error } = useFetchMovies(query);
@@ -35,7 +38,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
         <Hero
           imgUrl={featuredMovie.backdropPath
             ? IMAGE_BASE_URL + BACKDROP_SIZE + featuredMovie.backdropPath
-            : "/images/baby-yoda-md.png"}
+            : "/images/baby-yoda-32.png"}
           title={featuredMovie.title}
           text={featuredMovie.overview}
           tagline={featuredMovie.tagline}
@@ -45,8 +48,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
         />
       ) : null}
 
-        {/* TODO: ADD see all button -> links user to all action movies page*/}
-        <Carousel {...CarouselProps} title='Action Movies' href="/movies/genre/28"> 
+      <Carousel {...CarouselProps} title='Action Movies' href="/movies/genre/28" hasLink={true}> 
         {actionGenre.map((actionMovie) => (
           <CarouselCard key={actionMovie.id} movie={actionMovie} onClick={() => handleToggle(actionMovie)}/>
         ))}
@@ -58,42 +60,45 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, genres }) => {
             movie={activeMovie}
           />
         )}
-      
-      {/* <Grid
-        title={'Popular Movies'}
-      >
-        {data && data.pages
-          ? data.pages.map(page =>
-              page.results.map(movie => (
-                <Link key={movie.id} href={`/movies/${movie.id}`}>
-                  <div className='cursor-pointer'>
-                    <Card
-                      imgUrl={movie.poster_path
-                        ? IMAGE_BASE_URL + THUMB_SIZE + movie.poster_path : '/images/baby-yoda-md.png'}
-                      title={movie.original_title}
-                    />
-                  </div>
-                </Link>
-              ))
-            )
-          : null}
-      </Grid> */}
 
-      {/* <Grid title={'Action Movies'}>
-        {actionGenre.map((actionMovie) => {
-          return (
-            <Link key={actionMovie.id} href={`/movies/${actionMovie.id}`}>
-              <div className='cursor-pointer'>
-                <Card
-                  imgUrl={actionMovie.posterPath
-                    ? IMAGE_BASE_URL + THUMB_SIZE + actionMovie.posterPath : '/images/baby-yoda-md.png'}
-                  title={actionMovie.title}
-                />
-              </div>
-            </Link>
-          )
-        })}
-      </Grid> */}
+      <Carousel {...CarouselProps} title='Comedy Movies' href="/movies/genre/35" hasLink={true}> 
+        {comedyGenre.map((comedyMovie) => (
+          <CarouselCard key={comedyMovie.id} movie={comedyMovie} onClick={() => handleToggle(comedyMovie)}/>
+        ))}
+        </Carousel>
+        {isVisible && (
+          <Modal
+            isVisible={isVisible}
+            onClose={() => setIsVisible(!isVisible)}
+            movie={activeMovie}
+          />
+        )}
+
+      <Carousel {...CarouselProps} title='Thriller Movies' href="/movies/genre/53" hasLink={true}> 
+        {thrillerGenre.map((thrillerMovie) => (
+          <CarouselCard key={thrillerMovie.id} movie={thrillerMovie} onClick={() => handleToggle(thrillerMovie)}/>
+        ))}
+        </Carousel>
+        {isVisible && (
+          <Modal
+            isVisible={isVisible}
+            onClose={() => setIsVisible(!isVisible)}
+            movie={activeMovie}
+          />
+        )}
+
+      <Carousel {...CarouselProps} title='Sci Fi Movies' href="/movies/genre/878" hasLink={true}> 
+        {scifiGenre.map((scifiMovie) => (
+          <CarouselCard key={scifiMovie.id} movie={scifiMovie} onClick={() => handleToggle(scifiMovie)}/>
+        ))}
+        </Carousel>
+        {isVisible && (
+          <Modal
+            isVisible={isVisible}
+            onClose={() => setIsVisible(!isVisible)}
+            movie={activeMovie}
+          />
+        )}
 
     </div>
   )
@@ -132,7 +137,6 @@ export const getStaticProps: GetStaticProps = async () => {
   // Action Genre
   const actionGenreEndpoint: string = genreUrl('28')
   const actionGenreResp = await basicFetch<Movies>(actionGenreEndpoint)
-  // console.log("Action Genre: ", actionGenreResp);
 
   const actionGenre = actionGenreResp.results.map(
     (actionMovie) => {
@@ -147,11 +151,68 @@ export const getStaticProps: GetStaticProps = async () => {
       }
     }
   )
+
+  // Action Genre
+  const comedyGenreEndpoint: string = genreUrl('35')
+  const comedyGenreResp = await basicFetch<Movies>(comedyGenreEndpoint)
+
+  const comedyGenre = comedyGenreResp.results.map(
+    (comedyMovie) => {
+      return {
+        id: comedyMovie.id,
+        posterPath: comedyMovie.poster_path,
+        backdropPath: comedyMovie.backdrop_path,
+        title: comedyMovie.title || comedyMovie.original_title,
+        releaseDate: comedyMovie.release_date,
+        rating: comedyMovie.vote_average,
+        synopsis: comedyMovie.overview,
+      }
+    }
+  )
+
+   // Thriller Genre
+   const thrillerGenreEndpoint: string = genreUrl('53')
+   const thrillerGenreResp = await basicFetch<Movies>(thrillerGenreEndpoint)
+ 
+   const thrillerGenre = thrillerGenreResp.results.map(
+     (thrillerMovie) => {
+       return {
+         id: thrillerMovie.id,
+         posterPath: thrillerMovie.poster_path,
+         backdropPath: thrillerMovie.backdrop_path,
+         title: thrillerMovie.title || thrillerMovie.original_title,
+         releaseDate: thrillerMovie.release_date,
+         rating: thrillerMovie.vote_average,
+         synopsis: thrillerMovie.overview,
+       }
+     }
+   )
+   
+   // Scifi Genre
+   const scifiGenreEndpoint: string = genreUrl('878')
+   const scifiGenreResp = await basicFetch<Movies>(scifiGenreEndpoint)
+ 
+   const scifiGenre = scifiGenreResp.results.map(
+     (scifiMovie) => {
+       return {
+         id: scifiMovie.id,
+         posterPath: scifiMovie.poster_path,
+         backdropPath: scifiMovie.backdrop_path,
+         title: scifiMovie.title || scifiMovie.original_title,
+         releaseDate: scifiMovie.release_date,
+         rating: scifiMovie.vote_average,
+         synopsis: scifiMovie.overview,
+       }
+     }
+   )
   
   return {
     props: {
       featuredMovie,
+      comedyGenre,
+      thrillerGenre,
       actionGenre,
+      scifiGenre,
       genres
     },
     revalidate: 60 * 60 * 24 // Re-build page every 24 hours

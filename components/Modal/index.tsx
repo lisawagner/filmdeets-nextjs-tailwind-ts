@@ -28,11 +28,8 @@ const Modal = ({isVisible, onClose, movie, children }: TModalProps) => {
   return createPortal(
     <div onClick={onClose} className='absolute z-40' aria-labelledby="modal-title" role="dialog" aria-modal="true">
       {/* Overlay */}
-      <div className={`fixed inset-0 z-40 bg-brand-900 ${reveal ? 'opacity-70' : 'opacity-0'} transition-opacity duration-300 ease-in-out`}/>
-      {/* <div className={`fixed inset-0 z-40 bg-brand-900 bg-opacity-70 transition-opacity`}/> */}
-
-        <div className={`fixed inset-0 z-40 overflow-y-auto ${reveal ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300 ease-in-out`}>
-        {/* <div className='fixed inset-0 z-40 overflow-y-auto'> */}
+      <div className={`fixed inset-0 z-40 bg-brand-900 opacity-30 fadeIn`}/>
+        <div className={`fixed inset-0 z-40 overflow-y-auto fadeIn`}>
           <div className='flex h-screen max-w-sm mx-auto px-4 justify-center text-center items-center'>
 
             <div className="relative rounded-lg bg-brand-900">
@@ -53,7 +50,7 @@ const Modal = ({isVisible, onClose, movie, children }: TModalProps) => {
               <div className=''>
                 <img
                   src={movie.backdropPath
-                    ? IMAGE_BASE_URL + THUMB_SIZE + movie.backdropPath : '/images/baby-yoda-md.png'}
+                    ? IMAGE_BASE_URL + THUMB_SIZE + movie.backdropPath : '/images/baby-yoda-32.png'}
                   alt='movie'
                   className='rounded-t-lg cursor-pointer w-full pb-6'
                 />
