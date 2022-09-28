@@ -28,7 +28,7 @@ const Modal = ({isVisible, onClose, movie, children }: TModalProps) => {
   return createPortal(
     <div onClick={onClose} className='absolute z-40' aria-labelledby="modal-title" role="dialog" aria-modal="true">
       {/* Overlay */}
-      <div className={`fixed inset-0 z-40 bg-brand-900 opacity-30 fadeIn`}/>
+      <div className={`fixed inset-0 z-40 bg-brand-900 opacity-70 fadeIn`}/>
         <div className={`fixed inset-0 z-40 overflow-y-auto fadeIn`}>
           <div className='flex h-screen max-w-sm mx-auto px-4 justify-center text-center items-center'>
 

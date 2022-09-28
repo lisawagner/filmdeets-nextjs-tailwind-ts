@@ -1,9 +1,8 @@
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useState } from 'react';
 import { RiSearchLine } from 'react-icons/ri'
 import { useRouter } from "next/router";
 // components & hooks
 import SearchReset from './SearchReset'
-
 
 const SearchInput = () => {
   const navigate = useRouter();
@@ -58,6 +57,7 @@ const SearchInput = () => {
           onKeyUp={(e) => e.stopPropagation()}
           onKeyPress={(e) => e.stopPropagation()} 
         />
+    
       </form>
 
       {isFocused

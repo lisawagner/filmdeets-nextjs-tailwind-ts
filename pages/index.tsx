@@ -47,45 +47,26 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, scifiGenre, thr
           rating={featuredMovie.rating}
         />
       ) : null}
+      <div className='pt-10 bg-brand-900 z-50'>
 
+      
       <Carousel {...CarouselProps} title='Action Movies' href="/movies/genre/28" hasLink={true}> 
         {actionGenre.map((actionMovie) => (
           <CarouselCard key={actionMovie.id} movie={actionMovie} onClick={() => handleToggle(actionMovie)}/>
         ))}
         </Carousel>
-        {isVisible && (
-          <Modal
-            isVisible={isVisible}
-            onClose={() => setIsVisible(!isVisible)}
-            movie={activeMovie}
-          />
-        )}
 
       <Carousel {...CarouselProps} title='Comedy Movies' href="/movies/genre/35" hasLink={true}> 
         {comedyGenre.map((comedyMovie) => (
           <CarouselCard key={comedyMovie.id} movie={comedyMovie} onClick={() => handleToggle(comedyMovie)}/>
         ))}
         </Carousel>
-        {isVisible && (
-          <Modal
-            isVisible={isVisible}
-            onClose={() => setIsVisible(!isVisible)}
-            movie={activeMovie}
-          />
-        )}
 
       <Carousel {...CarouselProps} title='Thriller Movies' href="/movies/genre/53" hasLink={true}> 
         {thrillerGenre.map((thrillerMovie) => (
           <CarouselCard key={thrillerMovie.id} movie={thrillerMovie} onClick={() => handleToggle(thrillerMovie)}/>
         ))}
         </Carousel>
-        {isVisible && (
-          <Modal
-            isVisible={isVisible}
-            onClose={() => setIsVisible(!isVisible)}
-            movie={activeMovie}
-          />
-        )}
 
       <Carousel {...CarouselProps} title='Sci Fi Movies' href="/movies/genre/878" hasLink={true}> 
         {scifiGenre.map((scifiMovie) => (
@@ -99,6 +80,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, scifiGenre, thr
             movie={activeMovie}
           />
         )}
+</div>
 
     </div>
   )
@@ -126,13 +108,8 @@ export const getStaticProps: GetStaticProps = async () => {
     rating: movieResp.vote_average
   }
 
-  // TODO: Popular Movies
-  // const getPopularMovies: string = movieUrl(id)
-  // TODO: Top Rated Movies
-  // TODO: Movies by Genre List
   const genreList = await basicFetch<GenreResponse>(GENRE_BASE_URL)
   const genres = genreList.genres // <- gets genre list
-  // console.log("Genres: ", genres); 
   
   // Action Genre
   const actionGenreEndpoint: string = genreUrl('28')
@@ -152,7 +129,7 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   )
 
-  // Action Genre
+  // Comedy Genre
   const comedyGenreEndpoint: string = genreUrl('35')
   const comedyGenreResp = await basicFetch<Movies>(comedyGenreEndpoint)
 
