@@ -4,14 +4,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { RiStarFill } from 'react-icons/ri'
 import { IMAGE_BASE_URL, THUMB_SIZE } from '../../config'
-import { PopularMovie } from '../../types/Movie'
+import { SelectMovie } from '../../types/Movie'
 import { truncateString } from '../../utils/helpers'
 
 type TModalProps = {
   children?: React.ReactNode,
   isVisible?: boolean,
   onClose: () => void,
-  movie: PopularMovie
+  movie: SelectMovie
 }
 
 const Modal = ({isVisible, onClose, movie, children }: TModalProps) => {

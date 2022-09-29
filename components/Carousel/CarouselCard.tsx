@@ -1,9 +1,9 @@
 import { IMAGE_BASE_URL, THUMB_SIZE } from '../../config'
-import { PopularMovie } from '../../types/Movie'
+import { Movie, SelectMovie } from '../../types/Movie'
 import Image from 'next/image';
 
 type TCardProps = {
-  movie: PopularMovie,
+  movie: SelectMovie,
   onClick: () => void,
 }
 

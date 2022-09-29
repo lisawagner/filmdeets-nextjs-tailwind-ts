@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { PopularMovie } from '../types/Movie'
+import { SelectMovie } from '../types/Movie'
 
 export function useModal() {
 	const [isVisible, setIsVisible] = useState<boolean>(false);
-	const [activeMovie, setActiveMovie] = useState<PopularMovie>(
-		{} as PopularMovie
+	const [activeMovie, setActiveMovie] = useState<SelectMovie>(
+		{} as SelectMovie
 	)
 
-	const handleToggle = (movie: PopularMovie) => {
+	const handleToggle = (movie: SelectMovie) => {
 		setIsVisible(!isVisible);
 		setActiveMovie(movie)
 	}

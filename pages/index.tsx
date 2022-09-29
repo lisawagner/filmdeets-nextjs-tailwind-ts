@@ -5,14 +5,14 @@ import { IMAGE_BASE_URL, BACKDROP_SIZE, movieUrl, genreUrl, GENRE_BASE_URL } fro
 import { useModal } from '../utils'
 // components
 import { Hero, Carousel, Modal, CarouselCard } from '../components'
-import { Featured, PopularMovie, Movie, GenreResponse, Movies } from '../types/Movie'
+import { Featured, Movie, SelectMovie, GenreResponse, Movies } from '../types/Movie'
 
 type HomeProps = {
   featuredMovie: Featured
-  scifiGenre: PopularMovie[]
-  actionGenre: PopularMovie[]
-  thrillerGenre: PopularMovie[]
-  comedyGenre: PopularMovie[]
+  scifiGenre: SelectMovie[]
+  actionGenre: SelectMovie[]
+  thrillerGenre: SelectMovie[]
+  comedyGenre: SelectMovie[]
 }
 
 const CarouselProps = {
@@ -25,21 +25,22 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, scifiGenre, thr
   const { handleToggle, isVisible, setIsVisible, activeMovie } = useModal()
   
   return (
-    <div className='relative h-screen lock-screen'>
+    <>
+      <div className='relative h-screen lock-screen'>
+        <Hero
+          imgUrl={featuredMovie.backdropPath
+            ? IMAGE_BASE_URL + BACKDROP_SIZE + featuredMovie.backdropPath
+            : "/images/baby-yoda-32.png"}
+          title={featuredMovie.title}
+          text={featuredMovie.overview}
+          tagline={featuredMovie.tagline}
+          releaseDate={featuredMovie.releaseDate}
+          id={featuredMovie.id}
+          rating={featuredMovie.rating}
+        />
+      </div>
 
-      <Hero
-        imgUrl={featuredMovie.backdropPath
-          ? IMAGE_BASE_URL + BACKDROP_SIZE + featuredMovie.backdropPath
-          : "/images/baby-yoda-32.png"}
-        title={featuredMovie.title}
-        text={featuredMovie.overview}
-        tagline={featuredMovie.tagline}
-        releaseDate={featuredMovie.releaseDate}
-        id={featuredMovie.id}
-        rating={featuredMovie.rating}
-      />
-      
-      <div className='pt-10 bg-brand-900 z-50'>
+      <div className='relative pt-10 bg-brand-900 z-50'>
         <Carousel {...CarouselProps} title='Action Movies' href="/movies/genre/28" hasLink={true}> 
           {actionGenre.map((actionMovie) => (
             <CarouselCard key={actionMovie.id} movie={actionMovie} onClick={() => handleToggle(actionMovie)}/>
@@ -72,7 +73,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, scifiGenre, thr
           )}
       </div>
 
-    </div>
+    </>
   )
 }
 

@@ -7,7 +7,7 @@ import Pill from './Pill';
 import { Crew, Genre } from '../../types/Movie'
 
 type TProps = {
-  thumbUrl: string;
+  // thumbUrl: string;
   backgroundImgUrl: string;
   title: string;
   tagline?: string;
@@ -22,7 +22,7 @@ type TProps = {
 };
 
 const MovieDetails = ({
-  thumbUrl,
+  // thumbUrl,
   backgroundImgUrl,
   genres,
   title,
