@@ -18,6 +18,7 @@ const MoviesByGenre: NextPage<TProps> = ({ genres }) => {
 
   const router = useRouter()
   const { gid } = router.query
+  
 
   useEffect(() => {
     // may need this for initial render
@@ -53,7 +54,7 @@ const MoviesByGenre: NextPage<TProps> = ({ genres }) => {
             )))
         : null}
       </GridContainer>
-      
+
     </div>
   )
 }

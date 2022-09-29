@@ -1,8 +1,8 @@
-import Link from 'next/link'
+
 import { useRouter } from 'next/router';
 import { useFetchMovies } from '../../../api/fetchHooks'
 import { IMAGE_BASE_URL, THUMB_SIZE } from '../../../config'
-import { GridCard, GridContainer } from '../../../components'
+import { GridCard, GridContainer, Spinner } from '../../../components'
 import { useEffect, useState } from 'react';
 
 
@@ -10,7 +10,7 @@ const Search = () => {
   const [query, setQuery] = useState<any | null>(null)
   // @tanstack/react-query to cache movies via useFetchMovies()
   const { data, fetchNextPage, isLoading, isFetching, error } = useFetchMovies(query);
-  
+
   const router = useRouter()
   const id = router.query.name
 
@@ -41,7 +41,6 @@ const Search = () => {
             : null}
       </GridContainer>
     </div>
-    
   )
 }
 export default Search

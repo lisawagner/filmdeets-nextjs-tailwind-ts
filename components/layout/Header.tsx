@@ -1,10 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useScrollYPosition } from '../../utils/useScrollPosition';
 // Components
 import SearchInput from './SearchInput'
-
 
 const Header = () => {
   const [hasScrolled, setHasScrolled] = useState(false)
@@ -16,9 +14,6 @@ const Header = () => {
       setHasScrolled(false)
     }
   }, [])
-  
-  // blue + white "good tron colors"
-  // red/orange/yellow "bad tron/sith" colors
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -39,12 +34,9 @@ const Header = () => {
         <Image width='100' height='20' src='/images/tmdb.svg' alt='tmdb logo' />
       </div>
 
-      <div>
-        <div>
-          <SearchInput />
-        </div>
+      <SearchInput />
+        
 
-      </div>
     </div>
 
   )

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { NextPage, GetStaticProps } from 'next'
-import { useFetchMovies, basicFetch  } from '../api'
+import { basicFetch  } from '../api'
 import { IMAGE_BASE_URL, BACKDROP_SIZE, movieUrl, genreUrl, GENRE_BASE_URL } from '../config'
 import { useModal } from '../utils'
 // components
@@ -9,12 +9,11 @@ import { Featured, PopularMovie, Genre, Movie, GenreResponse, Movies } from '../
 
 type HomeProps = {
   featuredMovie: Featured
-  // popularMovies: PopularMovie[]
   scifiGenre: PopularMovie[]
   actionGenre: PopularMovie[]
   thrillerGenre: PopularMovie[]
   comedyGenre: PopularMovie[]
-  genres: Genre[]
+  // genres: Genre[]
 }
 
 const CarouselProps = {
@@ -22,64 +21,57 @@ const CarouselProps = {
   infiniteLoop: false,
 }
 
-const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, scifiGenre, thrillerGenre, comedyGenre, genres }) => {
-  const [query, setQuery] = useState('')
-  // @tanstack/react-query to cache movies via useFetchMovies()
-  const { data, fetchNextPage, isLoading, isFetching, error } = useFetchMovies(query);
+const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, scifiGenre, thrillerGenre, comedyGenre }) => {
 
   const { handleToggle, isVisible, setIsVisible, activeMovie } = useModal()
-  const [touchPosition, setTouchPosition] = useState<number | null>(null)
   
   return (
     <div className='relative h-screen lock-screen'>
 
-      {data && data.pages ? (     
-        <Hero
-          imgUrl={featuredMovie.backdropPath
-            ? IMAGE_BASE_URL + BACKDROP_SIZE + featuredMovie.backdropPath
-            : "/images/baby-yoda-32.png"}
-          title={featuredMovie.title}
-          text={featuredMovie.overview}
-          tagline={featuredMovie.tagline}
-          releaseDate={featuredMovie.releaseDate}
-          id={featuredMovie.id}
-          rating={featuredMovie.rating}
-        />
-      ) : null}
-      <div className='pt-10 bg-brand-900 z-50'>
-
+      <Hero
+        imgUrl={featuredMovie.backdropPath
+          ? IMAGE_BASE_URL + BACKDROP_SIZE + featuredMovie.backdropPath
+          : "/images/baby-yoda-32.png"}
+        title={featuredMovie.title}
+        text={featuredMovie.overview}
+        tagline={featuredMovie.tagline}
+        releaseDate={featuredMovie.releaseDate}
+        id={featuredMovie.id}
+        rating={featuredMovie.rating}
+      />
       
-      <Carousel {...CarouselProps} title='Action Movies' href="/movies/genre/28" hasLink={true}> 
-        {actionGenre.map((actionMovie) => (
-          <CarouselCard key={actionMovie.id} movie={actionMovie} onClick={() => handleToggle(actionMovie)}/>
-        ))}
-        </Carousel>
+      <div className='pt-10 bg-brand-900 z-50'>
+        <Carousel {...CarouselProps} title='Action Movies' href="/movies/genre/28" hasLink={true}> 
+          {actionGenre.map((actionMovie) => (
+            <CarouselCard key={actionMovie.id} movie={actionMovie} onClick={() => handleToggle(actionMovie)}/>
+          ))}
+          </Carousel>
 
-      <Carousel {...CarouselProps} title='Comedy Movies' href="/movies/genre/35" hasLink={true}> 
-        {comedyGenre.map((comedyMovie) => (
-          <CarouselCard key={comedyMovie.id} movie={comedyMovie} onClick={() => handleToggle(comedyMovie)}/>
-        ))}
-        </Carousel>
+        <Carousel {...CarouselProps} title='Comedy Movies' href="/movies/genre/35" hasLink={true}> 
+          {comedyGenre.map((comedyMovie) => (
+            <CarouselCard key={comedyMovie.id} movie={comedyMovie} onClick={() => handleToggle(comedyMovie)}/>
+          ))}
+          </Carousel>
 
-      <Carousel {...CarouselProps} title='Thriller Movies' href="/movies/genre/53" hasLink={true}> 
-        {thrillerGenre.map((thrillerMovie) => (
-          <CarouselCard key={thrillerMovie.id} movie={thrillerMovie} onClick={() => handleToggle(thrillerMovie)}/>
-        ))}
-        </Carousel>
+        <Carousel {...CarouselProps} title='Thriller Movies' href="/movies/genre/53" hasLink={true}> 
+          {thrillerGenre.map((thrillerMovie) => (
+            <CarouselCard key={thrillerMovie.id} movie={thrillerMovie} onClick={() => handleToggle(thrillerMovie)}/>
+          ))}
+          </Carousel>
 
-      <Carousel {...CarouselProps} title='Sci Fi Movies' href="/movies/genre/878" hasLink={true}> 
-        {scifiGenre.map((scifiMovie) => (
-          <CarouselCard key={scifiMovie.id} movie={scifiMovie} onClick={() => handleToggle(scifiMovie)}/>
-        ))}
-        </Carousel>
-        {isVisible && (
-          <Modal
-            isVisible={isVisible}
-            onClose={() => setIsVisible(!isVisible)}
-            movie={activeMovie}
-          />
-        )}
-</div>
+        <Carousel {...CarouselProps} title='Sci Fi Movies' href="/movies/genre/878" hasLink={true}> 
+          {scifiGenre.map((scifiMovie) => (
+            <CarouselCard key={scifiMovie.id} movie={scifiMovie} onClick={() => handleToggle(scifiMovie)}/>
+          ))}
+          </Carousel>
+          {isVisible && (
+            <Modal
+              isVisible={isVisible}
+              onClose={() => setIsVisible(!isVisible)}
+              movie={activeMovie}
+            />
+          )}
+      </div>
 
     </div>
   )
