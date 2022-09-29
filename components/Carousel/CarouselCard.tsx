@@ -21,7 +21,8 @@ const CarouselCard = ({movie, onClick}: TCardProps) => {
         width={342}
         height={513}
         src={movie.posterPath
-          ? IMAGE_BASE_URL + THUMB_SIZE + movie.posterPath : '/images/baby-yoda-32.png'}
+          ? IMAGE_BASE_URL + THUMB_SIZE + movie.posterPath
+          : '/images/baby-yoda-32.png' }
         alt='movie'
         priority={true}
         className='rounded-md bg-brand-900 cursor-pointer'
