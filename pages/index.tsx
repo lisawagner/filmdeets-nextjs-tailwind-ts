@@ -5,7 +5,7 @@ import { IMAGE_BASE_URL, BACKDROP_SIZE, movieUrl, genreUrl, GENRE_BASE_URL } fro
 import { useModal } from '../utils'
 // components
 import { Hero, Carousel, Modal, CarouselCard } from '../components'
-import { Featured, PopularMovie, Genre, Movie, GenreResponse, Movies } from '../types/Movie'
+import { Featured, PopularMovie, Movie, GenreResponse, Movies } from '../types/Movie'
 
 type HomeProps = {
   featuredMovie: Featured
@@ -13,7 +13,6 @@ type HomeProps = {
   actionGenre: PopularMovie[]
   thrillerGenre: PopularMovie[]
   comedyGenre: PopularMovie[]
-  // genres: Genre[]
 }
 
 const CarouselProps = {

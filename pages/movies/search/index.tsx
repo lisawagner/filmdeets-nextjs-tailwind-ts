@@ -1,15 +1,27 @@
-
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useFetchMovies } from '../../../api/fetchHooks'
 import { IMAGE_BASE_URL, THUMB_SIZE } from '../../../config'
 import { GridCard, GridContainer, Spinner } from '../../../components'
-import { useEffect, useState } from 'react';
+import { useIntersectionObserver } from '../../../utils/useIntersectionObserver'
 
 
 const Search = () => {
   const [query, setQuery] = useState<any | null>(null)
   // @tanstack/react-query to cache movies via useFetchMovies()
-  const { data, fetchNextPage, isLoading, isFetching, error } = useFetchMovies(query);
+  const { data, isFetchingNextPage, fetchNextPage, hasNextPage, isSuccess, isLoading, isFetching, error } = useFetchMovies(query);
+
+  // Is user intersecting w/ end of Page? If so, then fetch next page
+  const onIntersect: IntersectionObserverCallback = ([{ isIntersecting }]) => {
+    isIntersecting && fetchNextPage()
+  }
+
+  // set an intercept target to observe
+  const { setTarget } = useIntersectionObserver({
+    onIntersect,
+    enabled: !!hasNextPage,
+  })
+
 
   const router = useRouter()
   const id = router.query.name
@@ -22,9 +34,10 @@ const Search = () => {
   }, [router.isReady, id])
 
   return (
+
     <div className='pt-16 text-white'>
       <GridContainer title={`Search Results: ${data?.pages[0].total_results}`}>
-        {data && data.pages
+        {isSuccess && data && data.pages
             ? data.pages.map(page =>
                 page.results.map(movie => (
                   <GridCard
@@ -40,7 +53,35 @@ const Search = () => {
               )
             : null}
       </GridContainer>
+      <div ref={setTarget}>{isFetchingNextPage ? "Loading more..." : ""}</div>
+      {isLoading && <div className='text-cyan-400 flex items-center justify-center my-11'>Loading ! ❤️</div>}
+      {!hasNextPage && !isLoading && (
+        <div className='text-cyan-400 flex justify-center items-center my-11 mx-auto'>
+          Congrats! You scrolled to the end of your search. You rock! 🤘
+        </div>
+      )}
+
     </div>
+
+    // <div className='pt-16 text-white'>
+    //   <GridContainer title={`Search Results: ${data?.pages[0].total_results}`}>
+    //     {data && data.pages
+    //         ? data.pages.map(page =>
+    //             page.results.map(movie => (
+    //               <GridCard
+    //                 key={movie.id}
+    //                 itemId={movie.id}
+    //                 imgUrl={movie.poster_path
+    //                   ? IMAGE_BASE_URL + THUMB_SIZE + movie.poster_path : '/images/baby-yoda-md.png'}
+    //                 title={movie.original_title}
+    //                 subtitle={movie.tagline}
+    //                 routeUrl={''}
+    //               />
+    //             ))
+    //           )
+    //         : null}
+    //   </GridContainer>
+    // </div>
   )
 }
 export default Search
