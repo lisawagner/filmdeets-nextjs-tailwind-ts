@@ -35,7 +35,7 @@ const Search = () => {
 
   return (
 
-    <div className='pt-16 text-white'>
+    <div className='py-16 mb-10 text-white'>
       <GridContainer title={query ? `Search Results: ${data?.pages[0].total_results}` : 'Top Rated Movies by TMDB Member Votes'}>
       {/* <GridContainer title={`Search Results: ${data?.pages[0].total_results}`}> */}
         {isSuccess && data && data.pages
@@ -63,26 +63,6 @@ const Search = () => {
       )}
 
     </div>
-
-    // <div className='pt-16 text-white'>
-    //   <GridContainer title={`Search Results: ${data?.pages[0].total_results}`}>
-    //     {data && data.pages
-    //         ? data.pages.map(page =>
-    //             page.results.map(movie => (
-    //               <GridCard
-    //                 key={movie.id}
-    //                 itemId={movie.id}
-    //                 imgUrl={movie.poster_path
-    //                   ? IMAGE_BASE_URL + THUMB_SIZE + movie.poster_path : '/images/baby-yoda-md.png'}
-    //                 title={movie.original_title}
-    //                 subtitle={movie.tagline}
-    //                 routeUrl={''}
-    //               />
-    //             ))
-    //           )
-    //         : null}
-    //   </GridContainer>
-    // </div>
   )
 }
 export default Search

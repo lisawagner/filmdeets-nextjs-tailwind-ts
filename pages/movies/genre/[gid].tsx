@@ -45,6 +45,9 @@ const MoviesByGenre: NextPage<TProps> = ({ genres }) => {
       }
     })
   }, [genres, gid])
+
+  console.log("Genre Data: ", data);
+  
   
   return (
     <div className='pt-10'>
