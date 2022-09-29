@@ -1,5 +1,5 @@
 // API Urls
-import { SEARCH_BASE_URL, POPULAR_BASE_URL } from '../../config';
+import { SEARCH_BASE_URL, TOP_RATED_BASE_URL } from '../../config';
 // Basic fetch function
 import { basicFetch } from '../../api/fetchFunctions';
 // Types
@@ -15,7 +15,7 @@ export default async function handler(
   // if user searching, use search url, else use popular url
     const endpoint = search
      ? `${SEARCH_BASE_URL}${search}&page=${page}`
-     : `${POPULAR_BASE_URL}&page=${page}`;
+     : `${TOP_RATED_BASE_URL}&page=${page}`;
 
     const data = await basicFetch<Movies>(endpoint);
 

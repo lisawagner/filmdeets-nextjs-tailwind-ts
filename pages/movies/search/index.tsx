@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useFetchMovies } from '../../../api/fetchHooks'
 import { IMAGE_BASE_URL, THUMB_SIZE } from '../../../config'
-import { GridCard, GridContainer, Spinner } from '../../../components'
+import { GridCard, GridContainer } from '../../../components'
 import { useIntersectionObserver } from '../../../utils/useIntersectionObserver'
 
 
@@ -36,7 +36,8 @@ const Search = () => {
   return (
 
     <div className='pt-16 text-white'>
-      <GridContainer title={`Search Results: ${data?.pages[0].total_results}`}>
+      <GridContainer title={query ? `Search Results: ${data?.pages[0].total_results}` : 'Top Rated Movies by TMDB Member Votes'}>
+      {/* <GridContainer title={`Search Results: ${data?.pages[0].total_results}`}> */}
         {isSuccess && data && data.pages
             ? data.pages.map(page =>
                 page.results.map(movie => (
