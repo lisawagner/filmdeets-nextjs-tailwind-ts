@@ -3,6 +3,7 @@ import Link from 'next/link';
 // Helpers
 import { truncateString } from '../utils/helpers';
 // Custom styles
+// import styles from '../styles/Hero.module.css'
 import { RiStarFill } from 'react-icons/ri'
 
 type Props = {
