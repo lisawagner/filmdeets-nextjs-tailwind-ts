@@ -4,7 +4,7 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { peopleUrl, knownForUrl, IMAGE_BASE_URL, POSTER_SIZE } from '../../../config'
 import { basicFetch } from '../../../api'
 import { Artist, ArtistDetail } from '../../../types/Artist'
-import { Movie, SelectMovie } from '../../../types/Movie'
+import { SelectMovie } from '../../../types/Movie'
 import { CarouselCard, Carousel, Modal } from '../../../components'
 import { useModal } from '../../../utils'
 
