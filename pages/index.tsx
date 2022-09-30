@@ -40,7 +40,7 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, scifiGenre, thr
         />
       </div>
 
-      <div className='relative pt-10 bg-brand-900 z-50'>
+      <div className='relative pt-10 bg-brand-900 z-30'>
         <Carousel {...CarouselProps} title='Action Movies' href="/movies/genre/28" hasLink={true}> 
           {actionGenre.map((actionMovie) => (
             <CarouselCard key={actionMovie.id} movie={actionMovie} onClick={() => handleToggle(actionMovie)}/>
@@ -114,7 +114,7 @@ export const getStaticProps: GetStaticProps = async () => {
         backdropPath: actionMovie.backdrop_path,
         title: actionMovie.title || actionMovie.original_title,
         releaseDate: actionMovie.release_date,
-        rating: actionMovie.vote_average,
+        rating: actionMovie.vote_average || null,
         synopsis: actionMovie.overview,
       }
     }
@@ -132,7 +132,7 @@ export const getStaticProps: GetStaticProps = async () => {
         backdropPath: comedyMovie.backdrop_path,
         title: comedyMovie.title || comedyMovie.original_title,
         releaseDate: comedyMovie.release_date,
-        rating: comedyMovie.vote_average,
+        rating: comedyMovie.vote_average  || null,
         synopsis: comedyMovie.overview,
       }
     }
@@ -168,7 +168,7 @@ export const getStaticProps: GetStaticProps = async () => {
          backdropPath: scifiMovie.backdrop_path,
          title: scifiMovie.title || scifiMovie.original_title,
          releaseDate: scifiMovie.release_date,
-         rating: scifiMovie.vote_average,
+         rating: scifiMovie.vote_average  || null,
          synopsis: scifiMovie.overview,
        }
      }

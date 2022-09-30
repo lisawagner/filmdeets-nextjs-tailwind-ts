@@ -154,9 +154,9 @@ const Carousel = ({children, maxVisibleSlides, infiniteLoop, title, href, hasLin
   }
 
   return (
-    <div className="w-full flex flex-col">
+    <div className="relative w-full flex flex-col">
       <div className="bg-brand-900 w-full h-full py-4 px-4 md:px-8 flex items-center justify-between">
-        <h2 className=" text-xl text-cyan-300 font-bold">
+        <h2 className=" text-2xl text-cyan-300">
           {title}
         </h2>
         {hasLink
@@ -165,12 +165,12 @@ const Carousel = ({children, maxVisibleSlides, infiniteLoop, title, href, hasLin
         }
         
       </div>
-      <div className="w-full flex relative">
+      <div className="w-full flex">
         {(isRepeating || currentIndex > 0) &&
           <CarouselButton onClick={prev} className="left-arrow" isPrev={isPrev}/>
         }
           <div
-            className="w-full h-full overflow-hidden  bg-brand-900 pb-24 py-4"
+            className="w-full h-full overflow-hidden  bg-brand-900 pb-11 py-4"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
           >

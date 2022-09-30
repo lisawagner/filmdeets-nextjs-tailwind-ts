@@ -28,49 +28,48 @@ const Modal = ({isVisible, onClose, movie, children }: TModalProps) => {
   return createPortal(
     <div onClick={onClose} className='absolute' aria-labelledby="modal-title" role="dialog" aria-modal="true">
       {/* Overlay */}
-      <div className={`fixed inset-0 bg-brand-900 opacity-70 fadeIn`}/>
-        <div className={`fixed inset-0 overflow-y-auto fadeIn`}>
-          <div className='flex h-screen max-w-sm mx-auto px-4 justify-center text-center items-center'>
+      <div className={`fixed inset-0 bg-brand-900 opacity-70 z-40 fadeIn`}/>
+        <div className={`fixed inset-0 overflow-y-auto fadeIn z-50`}>
+          <div className='flex h-screen max-w-sm mx-auto justify-center text-center items-center px-2'>
+          {/* <div className='flex h-screen max-w-sm mx-auto px-4 justify-center text-center items-center'> */}
 
             <div className="relative rounded-lg bg-brand-900">
+            {/* <div className="relative rounded-lg bg-brand-900"> */}
 
-              {/* <Image
+              <Image
                 placeholder='blur'
                 blurDataURL='/images/placeholder.png'
                 width={342}
                 height={192}
+                layout='responsive'
                 src={movie.backdropPath
-                  ? IMAGE_BASE_URL + THUMB_SIZE + movie.backdropPath : '/images/baby-yoda-md.png'}
+                  ? IMAGE_BASE_URL + THUMB_SIZE + movie.backdropPath : '/images/kylo-sm.png'}
                 alt='movie'
                 priority={true}
                 className='rounded-t-lg cursor-pointer w-full pb-6'
-              /> */}
-              <picture>
+              />
+              {/* <picture>
                 <source
                   srcSet={movie.backdropPath
-                    ? IMAGE_BASE_URL + THUMB_SIZE + movie.backdropPath : '/images/baby-yoda-32.png'}
+                    ? IMAGE_BASE_URL + THUMB_SIZE + movie.backdropPath : '/images/kylo-sm.png'}
                   type="image/webp"
                   />
                 <img
                   src={movie.backdropPath
-                    ? IMAGE_BASE_URL + THUMB_SIZE + movie.backdropPath : '/images/baby-yoda-32.png'}
+                    ? IMAGE_BASE_URL + THUMB_SIZE + movie.backdropPath : '/images/kylo-sm.png'}
                   alt='movie'
                   className='rounded-t-lg cursor-pointer w-full pb-6'
                 />
-              </picture>
-              {/* <img
-                src={movie.backdropPath
-                  ? IMAGE_BASE_URL + THUMB_SIZE + movie.backdropPath : '/images/baby-yoda-32.png'}
-                alt='movie'
-                className='rounded-t-lg cursor-pointer w-full pb-6'
-              /> */}
+              </picture> */}
 
               <div className='p-4 justify-start text-left'>
                 <div className='relative text-cyan-300 text-lg'>{movie.title}</div>
                 <p className='text-gray-400 mt-1 text-xs'>Released | {movie.releaseDate}</p>
                 
                 <div className='my-2 flex items-center gap-3'>
-                  <div className='text-sm flex items-center gap-1 border font-bold rounded bg-cyan-500 text-black border-cyan-400 py-1 px-2'><RiStarFill />{movie.rating.toFixed(1)}</div>
+                  <div className='text-sm flex items-center gap-1 border font-bold rounded bg-cyan-500 text-black border-cyan-400 py-1 px-2'><RiStarFill />
+                  {!movie.rating ? '0' : `${movie.rating.toFixed(1)}`}
+                  </div>
                   <Link href={`/movies/${movie.id}`}>
                     <button className='text-sm border rounded text-cyan-400 border-cyan-300 py-1 px-2 hover:text-cyan-300 hover:neon-shadow duration-200'>Details</button>
                   </Link>
