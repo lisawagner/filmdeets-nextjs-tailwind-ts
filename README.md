@@ -111,6 +111,7 @@ Distributed under the XYZ license. See ``LICENSE`` for more information.
 * [React Portals](https://reactjs.org/docs/portals.html) - for Modal
 * Confluence link:
 * [Baby Yoda](https://freepngimg.com/png/99068-cute-star-wars-photos-baby-yoda/download) from freepngimg.com
+* [Kylo Ren](https://freepngimg.com/png/85568-star-kylo-character-darth-wars-fictional-ii) from freepngimg.com
 * [Popcorn icon by Icons8](https://icons8.com/icons/set/popcorn)
 
 ## :books: Learning Resources
