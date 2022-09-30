@@ -1,5 +1,5 @@
-# Project Title
-> Short blurb about what your product does.
+# filmClu 2.0
+> Discover movies to watch using the excellent TMDB API.
 
 [![Netlify][netlify-img]][netlify-url]
 [![GitHub repo size][github-img]][github-url]
@@ -7,7 +7,7 @@
 
 <!-- Badges to Add: Netlify build, twitter, license? -->
 
-_One to two paragraph statement about your product and what it does._
+_With filmClue 2.0, you can search for movies and check out their details. As an added bonus, each film page includes links to cast bio information, so you can learn all about your favorites._
 
 <details>
 <summary>Application Snapshot</summary>
@@ -21,23 +21,24 @@ _One to two paragraph statement about your product and what it does._
 
 ## Features
 
-_Users can do a whole bunch of cool things. This app is:_
-- Lightweight (≈3kB), zero dependencies 📦
-- Works with React v15 onwards
-- Supports **mouse** and **touch** events
-- Support for device tilting (**gyroscope**)
+- Movie search bar
+- Carousel slider with film cards and Modal pop ups
+- Supports **mouse** and **touch** events (tested via emulator. TODO: test live)
+- Film detail pages with movie informmation and cast member links
+- Cast member pages with bio and other films they are known for
+- Infinite scrolling
 
 ### [Demo](https://friendly-redux-shopping-cart.netlify.app/)
 
 ### Technology
 
-  1. Reactjs
-  2. Redux Toolkit
-  3. Axios
-  4. TailwindCSS
-  5. Netlify Deployment
+  1. Nextjs
+  2. Typescript
+  3. TailwindCSS
+  4. @Tanstack/React-Query
+  5. Vercel Deployment
 
-### :lady_beetle: Bugs and Known Issues
+<!-- ### :lady_beetle: Bugs and Known Issues
 
 React v18 Strict Mode causes Redux to run 2x when component mounts for the first time, resulting in all records duped on the frontend. I tried unsuccessfully to create a workaround. Options for now are:
   - Don't use Strict Mode
@@ -45,7 +46,7 @@ React v18 Strict Mode causes Redux to run 2x when component mounts for the first
 
 Possible FIX: load the API posts data immediately when the app loads.
 
-   :heavy_check_mark: `store.dispatch(fetchPosts())` added to index.js
+   :heavy_check_mark: `store.dispatch(fetchPosts())` added to index.js -->
 
 ## Getting Started
 
@@ -97,34 +98,30 @@ It is a good idea to test your build by serving it on your localhost. Once you a
 
 For a basic deploy, you can simply drag and drop the build folder onto your Netlify Sites directory. See [Get started with Netlify](https://docs.netlify.com/get-started/) for details.
 
-## Meta
+<!-- ## Meta
 
 Your Name – [@YourTwitter](https://twitter.com/dbader_org) – YourEmail@example.com
 
 Distributed under the XYZ license. See ``LICENSE`` for more information.
 
-[https://github.com/yourname/github-link](https://github.com/dbader/)
+[https://github.com/yourname/github-link](https://github.com/dbader/) -->
 
 
 ## Additional Documentation and Acknowledgments
 
 * [React Portals](https://reactjs.org/docs/portals.html) - for Modal
-* Confluence link:
 * [Baby Yoda](https://freepngimg.com/png/99068-cute-star-wars-photos-baby-yoda/download) from freepngimg.com
 * [Kylo Ren](https://freepngimg.com/png/85568-star-kylo-character-darth-wars-fictional-ii) from freepngimg.com
 * [Popcorn icon by Icons8](https://icons8.com/icons/set/popcorn)
 
 ## :books: Learning Resources
 
-Tutorial
-   - [CRUD Operations with React and Redux Toolkit](https://www.youtube.com/watch?v=SgnlgEEkqSo) by Cand Dev
+Infinite Scroll
+   - [Load More Infinite Scroll](https://codesandbox.io/s/github/tannerlinsley/react-query/tree/1fc7ed08d18a5fbcc0c4c84525db5d02ff1cada2/examples/load-more-infinite-scroll?file=/hooks/useIntersectionObserver.js) by Tanner Linsley
+   - [Infinite-Scroll](https://github.com/rara-record/infinite-scroll) by Rara-Record
 
-Layouts with React Router 6
-   - [React Router v6 Shared layouts](https://stackoverflow.com/questions/70236929/react-router-v6-shared-layouts)
-   - [React Router Example](https://stackblitz.com/github/remix-run/react-router/tree/main/examples/basic?file=src%2FApp.tsx)
-
-Use of Index Files
-   - [How do index.js files work in React component directories?](https://stackoverflow.com/questions/44092341/how-do-index-js-files-work-in-react-component-directories)
+NextJS
+   - [Intermediate React with NextJS](https://www.youtube.com/watch?v=Tdp_S_72mSI) by Weibenfalk
 
 
 ## :memo: Notes
@@ -134,7 +131,7 @@ This is the first project where I have used onTouch events for mobile webapps. I
 
 Useful resources: [React Long Press Event](https://stackoverflow.com/questions/48048957/react-long-press-event)
 
-### 1. SerializableError: Error serializing
+### 2. SerializableError: Error serializing
 Found the isSerializable error a few times with this Nextjs project. A quick solution that worked for this use case was to add " || null" to return items in getStaticProps. Specifically for date format or number format objects.
 
 For further reading on the subject see:
