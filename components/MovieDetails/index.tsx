@@ -1,28 +1,26 @@
-import Image from 'next/image';
+import Image from 'next/image'
 // Helpers
-import { calcTime, convertMoney } from '../../utils/helpers';
+import { calcTime, convertMoney } from '../../utils/helpers'
 // Components
-import Pill from './Pill';
+import Pill from './Pill'
 // Types
 import { Crew, Genre } from '../../types/Movie'
 
 type TProps = {
-  // thumbUrl: string;
-  backgroundImgUrl: string;
-  title: string;
-  tagline?: string;
-  year: string;
-  summary: string;
-  rating: number;
-  directors: Crew[];
-  time: number;
-  budget: number;
-  revenue: number;
-  genres?: Genre[];
+  backgroundImgUrl: string
+  title: string
+  tagline?: string
+  year: string
+  summary: string
+  rating: number
+  directors: Crew[]
+  time: number
+  budget: number
+  revenue: number
+  genres?: Genre[]
 };
 
 const MovieDetails = ({
-  // thumbUrl,
   backgroundImgUrl,
   genres,
   title,
@@ -63,7 +61,7 @@ const MovieDetails = ({
         </h2>
 
         <div className='text-gray-300 mt-2 text-sm'>
-          <span>{year} <span className='text-cyan-500 font-extrabold text-lg'>|</span>{' '}</span>
+          <span>{!year ? 'No Release Data' : `${year}`} <span className='text-cyan-500 font-extrabold text-lg'>|</span>{' '}</span>
           <span>{`${calcTime(time)}`} <span className='text-cyan-500 font-extrabold text-lg'>|</span>{' '}</span>
           {genres?.map((genre, index) => {
             const isEndofArray = index === genres.length - 1
@@ -78,7 +76,9 @@ const MovieDetails = ({
         </div>
 
         <div className='text-cyan-400 text-3xl md:text-4xl xl:text-5xl font-bold text-shadow-md uppercase tracking-wide my-3'>
-          {rating.toFixed(2)}
+          {!rating ? '0/10' : `${rating.toFixed(2)}`}
+          {/* {rating.toFixed(2)} */}
+          {/*  {!movie.rating ? '0' : `${movie.rating.toFixed(1)}`} */}
         </div>
         
         <div className='w-full text-sm md:max-w-[70%] text-gray-200 text-shadow-md mt-6'>

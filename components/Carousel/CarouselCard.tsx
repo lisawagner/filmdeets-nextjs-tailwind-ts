@@ -1,5 +1,5 @@
 import { IMAGE_BASE_URL, THUMB_SIZE } from '../../config'
-import { Movie, SelectMovie } from '../../types/Movie'
+import { SelectMovie } from '../../types/Movie'
 import Image from 'next/image';
 
 type TCardProps = {

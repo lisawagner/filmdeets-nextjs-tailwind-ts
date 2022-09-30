@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import Image from 'next/image';
+import Image from 'next/image'
 
 export default function Custom500() {
   const router = useRouter()
@@ -22,5 +22,4 @@ export default function Custom500() {
 
     </div>
   )
-
 }

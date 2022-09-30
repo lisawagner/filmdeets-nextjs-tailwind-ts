@@ -8,13 +8,12 @@ import { SelectMovie } from '../../types/Movie'
 import { truncateString } from '../../utils/helpers'
 
 type TModalProps = {
-  children?: React.ReactNode,
   isVisible?: boolean,
   onClose: () => void,
   movie: SelectMovie
 }
 
-const Modal = ({isVisible, onClose, movie, children }: TModalProps) => {
+const Modal = ({isVisible, onClose, movie }: TModalProps) => {
   const [reveal, setReveal] = useState(false)
 
   useEffect(() => {
@@ -64,7 +63,10 @@ const Modal = ({isVisible, onClose, movie, children }: TModalProps) => {
 
               <div className='p-4 justify-start text-left'>
                 <div className='relative text-cyan-300 text-lg'>{movie.title}</div>
-                <p className='text-gray-400 mt-1 text-xs'>Released | {movie.releaseDate}</p>
+                <p className='text-gray-400 mt-1 text-xs'>
+                  Released | {!movie.releaseDate ? 'Release Data Unknown' : `${movie.releaseDate}`}
+                  {/* Released | {movie.releaseDate} */}
+                </p>
                 
                 <div className='my-2 flex items-center gap-3'>
                   <div className='text-sm flex items-center gap-1 border font-bold rounded bg-cyan-500 text-black border-cyan-400 py-1 px-2'><RiStarFill />
@@ -79,7 +81,6 @@ const Modal = ({isVisible, onClose, movie, children }: TModalProps) => {
                 </p>
               </div>
 
-              
             </div> 
           </div>
         </div>
@@ -89,20 +90,3 @@ const Modal = ({isVisible, onClose, movie, children }: TModalProps) => {
   )
 }
 export default Modal
-
-        // overlay
-        // <div className={`fixed inset-0 z-10 p-8 text-white bg-gray-600/90 $`}>
-        //   {/* modal container */}
-        //   <div className="relative w-full max-w-sm mx-auto mt-8">
-        //     <button
-        //       className="absolute -right-2 flex justify-center rounded-full h-8 w-8 bg-gray-600 cursor-pointer shadow-xl"
-        //       onClick={() => onClose()}
-        //     >
-        //       <span className="text-2xl leading-7 select-none">&times;</span>
-        //     </button>
-        //     {/* modal content */}
-        //     <div className="overflow-hidden bg-gray-800 rounded shadow-xl">
-        //       {children}
-        //     </div>
-        //   </div>
-        // </div>

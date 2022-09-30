@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import { RiSearchLine } from 'react-icons/ri'
-import { useRouter } from "next/router";
+import { useRouter } from "next/router"
 // components & hooks
 import SearchReset from './SearchReset'
 
 const SearchInput = () => {
-  const navigate = useRouter();
+  const navigate = useRouter()
   const [inputVal, setInputVal] = useState("")
   const [isFocused, setIsFocused] = useState(false)
   const [hasInput, setHasInput] = useState(false)
@@ -31,7 +31,7 @@ const SearchInput = () => {
     })
 
     setInputVal('')
-  };
+  }
 
   const handleInputReset = (e: React.MouseEvent<HTMLButtonElement>) => {
     setInputVal('')

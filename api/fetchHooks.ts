@@ -1,9 +1,8 @@
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query'
 // Fetch function
-import { searchMovies, getGenres } from './fetchFunctions';
+import { searchMovies, getGenres } from './fetchFunctions'
 // Types
-import { Movies } from '../types/Movie';
-// import { movieUrl } from '../config';
+import { Movies } from '../types/Movie'
 
 export const useFetchMovies = (search: string) => {
   // fetches first movie page initially, then more as pageParam increments
@@ -12,16 +11,16 @@ export const useFetchMovies = (search: string) => {
     ({ pageParam = 1 }) => searchMovies(search, pageParam), {
       getNextPageParam: (lastPage: Movies) => {
         if (lastPage.page < lastPage.total_pages) {
-          return lastPage.page + 1;
+          return lastPage.page + 1
         }
 
-        return undefined;
+        return undefined
       },
       // Don't refetch the data each time the user leaves the window!
       refetchOnWindowFocus: false
     }
-  );
-};
+  )
+}
 
 export const useFetchGenres = (genre: string) => {
   // fetches first movie page initially, then more as pageParam increments
@@ -30,17 +29,13 @@ export const useFetchGenres = (genre: string) => {
     ({ pageParam = 1 }) => getGenres(genre, pageParam), {
       getNextPageParam: (lastPage: Movies) => {
         if (lastPage.page < lastPage.total_pages) {
-          return lastPage.page + 1;
+          return lastPage.page + 1
         }
 
-        return undefined;
+        return undefined
       },
       // Don't refetch the data each time the user leaves the window!
       refetchOnWindowFocus: false
     }
-  );
-};
-
-// export const staticMovie = (id: string) => {
-//   return movieUrl(id)
-// }
+  )
+}

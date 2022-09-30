@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
-import { useFetchGenres, basicFetch } from '../../../api';
-import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { useFetchGenres, basicFetch } from '../../../api'
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
-import { GridCard, GridContainer } from '../../../components';
+import { GridCard, GridContainer } from '../../../components'
 import { IMAGE_BASE_URL, THUMB_SIZE, GENRE_BASE_URL } from '../../../config'
-import { GenreResponse, Genre } from '../../../types/Movie';
+import { GenreResponse, Genre } from '../../../types/Movie'
 import { useIntersectionObserver } from '../../../utils/useIntersectionObserver'
 
 type TProps = {
@@ -55,7 +55,6 @@ const MoviesByGenre: NextPage<TProps> = ({ genres }) => {
         {isSuccess && data && data.pages
           ? data.pages.map(page => 
             page.results.map(movie => (
-
               <GridCard
                 key={movie.id}
                 itemId={movie.id}
@@ -80,7 +79,7 @@ const MoviesByGenre: NextPage<TProps> = ({ genres }) => {
 }
 export default MoviesByGenre
 
-export const getStaticProps: GetStaticProps = async (gid) => {
+export const getStaticProps: GetStaticProps = async () => {
 
   const genreList = await basicFetch<GenreResponse>(GENRE_BASE_URL)
   const genres = genreList.genres // <- gets genre list

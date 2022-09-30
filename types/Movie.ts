@@ -1,9 +1,9 @@
 // MovieResponse
 export type Movies = {
-  page: number;
-  results: Movie[];
-  total_pages: number;
-  total_results: number;
+  page: number
+  results: Movie[]
+  total_pages: number
+  total_results: number
 };
 
 export type SelectMovie = {
@@ -86,14 +86,3 @@ export type Featured = {
   releaseDate: string
   rating: number
 }
-
-// export type PopularMovie = {
-//   id: number
-//   poster_path: string
-//   backdrop_path: string
-//   title: string
-//   releaseDate: string
-//   rating: number
-//   synopsis: string
-//   genres: Genre[]
-// }

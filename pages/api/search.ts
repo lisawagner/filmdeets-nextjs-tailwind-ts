@@ -1,10 +1,10 @@
 // API Urls
-import { SEARCH_BASE_URL, TOP_RATED_BASE_URL } from '../../config';
+import { SEARCH_BASE_URL, TOP_RATED_BASE_URL } from '../../config'
 // Basic fetch function
-import { basicFetch } from '../../api/fetchFunctions';
+import { basicFetch } from '../../api/fetchFunctions'
 // Types
-import type { NextApiRequest, NextApiResponse } from 'next';
-import type { Movies } from '../../types/Movie';
+import type { NextApiRequest, NextApiResponse } from 'next'
+import type { Movies } from '../../types/Movie'
 
 export default async function handler(
   req: NextApiRequest,
@@ -15,11 +15,11 @@ export default async function handler(
   // if user searching, use search url, else use popular url
     const endpoint = search
      ? `${SEARCH_BASE_URL}${search}&page=${page}`
-     : `${TOP_RATED_BASE_URL}&page=${page}`;
+     : `${TOP_RATED_BASE_URL}&page=${page}`
 
-    const data = await basicFetch<Movies>(endpoint);
+    const data = await basicFetch<Movies>(endpoint)
 
-    res.status(200).json(data);
+    res.status(200).json(data)
 }
 
 // Notes: This is on the api side, not the client side

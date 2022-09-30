@@ -1,11 +1,11 @@
-import Image from 'next/image';
+import Image from 'next/image'
 import Link from 'next/link'
 
 type Props = {
   itemId: number
-  imgUrl: string;
-  title: string;
-  subtitle?: string;
+  imgUrl: string
+  title: string
+  subtitle?: string
   routeUrl: string
 };
 

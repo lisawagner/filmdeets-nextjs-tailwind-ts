@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import { RiGithubFill, RiLinkedinBoxLine, RiLinkedinFill, RiCodepenFill } from "react-icons/ri";
+import Image from 'next/image'
+import { RiGithubFill } from "react-icons/ri"
 
 const Footer = () => {
 

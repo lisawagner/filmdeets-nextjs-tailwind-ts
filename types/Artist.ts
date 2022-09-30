@@ -47,66 +47,66 @@ export type KnownFor = {
 }
 
 export type ArtistDetail = {
-  adult: boolean;
-  also_known_as: string[];
-  biography: string;
-  birthday: Date;
-  deathday: null;
-  gender: number;
-  homepage: null;
-  id: number;
-  imdb_id: string;
-  known_for_department: string;
-  name: string;
-  place_of_birth: string;
-  popularity: number;
-  profile_path: string;
-  social_media?: TSocialMedia;
-  cast?: TCast[];
-  crew?: TCast[];
+  adult: boolean
+  also_known_as: string[]
+  biography: string
+  // birthday: Date
+  // deathday: null
+  // gender: number
+  // homepage: null
+  id: number
+  // imdb_id: string
+  // known_for_department: string
+  name: string
+  // place_of_birth: string
+  popularity: number
+  profile_path: string
+  // social_media?: TSocialMedia
+  cast?: TCast[]
+  crew?: TCast[]
 }
 
-export type TSocialMedia = {
-  id: number;
-  imdb_id: string;
-  facebook_id?: string;
-  instagram_id?: string;
-  twitter_id?: string;
-  freebase_mid?: string;
-  freebase_id?: string;
-  tvdb_id?: number;
-  tvrage_id?: number;
-}
+// export type TSocialMedia = {
+//   id: number
+//   imdb_id: string
+//   facebook_id?: string
+//   instagram_id?: string
+//   twitter_id?: string
+//   freebase_mid?: string
+//   freebase_id?: string
+//   tvdb_id?: number
+//   tvrage_id?: number
+// }
 
 export type TCast = {
-  adult: boolean;
-  gender: number;
-  id: number;
-  known_for_department: string;
-  name: string;
-  original_name: string;
-  popularity: number;
-  profile_path: null | string;
-  cast_id?: number;
-  character?: string;
-  credit_id: string;
-  order?: number;
-  department?: string;
-  job?: string;
-  overview: string;
-  release_date?: Date;
-  backdrop_path: null | string;
-  genre_ids: number[];
-  vote_count: number;
-  original_language: 'en';
-  original_title?: string;
-  poster_path: null | string;
-  title?: string;
-  video?: boolean;
-  vote_average: number;
-  media_type: 'movie' | 'tv';
+  adult: boolean
+  // gender: number
+  id: number
+  // known_for_department: string
+  name: string
+  original_name: string
+  popularity: number
+  profile_path: null | string
+  cast_id?: number
+  character?: string
+  credit_id: string
+  order?: number
+  // department?: string
+  job?: string
+  overview: string
+  release_date?: Date
+  backdrop_path: null | string
+  genre_ids: number[]
+  vote_count: number
+  // original_language: 'en'
+  original_title?: string
+  poster_path: null | string
+  title?: string
+  video?: boolean
+  vote_average: number
+  // media_type: 'movie' | 'tv'
   first_air_date?: Date;
-  origin_country?: string[];
-  episode_count?: number;
-  release_year?: number | '';
+  // origin_country?: string[]
+  episode_count?: number
+  release_year?: number | ''
 }

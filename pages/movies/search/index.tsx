@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import { useFetchMovies } from '../../../api/fetchHooks'
 import { IMAGE_BASE_URL, THUMB_SIZE } from '../../../config'
 import { GridCard, GridContainer } from '../../../components'
@@ -9,7 +9,7 @@ import { useIntersectionObserver } from '../../../utils/useIntersectionObserver'
 const Search = () => {
   const [query, setQuery] = useState<any | null>(null)
   // @tanstack/react-query to cache movies via useFetchMovies()
-  const { data, isFetchingNextPage, fetchNextPage, hasNextPage, isSuccess, isLoading, isFetching, error } = useFetchMovies(query);
+  const { data, isFetchingNextPage, fetchNextPage, hasNextPage, isSuccess, isLoading } = useFetchMovies(query)
 
   // Is user intersecting w/ end of Page? If so, then fetch next page
   const onIntersect: IntersectionObserverCallback = ([{ isIntersecting }]) => {
@@ -21,7 +21,6 @@ const Search = () => {
     onIntersect,
     enabled: !!hasNextPage,
   })
-
 
   const router = useRouter()
   const id = router.query.name

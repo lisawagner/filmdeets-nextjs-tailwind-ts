@@ -1,35 +1,30 @@
-import Link from 'next/link'
-import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import {
   movieUrl,
   creditsUrl,
   IMAGE_BASE_URL,
   BACKDROP_SIZE,
   POSTER_SIZE
-} from '../../config';
-import { basicFetch } from '../../api/fetchFunctions';
-import { MovieDetails, GridCard, GridContainer } from '../../components';
+} from '../../config'
+import { basicFetch } from '../../api/fetchFunctions'
+import { MovieDetails, GridCard, GridContainer } from '../../components'
 import { Movie, Credits, Crew, Cast } from '../../types/Movie'
 
 type TProps = {
-  movie: Movie;
-  directors: Crew[];
-  cast: Cast[];
+  movie: Movie
+  directors: Crew[]
+  cast: Cast[]
 };
 
 const Movie: NextPage<TProps> = ({ movie, cast, directors }) => {
 
   return (
     <main>
-      {/* <Breadcrumb title={movie.original_title} /> */}
       <MovieDetails
-        // thumbUrl={movie.posterPath ? IMAGE_BASE_URL + POSTER_SIZE + movie.posterPath : '/images/baby-yoda-32.png'}
         rating={movie.vote_average}
         // rating={movie.vote_average}
         year={movie.release_date.split('-')[0]}
         genres={movie.genres}
-
-        ////////////////////////////////////////////////////// check
         backgroundImgUrl={movie.backdrop_path
           ? IMAGE_BASE_URL + BACKDROP_SIZE + movie.backdrop_path
           : movie.poster_path
@@ -47,8 +42,6 @@ const Movie: NextPage<TProps> = ({ movie, cast, directors }) => {
 
       <GridContainer title='Cast'>
         {cast.map(actor => (
-          // <Link key={actor.id} href={`/movies/actor/${actor.id}`} passHref>
-          //   <a>
             <GridCard
               key={actor.id}
               itemId={actor.id}
@@ -62,21 +55,21 @@ const Movie: NextPage<TProps> = ({ movie, cast, directors }) => {
 
     </main>
   )
-};
+}
 
-export default Movie;
+export default Movie
 
 // to create static pages on client side
 export const getStaticProps: GetStaticProps = async context => {
-  const id = context.params?.id as string;
+  const id = context.params?.id as string
 
-  const movieEndpoint: string = movieUrl(id);
-  const creditsEndpoint: string = creditsUrl(id);
+  const movieEndpoint: string = movieUrl(id)
+  const creditsEndpoint: string = creditsUrl(id)
 
-  const movie = await basicFetch<Movie>(movieEndpoint);
-  const credits = await basicFetch<Credits>(creditsEndpoint);
+  const movie = await basicFetch<Movie>(movieEndpoint)
+  const credits = await basicFetch<Credits>(creditsEndpoint)
 
-  const directors = credits.crew.filter(member => member.job === 'Director');
+  const directors = credits.crew.filter(member => member.job === 'Director')
 
   return {
     props: {

@@ -1,6 +1,6 @@
 type Props = {
-  title: string;
-  children: React.ReactNode;
+  title: string
+  children: React.ReactNode
   // className?: string;
 };
 

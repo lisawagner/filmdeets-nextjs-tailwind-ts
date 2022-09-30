@@ -4,7 +4,7 @@
 
 // font-family: 'Open Sans', sans-serif;
 
-import { Html, Head, Main, NextScript } from 'next/document';
+import { Html, Head, Main, NextScript } from 'next/document'
 
 const Document = () => (
   <Html>
