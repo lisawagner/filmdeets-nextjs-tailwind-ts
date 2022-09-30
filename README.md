@@ -1,5 +1,5 @@
 # filmClu 2.0
-> Discover movies to watch using the excellent TMDB API.
+> Discover movies to watch!
 
 [![Netlify][netlify-img]][netlify-url]
 [![GitHub repo size][github-img]][github-url]
@@ -7,7 +7,7 @@
 
 <!-- Badges to Add: Netlify build, twitter, license? -->
 
-_With filmClue 2.0, you can search for movies and check out their details. As an added bonus, each film page includes links to cast bio information, so you can learn all about your favorites._
+_With filmClue 2.0, you can search for movies and check out their details. Each film page includes links to cast bio information, so you can learn all about your favorites. Built with the most excellent TMDB API._
 
 <details>
 <summary>Application Snapshot</summary>
@@ -24,11 +24,11 @@ _With filmClue 2.0, you can search for movies and check out their details. As an
 - Movie search bar
 - Carousel slider with film cards and Modal pop ups
 - Supports **mouse** and **touch** events (tested via emulator. TODO: test live)
-- Film detail pages with movie informmation and cast member links
+- Film detail pages with movie information and cast member links
 - Cast member pages with bio and other films they are known for
 - Infinite scrolling
 
-### [Demo](https://friendly-redux-shopping-cart.netlify.app/)
+<!-- ### [Demo](https://friendly-redux-shopping-cart.netlify.app/) -->
 
 ### Technology
 
@@ -52,14 +52,6 @@ Possible FIX: load the API posts data immediately when the app loads.
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
-
-The things you need before installing the software.
-
-* You need this
-* And you need this
-* Oh, and don't forget this
-
 ### Installation
 
 _Easily set up a local development environment_
@@ -72,31 +64,30 @@ _Easily set up a local development environment_
 
 ## Usage
 
-A few motivating and useful examples of how your product can be used. Spice this up with code blocks and potentially more screenshots.
+Scroll and select a movie that interests you to see the details modal window. If you want more information, simply click the 'details' button to view the movie details page!
 
-_For more examples and usage, please refer to the [Wiki][wiki]._
+TODO: Add a gif showing modal and infinite scroll
+
+Each page has a search bar available to aid you in your quest for the next best movie to watch!
+
+TODO: Add a gif showing a search
+
 
 ## Deployment
 
 Additional notes on how to deploy this on a live or release system. Explaining the most important branches, what pipelines they trigger and how to update the database (if anything special).
 
-### Server
+This project is hosted on Vercel. To deploy your own copy, you will need to set up a Vercel account.
 
-* Live:
-* Release:
-* Development:
-
-This project is hosted on Netlify. To deploy your own copy, you will need to set up a Netlify account.
-
-Before deploying to Netlify you need to create a build:
+<!-- Before deploying to Vercel you need to create a build:
 
 ```
 $ npm run build
-```
+``` -->
 
-It is a good idea to test your build by serving it on your localhost. Once you are happy with your build, open up your Netlify Account.
+It is a good idea to test your build by serving it on your localhost. Once you are happy with your build, open up your Vercel Account.
 
-For a basic deploy, you can simply drag and drop the build folder onto your Netlify Sites directory. See [Get started with Netlify](https://docs.netlify.com/get-started/) for details.
+<!-- For a basic deploy, you can simply drag and drop the build folder onto your Netlify Sites directory. See [Get started with Netlify](https://docs.netlify.com/get-started/) for details. -->
 
 <!-- ## Meta
 
