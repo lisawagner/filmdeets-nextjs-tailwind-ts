@@ -8,11 +8,13 @@ export const basicFetch = async <returnType>(endpoint: string): Promise<returnTy
   // return data;
   
   const response = await fetch(endpoint)
+  
   if (response.status !== 200) {
     const error = await response.json()
     throw {message: error.message, status: error.code}
   }
   const data = await response.json()
+  
   return data
 }
 

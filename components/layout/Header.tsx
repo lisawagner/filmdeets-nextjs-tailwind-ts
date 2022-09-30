@@ -32,7 +32,6 @@ const Header = () => {
       </Link>
       <SearchInput />
         
-
     </div>
 
   )
