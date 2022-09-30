@@ -1,12 +1,10 @@
 import Hero from "./Hero";
 import GridCard from "./DataGrid/GridCard";
 import GridContainer from "./DataGrid";
-import Spinner from "./Spinner";
-import Breadcrumb from "./Breadcrumb";
 import MovieDetails from "./MovieDetails";
 import Carousel from "./Carousel";
 import CarouselCard from "./Carousel/CarouselCard";
 import Modal from "./Modal";
 import Layout from "./Layout";
 
-export { Hero, GridCard, GridContainer, Spinner, Breadcrumb, MovieDetails, Carousel, Modal, CarouselCard, Layout }
+export { Hero, GridCard, GridContainer, MovieDetails, Carousel, Modal, CarouselCard, Layout }
