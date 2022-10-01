@@ -36,7 +36,6 @@ const Search = () => {
 
     <div className='py-16 mb-10 text-white'>
       <GridContainer title={query ? `Search Results: ${data?.pages[0].total_results}` : 'Top Rated Movies by TMDB Member Votes'}>
-      {/* <GridContainer title={`Search Results: ${data?.pages[0].total_results}`}> */}
         {isSuccess && data && data.pages
             ? data.pages.map(page =>
                 page.results.map(movie => (
