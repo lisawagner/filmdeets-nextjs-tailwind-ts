@@ -12,9 +12,9 @@ _With filmClue 2.0, you can search for movies and check out their details. Each 
 <details>
 <summary>Application Snapshot</summary>
 ### [Application Snapshot]()
-<!-- <p align="center">
-  <img src="home-page.png" alt="Redux Toolkit with TailwindCSS Todo App" width="700">
-</p> -->
+<p align="center">
+  <img src="/home-page.png" alt="Redux Toolkit with TailwindCSS Todo App" width="700">
+</p>
 </details>
 
 </br>
@@ -53,12 +53,20 @@ _Easily set up a local development environment_
 
 ## Usage
 
-Scroll and select a movie that interests you to see the details modal window. If you want more information, simply click the 'details' button to view the movie details page!
-
+Scroll and select a movie that interests you to see the details modal window. 
 <p align="center">
-  <img src="/SiteVid.gif" alt="animated image of touch scroll" width="200">
+  <img src="/SiteVid.gif" alt="animated image of touch scroll" width="300">
 </p>
 
+If you want more information, simply click the 'details' button to view the movie details page
+<p align="center">
+  <img src="/movie-modal.png" alt="animated image of touch scroll" width="700">
+</p>
+
+Read the details about your selected movie on the movie page:
+<p align="center">
+  <img src="/movie-page.png" alt="animated image of touch scroll" width="700">
+</p>
 
 <!-- ## Meta
 
