@@ -36,7 +36,7 @@ _With filmClue 2.0, you can search for movies and check out their details. Each 
   2. Typescript
   3. TailwindCSS
   4. @Tanstack/React-Query
-  5. Vercel Deployment
+  5. Netlify Deployment
 
 <!-- ### :lady_beetle: Bugs and Known Issues
 
@@ -59,7 +59,7 @@ _Easily set up a local development environment_
  - clone or download zip file
  - cd into root
  - `npm install`
- - `npm start`
+ - `npm run dev`
 
 
 ## Usage
@@ -72,22 +72,6 @@ Each page has a search bar available to aid you in your quest for the next best 
 
 TODO: Add a gif showing a search
 
-
-## Deployment
-
-Additional notes on how to deploy this on a live or release system. Explaining the most important branches, what pipelines they trigger and how to update the database (if anything special).
-
-This project is hosted on Vercel. To deploy your own copy, you will need to set up a Vercel account.
-
-<!-- Before deploying to Vercel you need to create a build:
-
-```
-$ npm run build
-``` -->
-
-It is a good idea to test your build by serving it on your localhost. Once you are happy with your build, open up your Vercel Account.
-
-<!-- For a basic deploy, you can simply drag and drop the build folder onto your Netlify Sites directory. See [Get started with Netlify](https://docs.netlify.com/get-started/) for details. -->
 
 <!-- ## Meta
 
@@ -130,9 +114,9 @@ For further reading on the subject see:
    - [Error: How to serialize data from getStaticProps : Next.js](https://stackoverflow.com/questions/66106776/error-how-to-serialize-data-from-getstaticprops-next-js)
 
 <!-- Markdown link & img dfn's -->
-[github-img]: https://img.shields.io/github/repo-size/lisawagner/rtk-tailwind-todo?logo=github&style=flat-square
-[github-url]: https://github.com/lisawagner/rtk-tailwind-todo
-[github-commit]: https://img.shields.io/github/last-commit/lisawagner/rtk-tailwind-todo?logo=github&style=flat-square
+[github-img]: https://img.shields.io/github/repo-size/lisawagner/filmdeets-nextjs-tailwind-ts?logo=github&style=flat-square
+[github-url]: https://github.com/lisawagner/filmdeets-nextjs-tailwind-ts
+[github-commit]: https://img.shields.io/github/last-commit/lisawagner/filmdeets-nextjs-tailwind-ts?logo=github&style=flat-square
 
 [netlify-img]: https://img.shields.io/netlify/8f53362b-5385-445d-bff8-fbf44086fa13?style=flat-square
-[netlify-url]: https://todoodles-redux-toolkit-tailwind-app.netlify.app/
+[netlify-url]: https://filmclu-enjoy-movies.netlify.app/
