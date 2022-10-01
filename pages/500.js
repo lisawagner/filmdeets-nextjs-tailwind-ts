@@ -6,7 +6,7 @@ export default function Custom500() {
   const router = useRouter()
 
   return (
-    <div className='container mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center py-4 md:pt-20 xl:py-40'>
+    <div className='container mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center pt-28'>
       <div className='w-full flex flex-col items-center relative z-10'>
         <h1 className='font-extrabold text-4xl text-center text-cyan-500 leading-tight mt-4 md:text-5xl'>Sorry, <br />Page Not Found</h1>
         <div className='block my-8 mx-auto animate-floating'>
