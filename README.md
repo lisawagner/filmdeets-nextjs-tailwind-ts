@@ -11,7 +11,6 @@ _With filmClue 2.0, you can search for movies and check out their details. Each 
 
 <details>
 <summary>Application Snapshot</summary>
-### [Application Snapshot]()
 <p align="center">
   <img src="/home-page.png" alt="Redux Toolkit with TailwindCSS Todo App" width="700">
 </p>
@@ -23,7 +22,7 @@ _With filmClue 2.0, you can search for movies and check out their details. Each 
 
 - Movie search bar
 - Carousel slider with film cards and Modal pop ups
-- Supports **mouse** and **touch** events (tested via emulator. TODO: test live)
+- Supports **mouse** and **touch** events (tested via emulator)
 - Film detail pages with movie information and cast member links
 - Cast member pages with bio and other films they are known for
 - Infinite scrolling
@@ -40,7 +39,9 @@ _With filmClue 2.0, you can search for movies and check out their details. Each 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+You will need a [TMDB account](https://www.themoviedb.org/signup) and an API Key. In the projects root folder, save a `.env.local` file with `API_KEY=##################` inside (the hashtags indicate where you need to put your own API key).
 
 ### Installation
 
@@ -49,9 +50,15 @@ _Easily set up a local development environment_
  - clone or download zip file
  - cd into root
  - `npm install`
+ - make sure you have your API key set up
  - `npm run dev`
 
 ## Usage
+
+On the landing page, you can choose a movie from the category carousel or use the search.
+<p align="center">
+  <img src="/carousel-slider.png" alt="animated image of touch scroll" width="700">
+</p>
 
 Scroll and select a movie that interests you to see the details modal window. 
 <p align="center">
