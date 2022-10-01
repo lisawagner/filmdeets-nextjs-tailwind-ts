@@ -6,7 +6,7 @@ type Props = {
   // any props that come into the component
 }
 
-const Layout2 = ({ children, ...props }: Props) => {
+const Layout = ({ children, ...props }: Props) => {
 
   return (
     <>
@@ -16,4 +16,4 @@ const Layout2 = ({ children, ...props }: Props) => {
     </>
   )
 }
-export default Layout2
+export default Layout
