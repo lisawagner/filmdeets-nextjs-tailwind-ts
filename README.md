@@ -13,7 +13,7 @@ _With filmClue 2.0, you can search for movies and check out their details. Each 
 <summary>Application Snapshot</summary>
 ### [Application Snapshot]()
 <!-- <p align="center">
-  <img src="src/assets/rtk-todoodles.png" alt="Redux Toolkit with TailwindCSS Todo App" width="700">
+  <img src="home-page.png" alt="Redux Toolkit with TailwindCSS Todo App" width="700">
 </p> -->
 </details>
 
@@ -28,7 +28,7 @@ _With filmClue 2.0, you can search for movies and check out their details. Each 
 - Cast member pages with bio and other films they are known for
 - Infinite scrolling
 
-<!-- ### [Demo](https://friendly-redux-shopping-cart.netlify.app/) -->
+### [Demo](https://filmclu-enjoy-movies.netlify.app/)
 
 ### Technology
 
@@ -36,17 +36,7 @@ _With filmClue 2.0, you can search for movies and check out their details. Each 
   2. Typescript
   3. TailwindCSS
   4. @Tanstack/React-Query
-  5. Netlify Deployment
-
-<!-- ### :lady_beetle: Bugs and Known Issues
-
-React v18 Strict Mode causes Redux to run 2x when component mounts for the first time, resulting in all records duped on the frontend. I tried unsuccessfully to create a workaround. Options for now are:
-  - Don't use Strict Mode
-  - Downgrade to React 17.
-
-Possible FIX: load the API posts data immediately when the app loads.
-
-   :heavy_check_mark: `store.dispatch(fetchPosts())` added to index.js -->
+  5. Continuos Deployment on Netlify
 
 ## Getting Started
 
@@ -61,16 +51,13 @@ _Easily set up a local development environment_
  - `npm install`
  - `npm run dev`
 
-
 ## Usage
 
 Scroll and select a movie that interests you to see the details modal window. If you want more information, simply click the 'details' button to view the movie details page!
 
-TODO: Add a gif showing modal and infinite scroll
-
-Each page has a search bar available to aid you in your quest for the next best movie to watch!
-
-TODO: Add a gif showing a search
+<p align="center">
+  <img src="/SiteVid.gif" alt="animated image of touch scroll" width="200">
+</p>
 
 
 <!-- ## Meta
