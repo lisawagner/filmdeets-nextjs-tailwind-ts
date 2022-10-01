@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 // components
-import { Layout } from '../components'
+// import { Layout } from '../components'
+import { Layout2 } from '../components'
 // next imports
 import type { AppProps } from 'next/app'
 // styles
@@ -12,9 +13,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <Layout>
+        <Layout2>
           <Component {...pageProps} />
-        </Layout>
+        </Layout2>
       </QueryClientProvider>
     </>
   )
