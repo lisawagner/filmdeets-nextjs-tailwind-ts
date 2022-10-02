@@ -2,8 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 // Helpers
 import { truncateString } from '../../utils/helpers';
-// Custom styles
-import styles from '../../styles/Hero.module.css'
 import { RiStarFill } from 'react-icons/ri'
 
 type Props = {
@@ -22,13 +20,9 @@ const Hero = ({ imgUrl, title, text, tagline, releaseDate, id, rating }: Props) 
   return (
     <div className='relative'>
 
-      <div className={`w-full h-screen ${styles.stars}`}></div>
-      <div className={`w-full h-screen ${styles.stars2}`}></div>
-      <div className={`w-full h-screen ${styles.stars3}`}></div>
-
       <div className='absolute w-full h-full bg-gradient-to-t from-[#010404] via-transparent to-transparent'></div>
       <div className='absolute overflow-hidden inset-0 m-0 p-0 w-full h-full bg-gradient-to-r from-[#010404] via-transparent to-transparent'></div>
-      
+
       <Image
         priority={true}
         objectFit='cover'

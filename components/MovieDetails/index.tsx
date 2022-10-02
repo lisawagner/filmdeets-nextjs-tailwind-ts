@@ -79,7 +79,6 @@ const MovieDetails = ({
         <div className='text-cyan-400 text-3xl md:text-4xl xl:text-5xl font-bold text-shadow-md uppercase tracking-wide my-3'>
           {!rating ? '0/10' : `${rating.toFixed(2)}`}
           {/* {rating.toFixed(2)} */}
-          {/*  {!movie.rating ? '0' : `${movie.rating.toFixed(1)}`} */}
         </div>
         
         <div className='w-full text-sm md:max-w-[70%] text-gray-200 text-shadow-md mt-6'>
