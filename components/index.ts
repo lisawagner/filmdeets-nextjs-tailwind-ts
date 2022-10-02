@@ -1,4 +1,4 @@
-import Hero from "./Hero";
+import Hero from "./Hero/Hero";
 import GridCard from "./DataGrid/GridCard";
 import GridContainer from "./DataGrid";
 import MovieDetails from "./MovieDetails";

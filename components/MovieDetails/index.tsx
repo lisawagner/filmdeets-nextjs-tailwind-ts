@@ -35,7 +35,7 @@ const MovieDetails = ({
 }: TProps) => {
 
   return (
-    <div className='relative w-full h-screen animate-fadeIn'>
+    <div className='relative animate-fadeIn'>
       <Image
         priority={true}
         placeholder='blur'
@@ -45,12 +45,13 @@ const MovieDetails = ({
         layout='fill'
         src={backgroundImgUrl}
         alt='movie poster background'
+        className='absolute inset-0 w-full h-full object-cover -z-10'
       />
-      <div className='absolute top-0 right-0 bottom-0 left-0 bg-brand-900 bg-opacity-40'></div>
-      <div className='absolute top-0 right-0 bottom-0 left-0 bg-gradient-to-r from-[#010404] via-transparent to-transparent'></div>
-      <div className='absolute top-0 right-0 bottom-0 left-0 bg-gradient-to-t from-[#010404] via-transparent to-transparent'></div>
+      <div className='absolute top-0 inset-0 bg-brand-900 bg-opacity-40'></div>
+      <div className='absolute top-0 inset-0 bg-gradient-to-r from-[#010404] via-transparent to-transparent'></div>
+      <div className='absolute inset-0 bg-gradient-to-t from-[#010404] via-transparent to-transparent'></div>
 
-      <div className='absolute w-full top-[20%] p-4 md:p-8'>
+      <div className='relative w-full pt-80 pb-64 px-4 md:px-8'>
 
         {tagline && <span className='text-white md:text-2xl md:max-w-[70%] xl:text-3xl italic text-shadow-md'>
         &quot;{tagline}&quot;

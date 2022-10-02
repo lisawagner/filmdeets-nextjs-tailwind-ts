@@ -16,7 +16,7 @@ type Props = {
   rating: number
 };
 
-const Hero = ({ imgUrl, title, text, tagline, releaseDate, id, rating }: Props) => {
+const Hero1 = ({ imgUrl, title, text, tagline, releaseDate, id, rating }: Props) => {
   
   return (
     <div className='relative w-full min-h-screen text-white'>
@@ -65,4 +65,4 @@ const Hero = ({ imgUrl, title, text, tagline, releaseDate, id, rating }: Props) 
   );
 }
 
-export default Hero;
+export default Hero1;

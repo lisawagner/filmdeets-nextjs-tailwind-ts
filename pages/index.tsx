@@ -1,10 +1,9 @@
-import { useState } from 'react'
-import type { NextPage, GetStaticProps } from 'next'
+import { useModal } from '../utils'
 import { basicFetch  } from '../api'
 import { IMAGE_BASE_URL, BACKDROP_SIZE, movieUrl, genreUrl, GENRE_BASE_URL } from '../config'
-import { useModal } from '../utils'
-// components
 import { Hero, Carousel, Modal, CarouselCard } from '../components'
+// types
+import type { NextPage, GetStaticProps } from 'next'
 import { Featured, Movie, SelectMovie, GenreResponse, Movies } from '../types/Movie'
 
 type HomeProps = {
@@ -21,13 +20,11 @@ const CarouselProps = {
 }
 
 const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, scifiGenre, thrillerGenre, comedyGenre }) => {
-
   const { handleToggle, isVisible, setIsVisible, activeMovie } = useModal()
   
   return (
     <>
-      <div className='relative h-screen lock-screen'>
-        <Hero
+      <Hero
           imgUrl={featuredMovie.backdropPath
             ? IMAGE_BASE_URL + BACKDROP_SIZE + featuredMovie.backdropPath
             : "/images/baby-yoda-32.png"}
@@ -38,7 +35,6 @@ const Home: NextPage<HomeProps> = ({ featuredMovie, actionGenre, scifiGenre, thr
           id={featuredMovie.id}
           rating={featuredMovie.rating}
         />
-      </div>
 
       <div className='relative pt-10 bg-brand-900 z-30'>
         <Carousel {...CarouselProps} title='Action Movies' href="/movies/genre/28" hasLink={true}> 
