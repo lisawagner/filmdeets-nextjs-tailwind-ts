@@ -1,8 +1,7 @@
 import Image from 'next/image'
-// Helpers
 import { calcTime, convertMoney } from '../../utils/helpers'
-// Components
 import Pill from './Pill'
+
 // Types
 import { Crew, Genre } from '../../types/Movie'
 
@@ -36,6 +35,11 @@ const MovieDetails = ({
 
   return (
     <div className='relative animate-fadeIn'>
+      {/* Overlay */}
+      <div className='absolute top-0 inset-0 bg-brand-900 bg-opacity-40' />
+      <div className='absolute top-0 inset-0 bg-gradient-to-r from-[#010404] via-transparent to-transparent' />
+      <div className='absolute inset-0 bg-gradient-to-t from-[#010404] via-transparent to-transparent' />
+
       <Image
         priority={true}
         placeholder='blur'
@@ -47,9 +51,6 @@ const MovieDetails = ({
         alt='movie poster background'
         className='absolute inset-0 w-full h-full object-cover -z-10'
       />
-      <div className='absolute top-0 inset-0 bg-brand-900 bg-opacity-40'></div>
-      <div className='absolute top-0 inset-0 bg-gradient-to-r from-[#010404] via-transparent to-transparent'></div>
-      <div className='absolute inset-0 bg-gradient-to-t from-[#010404] via-transparent to-transparent'></div>
 
       <div className='relative w-full pt-80 pb-64 px-4 md:px-8'>
 
@@ -78,7 +79,6 @@ const MovieDetails = ({
 
         <div className='text-cyan-400 text-3xl md:text-4xl xl:text-5xl font-bold text-shadow-md uppercase tracking-wide my-3'>
           {!rating ? '0/10' : `${rating.toFixed(2)}`}
-          {/* {rating.toFixed(2)} */}
         </div>
         
         <div className='w-full text-sm md:max-w-[70%] text-gray-200 text-shadow-md mt-6'>

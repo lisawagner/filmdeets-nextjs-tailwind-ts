@@ -8,6 +8,8 @@ import {
 } from '../../config'
 import { basicFetch } from '../../api/fetchFunctions'
 import { MovieDetails, GridCard, GridContainer } from '../../components'
+
+// types
 import { Movie, Credits, Crew, Cast } from '../../types/Movie'
 
 type TProps = {
@@ -22,7 +24,6 @@ const Movie: NextPage<TProps> = ({ movie, cast, directors }) => {
     <main>
       <MovieDetails
         rating={movie.vote_average}
-        // rating={movie.vote_average}
         year={movie.release_date.split('-')[0]}
         genres={movie.genres}
         backgroundImgUrl={movie.backdrop_path

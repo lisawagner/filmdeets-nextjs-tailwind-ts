@@ -1,14 +1,13 @@
 import { useState } from 'react'
 import { RiSearchLine } from 'react-icons/ri'
 import { useRouter } from "next/router"
-// components & hooks
 import SearchReset from './SearchReset'
 
 const SearchInput = () => {
   const navigate = useRouter()
-  const [inputVal, setInputVal] = useState("")
-  const [isFocused, setIsFocused] = useState(false)
-  const [hasInput, setHasInput] = useState(false)
+  const [inputVal, setInputVal] = useState<string>("")
+  const [isFocused, setIsFocused] = useState<boolean>(false)
+  const [hasInput, setHasInput] = useState<boolean>(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputVal(e.target.value)
@@ -48,7 +47,6 @@ const SearchInput = () => {
           className='flex h-9 pr-14 pl-10 text-sm text-cyan-400 bg-transparent rounded-md border border-cyan-400 focus:outline-none focus:border-1 focus:border-solid focus:border-cyan-300 hover:neon-shadow-soft duration-200'
           type='text'
           placeholder='Search Movie'
-          // onFocus={handleFocus}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           value={inputVal}
@@ -69,7 +67,7 @@ const SearchInput = () => {
       } 
 
     </div>
-  );
-};
+  )
+}
 
-export default SearchInput;
+export default SearchInput

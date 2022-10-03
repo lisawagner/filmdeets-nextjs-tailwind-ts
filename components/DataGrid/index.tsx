@@ -1,7 +1,6 @@
 type Props = {
   title: string
   children: React.ReactNode
-  // className?: string;
 };
 
 const GridContainer = ({ title, children }: Props) => {

@@ -3,7 +3,6 @@ import { truncateString } from '../../utils/helpers';
 import { IMAGE_BASE_URL, THUMB_SIZE } from '../../config'
 import { SelectMovie } from '../../types/Movie'
 
-
 type TCardProps = {
   movie: SelectMovie,
   onClick: () => void,
@@ -30,9 +29,7 @@ const CarouselCard = ({movie, onClick}: TCardProps) => {
         className='rounded-md bg-brand-900 cursor-pointer'
       />
       <div className='text-cyan-300 text-xs py-2 uppercase'>
-        {/* {movie.title} */}
         {truncateString(movie.title, 24)}
-        {/*  {truncateString(text, 107)} */}
       </div>
     </div>
   )

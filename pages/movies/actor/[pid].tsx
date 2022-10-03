@@ -4,8 +4,9 @@ import { basicFetch } from '../../../api'
 import { peopleUrl, knownForUrl, IMAGE_BASE_URL, POSTER_SIZE } from '../../../config'
 import { CarouselCard, Carousel, Modal } from '../../../components'
 import { useModal } from '../../../utils'
+
 // types
-import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { Artist, ArtistDetail } from '../../../types/Artist'
 import { SelectMovie } from '../../../types/Movie'
 
@@ -31,21 +32,26 @@ const Actor: NextPage<TProps> = ({ artist, knownForMovies }) => {
   return (
     <>
       <div className='relative bg-brand-900 animate-fadeIn'>
-          <Image
-            priority={true}
-            placeholder='blur'
-            blurDataURL='/images/placeholder.png'
-            objectFit='cover'
-            objectPosition='center'
-            layout='fill'
-            src={artist.profile_path ? IMAGE_BASE_URL + POSTER_SIZE + artist.profile_path : '/images/baby-yoda-md.png'}
-            alt='movie poster background'
-            className='absolute inset-0 w-full h-full object-cover'
-          />
-          <div className='absolute inset-0 bg-brand-900 bg-opacity-40'></div>
-          <div className='absolute inset-0 bg-gradient-to-r from-[#010404] via-transparent to-transparent'></div>
-          <div className='absolute inset-0 bg-gradient-to-t from-[#010404] via-transparent to-transparent'></div>
-          <div className='relative pt-96 pb-36 md:pb-96 px-4 md:px-8'></div>
+
+        <Image
+          priority={true}
+          placeholder='blur'
+          blurDataURL='/images/placeholder.png'
+          objectFit='cover'
+          objectPosition='center'
+          layout='fill'
+          src={artist.profile_path ? IMAGE_BASE_URL + POSTER_SIZE + artist.profile_path : '/images/baby-yoda-md.png'}
+          alt='movie poster background'
+          className='absolute inset-0 w-full h-full object-cover'
+        />
+
+        {/* Overlay */}
+        <div className='absolute inset-0 bg-brand-900 bg-opacity-40' />
+        <div className='absolute inset-0 bg-gradient-to-r from-[#010404] via-transparent to-transparent' />
+        <div className='absolute inset-0 bg-gradient-to-t from-[#010404] via-transparent to-transparent' />
+
+        <div className='relative pt-96 pb-36 md:pb-96 px-4 md:px-8' />
+        
       </div>
 
       <div className='relative mt-4 px-4 md:px-8'>

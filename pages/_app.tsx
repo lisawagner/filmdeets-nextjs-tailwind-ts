@@ -23,7 +23,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           content='filmClu is a movie search app created with NextJS, tailwind and typescript'/>
         <link rel="apple-touch-icon" href="/logo192.png" /> 
         <link rel="manifest" href="/manifest.json" />
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel='stylesheet' />
 
         <title>filmClu 2.0 | Amazing Movies to Discover</title>
       </Head>

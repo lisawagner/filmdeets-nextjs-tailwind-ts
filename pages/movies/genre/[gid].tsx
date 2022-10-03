@@ -1,21 +1,25 @@
 import { useState, useEffect } from 'react'
-import { useFetchGenres, basicFetch } from '../../../api'
-import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
-import { GridCard, GridContainer } from '../../../components'
+
+import { useFetchGenres, basicFetch } from '../../../api'
 import { IMAGE_BASE_URL, THUMB_SIZE, GENRE_BASE_URL } from '../../../config'
-import { GenreResponse, Genre } from '../../../types/Movie'
 import { useIntersectionObserver } from '../../../utils/useIntersectionObserver'
+
+import { GridCard, GridContainer } from '../../../components'
+
+// types
+import { GenreResponse, Genre } from '../../../types/Movie'
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 type TProps = {
   genres: Genre[]
 }
 
 const MoviesByGenre: NextPage<TProps> = ({ genres }) => {
-  const [title, setTitle] = useState('')
+  const [title, setTitle] = useState<string>('')
   const [query, setQuery] = useState<any | null>(null)
   // @tanstack/react-query to cache movies via useFetchMovies()
-  const { data, isFetchingNextPage, fetchNextPage, hasNextPage, isSuccess, isLoading } = useFetchGenres(query);
+  const { data, isFetchingNextPage, fetchNextPage, hasNextPage, isSuccess, isLoading } = useFetchGenres(query)
   
   // Is user intersecting w/ end of Page? If so, then fetch next page
   const onIntersect: IntersectionObserverCallback = ([{ isIntersecting }]) => {
@@ -86,12 +90,12 @@ export const getStaticProps: GetStaticProps = async () => {
       genres
     },
     revalidate: 60 * 60 * 24 // Re-build page every 24 hours
-  };
-};
+  }
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [],
     fallback: 'blocking'
-  };
-};
+  }
+}

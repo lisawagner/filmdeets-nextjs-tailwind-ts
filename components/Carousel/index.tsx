@@ -3,11 +3,11 @@ import { useEffect, useState } from "react"
 import CarouselButton from './CarouselButton'
 
 type CarouselProps = {
-  children?: any;
-  maxVisibleSlides: number,
-  infiniteLoop: boolean,
-  title: string,
-  href: string,
+  children?: any
+  maxVisibleSlides: number
+  infiniteLoop: boolean
+  title: string
+  href: string
   hasLink: boolean
 }
 // type predicates
@@ -36,8 +36,8 @@ const Carousel = ({children, maxVisibleSlides, infiniteLoop, title, href, hasLin
 
   const [touchPosition, setTouchPosition] = useState<number | null>(null)
 
-  const [width, setWidth] = useState(0);
-  const visibleSlides = numberOfSlides(maxVisibleSlides, width);
+  const [width, setWidth] = useState(0)
+  const visibleSlides = numberOfSlides(maxVisibleSlides, width)
   const [isPrev] = useState(true)
 
   // Set the length to match current children from props
@@ -188,7 +188,6 @@ const Carousel = ({children, maxVisibleSlides, infiniteLoop, title, href, hasLin
             </div>
 
           </div>
-            {/* You can alwas change the content of the button to other things */}
             {(isRepeating || currentIndex < (length - visibleSlides)) &&
               <CarouselButton onClick={next} className="left-arrow" isPrev={!isPrev}/>
             }

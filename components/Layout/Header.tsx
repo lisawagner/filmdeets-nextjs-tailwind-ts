@@ -1,11 +1,9 @@
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
-
-// Components
 import SearchInput from './SearchInput'
 
 const Header = () => {
-  const [hasScrolled, setHasScrolled] = useState(false)
+  const [hasScrolled, setHasScrolled] = useState<boolean>(false)
 
   const scroll = useCallback(() => {
     if (window.scrollY > 200) {
